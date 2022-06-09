@@ -1,355 +1,3 @@
-# Document Commands
-def closeDoc():
-    raise NoDocOpenError
-def docChanged(bool):
-    pass
-def getDocName():
-    return ""
-def getUnit():
-    return -1
-def haveDoc():
-    return False
-def loadStylesFromFile(filename):
-    pass
-def masterPageNames():
-    return ["", ""]
-def newDocument(size, margins, orientation, firstPageNumber, unit, pagesType, firstPageOrder, numPages):
-    if firstPageOrder > pagesType:
-        raise ScribusException
-    return False
-def openDoc(name):
-    documentNotOpened = False
-    if documentNotOpened:
-        raise ScribusException
-def placeEPS(filename, x, y):
-    pass
-def placeODG(filename, x, y):
-    pass
-def placeSVG(filename, x, y):
-    pass
-def placeSXD(filename, x, y):
-    pass
-def placeVectorFile(filename, x, y):
-    pass
-def revertDoc():
-    pass
-def saveDoc():
-    pass
-def saveDocAs(name):
-    saveFailed = False
-    if saveFailed:
-        raise ScribusException
-def setBaseLine(grid, offset):
-    pass
-def setBleeds(lr, rr, tr, br):
-    pass
-def setDocType(facingPages, firstPageLeft):
-    pass
-def setInfo(author, info, description):
-    return False
-def setMargins(lr, rr, tr, br):
-    pass
-def setUnit(type):
-    invalidUnit = False
-    if invalidUnit:
-        raise ValueError
-def scrollDocument(x, y):
-    pass
-def zoomDocument(zoom):
-    pass
-
-
-# Master Page Commands
-def masterPageNames():
-    return ["pageName1", "pageName2"]
-def applyMasterPage():
-    pass
-def closeMasterPage():
-    pass
-def createMasterPage(pageName):
-    pass
-def deleteMasterPage(pageName):
-    pass
-def editMasterPage(pageName):
-    pass
-
-
-# Creating & Destroying Objects
-def createBezierLine(list, name="name"):
-    nameExists = False
-    if nameExists:
-        raise NameExistsError
-    wrongValues = False
-    if wrongValues:
-        raise ValueError
-    return name
-def createEllipse(x, y, width, height, name="name"):
-    nameExists = False
-    if nameExists:
-        raise NameExistsError
-    return name
-def createImage(x, y, width, height, name="name"):
-    nameExists = False
-    if nameExists:
-        raise NameExistsError
-    return name
-def createLine(x1, y1, x2, y2, name="name"):
-    nameExists = False
-    if nameExists:
-        raise NameExistsError
-    return name
-def createPathText(x, y, textbox, beziercurve, name="name"):
-    nameExists = False
-    if nameExists:
-        raise NameExistsError
-    objExists = False
-    if objExists:
-        raise NotFoundError
-    return name
-def createPolyLine(list, name="name"):
-    nameExists = False
-    if nameExists:
-        raise NameExistsError
-    wrongValues = False
-    if wrongValues:
-        raise ValueError
-    return name
-def createPolygon(list, name="name"):
-    nameExists = False
-    if nameExists:
-        raise NameExistsError
-    wrongValues = False
-    if wrongValues:
-        raise ValueError
-    return name
-def createRect(x, y, width, height, name="name"):
-    nameExists = False
-    if nameExists:
-        raise NameExistsError
-    return name
-def createText(x, y, width, height, name="name"):
-    nameExists = False
-    if nameExists:
-        raise NameExistsError
-    return name
-def deleteObject(name):
-    pass
-def objectExists(name):
-    return False
-
-
-# Selecting Objects
-def deselectAll():
-    pass
-def getSelectedObject(nr=0):
-    return "name"
-def moveSelectionToBack():
-    pass
-def moveSelectionToFront():
-    pass
-def selectionCount():
-    return -1
-def selectObject(name):
-    pass
-
-
-# Creating & Manipulating Styles
-def createCharStyle(name, font="Arial Regular", fontsize=12.0, features="", fillcolor="None", fillshade=1.0, strokecolor="Black", strokehade=1.0, baselineoffset=-1.1, shadowxoffset=-1.1, shadowyoffset=-1.1, outlinewidth=-1.1, underlineoffset=-1.1, underlinewidth=-1.1, strikethroughoffset=-1.1, strikethroughwidth=-1.1, scaleh=1.0, scalev=1.0, tracking=-11, language="en", fontfeatures=""):
-    pass
-def createCustomLineStyle(styleName, style):
-    pass
-def createParagraphStyle(name, linespacingmode=0, linespacing=12.0, alignment=0, leftmargin=0.0, rightmargin=0.0, gapbefore=-1.1, gapafter=-1.1, firstindent=0.0, hasdropcap=False, dropcaplines=-1, dropcapoffset=-1.1, charstyle="style", bullet="", tabs=""):
-    pass
-def getAllStyles():
-    return ["styleName1", "styleName2"]
-
-
-# Handling Text Frames
-def dehyphenateText(name="name"):
-    wrongFrameType = False
-    if wrongFrameType:
-        raise WrongFrameTypeError
-def deleteText(name="name"):
-    pass
-def getAllText(name="name"):
-    return "text"
-def getColumnGap(name="name"):
-    return -1.1
-def getColumns(name="name"):
-    return -1
-def getFirstLineOffset(name="name"):
-    return -1
-def getFirstLinkedFrame(name="name"):
-    return "frame"
-def getFont(name="name"):
-    return "font"
-def getFontSize(name="name"):
-    return -1.1
-def getFrameText(name="name"):
-    return "textVisible"
-def getLastLinkedFrame(name="name"):
-    return "frame"
-def getLineSpacing(name="name"):
-    return -1.1
-def getNextLinkedFrame(name="name"):
-    return "frame"
-def getPrevLinkedFrame(name="name"):
-    return "frame"
-def getTextColor(name="name"):
-    wrongFrameType = False
-    if wrongFrameType:
-        raise WrongFrameTypeError
-    return "color"
-def getTextDistances(name="name"):
-    return [-1.1, -1.1, -1.1, -1.1]
-def getTextLength(name="name"):
-    return -1
-def getTextLines(name="name"):
-    return -1
-def getTextShade(name="name"):
-    wrongFrameType = False
-    if wrongFrameType:
-        raise WrongFrameTypeError
-    return -1
-def getTextVerticalAlignment(name="name"):
-    return -1
-def hyphenateText(name="name"):
-    wrongFrameType = False
-    if wrongFrameType:
-        raise WrongFrameTypeError
-    return False
-def insetHtmlText(text, name="name"):
-    wrongFrameType = False
-    if wrongFrameType:
-        raise WrongFrameTypeError
-    pass
-def insertText(text, pos, name="name"):
-    wrongFrameType = False
-    if wrongFrameType:
-        raise WrongFrameTypeError
-    pass
-def isPDFBookmark(name="name"):
-    wrongFrameType = False
-    if wrongFrameType:
-        raise WrongFrameTypeError
-    return False
-def layoutText(name="name"):
-    pass
-def layoutTextChain(name="name"):
-    pass
-def linkTextFrames(firstFrame, secondFrame):
-    rulesViolated = False
-    if rulesViolated:
-        return ScribusException
-    pass
-def selectFrameText(start, count, name="name"):
-    outsideRange = False
-    if outsideRange:
-        raise IndexError
-    pass
-def selectText(start, count, name="name"):
-    outsideRange = False
-    if outsideRange:
-        raise IndexError
-    pass
-def setColumns(nr, name="name"):
-    if nr < 1:
-        raise ValueError
-    pass
-def setColumnGap(size, name="name"):
-    if size < 0:
-        raise ValueError
-    pass
-def setFirstLineOffset(offset, name="name"):
-    invalidConstant = False
-    if invalidConstant:
-        raise ValueError
-    pass
-def setFont(font, name="name"):
-    fontNotFound = False
-    if fontNotFound:
-        raise ValueError
-    pass
-def setFontSize(size, name="name"):
-    if not 1 <= size <= 512:
-        raise ValueError
-    pass
-def setLineSpacing(size, name="name"):
-    if size < 0:
-        raise ValueError
-    pass
-def setLineSpacingMode(mode, name="name"):
-    invalidMode = False
-    if invalidMode:
-        raise ValueError
-    pass
-def setPDFBookmark(toggle, name="name"):
-    wrongFrameType = False
-    if wrongFrameType:
-        raise WrongFrameTypeError
-    pass
-def setText(text, name="name"):
-    pass
-def setTextAlignment(align, name="name"):
-    invalidAlign = False
-    if invalidAlign:
-        raise ValueError
-    pass
-def setTextDistances(left, right, top, bottom, name="name"):
-    if left < 0 or right < 0 or top < 0 or bottom < 0:
-        raise ValueError
-    pass
-def setTextScalingH(scale, name="name"):
-    pass
-def setTextScalingV(scale, name="name"):
-    pass
-def setTextColor(color, name="name"):
-    pass
-def setTextShade(shade, name="name"):
-    pass
-def setTextStroke(color, name="name"):
-    pass
-def setTextVerticalAlignment(align, name="name"):
-    invalidAlign = False
-    if invalidAlign:
-        raise ValueError
-    pass
-def textOverflows(name="name", nolinks=False):
-    wrongFrameType = False
-    if wrongFrameType:
-        raise WrongFrameTypeError
-    return False
-def unlinkTextFrames(name="name"):
-    rulesViolated = False
-    if rulesViolated:
-        raise ScribusException
-
-
-# Using Dialogs
-def fileDialog(caption, filter="comment(*.type1 *.type2)", defaultname="defaultname", haspreview=False, issave=False, isdir=False):
-    return "filename"
-def fileQuit():
-    pass
-def getGuiLanguage():
-    return "language"
-def messageBox(caption, message, icon=ICON_NONE, button1=BUTTON_OK|BUTTON_DEFAULT, button2=BUTTON_NONE, button3=BUTTON_NONE):
-    return BUTTON_NONE
-def newDocDialog():
-    return False
-def newStyleDialog():
-    return "style name"
-def statusMessage(string):
-    pass
-def progressReset():
-    pass
-def progressSet(nr):
-    pass
-def progressTotal(max):
-    pass
-def valueDialog(caption, message, defaultValue=""):
-    return "value"
-
-
 # Predefined Constants
 UNIT_POINTS = 0
 UNIT_MILLIMETERS = 1
@@ -407,7 +55,7 @@ PAPER_B10_MM = [31, 44]
 PAPER_C5E = [462, 649]
 PAPER_COMM10E = [298, 683]
 PAPER_DLE = [312, 624]
-PAPER_EXECUTIVE = [542,720]
+PAPER_EXECUTIVE = [542, 720]
 PAPER_FOLIO = [595, 935]
 PAPER_LEDGER = [1224, 792]
 PAPER_LEGAL = [612, 1008]
@@ -497,13 +145,632 @@ PRNLANG_PDF = -1
 # Errors
 class Error(Exception):
     pass
+
+
 class NoDocOpenError(Error):
     pass
+
+
 class ScribusException(Error):
     pass
+
+
 class NameExistsError(Error):
     pass
+
+
 class NotFoundError(Error):
     pass
+
+
 class WrongFrameTypeError(Error):
     pass
+# Document Commands
+def closeDoc():
+    raise NoDocOpenError
+
+
+def docChanged(bool: bool):
+    pass
+
+
+def getDocName():
+    name: str
+    return name
+
+
+def getUnit():
+    unit: int
+    return unit
+
+
+def haveDoc():
+    hasDoc: bool
+    return hasDoc
+
+
+def loadStylesFromFile(filename: str):
+    pass
+
+
+def masterPageNames():
+    names: tuple
+    return names
+
+
+def newDocument(size: tuple, margins: tuple, orientation: int, firstPageNumber: int, unit: int, pagesType: int,
+                firstPageOrder: int, numPages: int):
+    if firstPageOrder > pagesType:
+        raise ScribusException
+    success: bool
+    return success
+
+
+def openDoc(name: str):
+    documentNotOpened = False
+    if documentNotOpened:
+        raise ScribusException
+    pass
+
+
+def placeEPS(filename: str, x: float, y: float):
+    pass
+
+
+def placeODG(filename: str, x: float, y: float):
+    pass
+
+
+def placeSVG(filename: str, x: float, y: float):
+    pass
+
+
+def placeSXD(filename: str, x: float, y: float):
+    pass
+
+
+def placeVectorFile(filename: str, x: float, y: float):
+    pass
+
+
+def revertDoc():
+    pass
+
+
+def saveDoc():
+    pass
+
+
+def saveDocAs(name: str):
+    saveFailed = False
+    if saveFailed:
+        raise ScribusException
+    pass
+
+
+def setBaseLine(grid: float, offset: float):
+    pass
+
+
+def setBleeds(lr: float, rr: float, tr: float, br: float):
+    pass
+
+
+def setDocType(facingPages: int, firstPageLeft: int):
+    pass
+
+
+def setInfo(author: str, info: str, description: str):
+    success: bool
+    return success
+
+
+def setMargins(lr: float, rr: float, tr: float, br: float):
+    pass
+
+
+def setUnit(type: int):
+    invalidUnit = False
+    if invalidUnit:
+        raise ValueError
+    pass
+
+
+def scrollDocument(x: float, y: float):
+    pass
+
+
+def zoomDocument(zoom: float):
+    pass
+
+
+# Master Page Commands
+def masterPageNames():
+    names: tuple
+    return names
+
+
+def applyMasterPage(masterPageName: str, pageNr: int):
+    pass
+
+
+def closeMasterPage():
+    pass
+
+
+def createMasterPage(pageName: str):
+    pass
+
+
+def deleteMasterPage(pageName: str):
+    pass
+
+
+def editMasterPage(pageName: str):
+    pass
+
+
+# Creating & Destroying Objects
+def createBezierLine(list: tuple, name: str = "name"):
+    nameExists = False
+    if nameExists:
+        raise NameExistsError
+    wrongValues = False
+    if wrongValues:
+        raise ValueError
+    return name
+
+
+def createEllipse(x: float, y: float, width: float, height: float, name: str = "name"):
+    nameExists = False
+    if nameExists:
+        raise NameExistsError
+    return name
+
+
+def createImage(x: float, y: float, width: float, height: float, name: str = "name"):
+    nameExists = False
+    if nameExists:
+        raise NameExistsError
+    return name
+
+
+def createLine(x1: float, y1: float, x2: float, y2: float, name: str = "name"):
+    nameExists = False
+    if nameExists:
+        raise NameExistsError
+    return name
+
+
+def createPathText(x: float, y: float, textbox: str, beziercurve: str, name: str = "name"):
+    nameExists = False
+    if nameExists:
+        raise NameExistsError
+    objExists = False
+    if objExists:
+        raise NotFoundError
+    return name
+
+
+def createPolyLine(list: tuple, name: str = "name"):
+    nameExists = False
+    if nameExists:
+        raise NameExistsError
+    wrongValues = False
+    if wrongValues:
+        raise ValueError
+    return name
+
+
+def createPolygon(list: tuple, name: str = "name"):
+    nameExists = False
+    if nameExists:
+        raise NameExistsError
+    wrongValues = False
+    if wrongValues:
+        raise ValueError
+    return name
+
+
+def createRect(x: float, y: float, width: float, height: float, name: str = "name"):
+    nameExists = False
+    if nameExists:
+        raise NameExistsError
+    return name
+
+
+def createText(x: float, y: float, width: float, height: float, name: str = "name"):
+    nameExists = False
+    if nameExists:
+        raise NameExistsError
+    return name
+
+
+def deleteObject(name: str):
+    pass
+
+
+def objectExists(name: str):
+    exists: bool
+    return exists
+
+
+# Selecting Objects
+def deselectAll():
+    pass
+
+
+def getSelectedObject(nr: int = 0):
+    name: str
+    return name
+
+
+def moveSelectionToBack():
+    pass
+
+
+def moveSelectionToFront():
+    pass
+
+
+def selectionCount():
+    count: int
+    return count
+
+
+def selectObject(name: str):
+    pass
+
+
+# Creating & Manipulating Styles
+def createCharStyle(name: str, font: str = "Arial Regular", fontsize: float = 12.0, features: str = "", fillcolor: str = "None", fillshade: float = 1.0,
+                    strokecolor: str = "Black", strokehade: float = 1.0, baselineoffset: float = -1.0, shadowxoffset: float = -1.0, shadowyoffset: float = -1.0,
+                    outlinewidth: float = -1.0, underlineoffset: float = -1.0, underlinewidth: float = -1.0, strikethroughoffset: float = -1.0,
+                    strikethroughwidth: float = -1.0, scaleh: float = 1.0, scalev: float = 1.0, tracking: int = -1, language: str = "en", fontfeatures: str = ""):
+    pass
+
+
+def createCustomLineStyle(styleName: str, style: dict):
+    pass
+
+
+def createParagraphStyle(name: str, linespacingmode: int = 0, linespacing: float = 12.0, alignment: int = 0, leftmargin: float = 0.0, rightmargin: float = 0.0,
+                         gapbefore: float = -1.0, gapafter: float = -1.0, firstindent: float = 0.0, hasdropcap: bool = False, dropcaplines: int = -1,
+                         dropcapoffset: float = -1.0, charstyle: str = "style", bullet: str = "", tabs: tuple = ""):
+    pass
+
+
+def getAllStyles():
+    names: str
+    return names
+
+
+# Handling Text Frames
+def dehyphenateText(name: str = "name"):
+    wrongFrameType = False
+    if wrongFrameType:
+        raise WrongFrameTypeError
+    pass
+
+
+def deleteText(name: str = "name"):
+    pass
+
+
+def getAllText(name: str = "name"):
+    text: str
+    return text
+
+
+def getColumnGap(name: str = "name"):
+    gap: float
+    return gap
+
+
+def getColumns(name: str = "name"):
+    columns: int
+    return columns
+
+
+def getFirstLineOffset(name: str = "name"):
+    firstLineOffset: int
+    return firstLineOffset
+
+
+def getFirstLinkedFrame(name: str = "name"):
+    firstLinkedFrameName: str
+    return firstLinkedFrameName
+
+
+def getFont(name: str = "name"):
+    fontName: str
+    return fontName
+
+
+def getFontSize(name: str = "name"):
+    fontSize: float
+    return fontSize
+
+
+def getFrameText(name: str = "name"):
+    visibleText: str
+    return visibleText
+
+
+def getLastLinkedFrame(name: str = "name"):
+    lastLinkedFrameName: str
+    return lastLinkedFrameName
+
+
+def getLineSpacing(name: str = "name"):
+    lineSpacing: float
+    return lineSpacing
+
+
+def getNextLinkedFrame(name: str = "name"):
+    nextLinkedFrameName: str
+    return nextLinkedFrameName
+
+
+def getPrevLinkedFrame(name: str = "name"):
+    prevLinkedFrameName: str
+    return prevLinkedFrameName
+
+
+def getTextColor(name: str = "name"):
+    wrongFrameType = False
+    if wrongFrameType:
+        raise WrongFrameTypeError
+    colorName: str
+    return colorName
+
+
+def getTextDistances(name: str = "name"):
+    textDistances: tuple
+    return textDistances
+
+
+def getTextLength(name: str = "name"):
+    textLength: int
+    return textLength
+
+
+def getTextLines(name: str = "name"):
+    textLines: int
+    return textLines
+
+
+def getTextShade(name: str = "name"):
+    wrongFrameType = False
+    if wrongFrameType:
+        raise WrongFrameTypeError
+    textShade: int
+    return textShade
+
+
+def getTextVerticalAlignment(name: str = "name"):
+    textVerticalAlignment: int
+    return textVerticalAlignment
+
+
+def hyphenateText(name: str = "name"):
+    wrongFrameType = False
+    if wrongFrameType:
+        raise WrongFrameTypeError
+    success: bool
+    return success
+
+
+def insetHtmlText(file: str, name: str = "name"):
+    wrongFrameType = False
+    if wrongFrameType:
+        raise WrongFrameTypeError
+    pass
+
+
+def insertText(text: str, pos: int, name: str = "name"):
+    wrongFrameType = False
+    if wrongFrameType:
+        raise WrongFrameTypeError
+    pass
+
+
+def isPDFBookmark(name: str = "name"):
+    wrongFrameType = False
+    if wrongFrameType:
+        raise WrongFrameTypeError
+    pdfBookmark: bool
+    return pdfBookmark
+
+
+def layoutText(name: str = "name"):
+    pass
+
+
+def layoutTextChain(name: str = "name"):
+    pass
+
+
+def linkTextFrames(firstFrame: str, secondFrame: str):
+    rulesViolated = False
+    if rulesViolated:
+        return ScribusException
+    pass
+
+
+def selectFrameText(start: int, count: int, name: str = "name"):
+    outsideRange = False
+    if outsideRange:
+        raise IndexError
+    pass
+
+
+def selectText(start: int, count: int, name: str = "name"):
+    outsideRange = False
+    if outsideRange:
+        raise IndexError
+    pass
+
+
+def setColumns(nr: int, name: str = "name"):
+    if nr < 1:
+        raise ValueError
+    pass
+
+
+def setColumnGap(size: float, name: str = "name"):
+    if size < 0:
+        raise ValueError
+    pass
+
+
+def setFirstLineOffset(offset: int, name: str = "name"):
+    invalidConstant = False
+    if invalidConstant:
+        raise ValueError
+    pass
+
+
+def setFont(font: str, name: str = "name"):
+    fontNotFound = False
+    if fontNotFound:
+        raise ValueError
+    pass
+
+
+def setFontSize(size: float, name: str = "name"):
+    if not 1 <= size <= 512:
+        raise ValueError
+    pass
+
+
+def setLineSpacing(size: float, name: str = "name"):
+    if size < 0:
+        raise ValueError
+    pass
+
+
+def setLineSpacingMode(mode: int, name: str = "name"):
+    invalidMode = False
+    if invalidMode:
+        raise ValueError
+    pass
+
+
+def setPDFBookmark(toggle: bool, name: str = "name"):
+    wrongFrameType = False
+    if wrongFrameType:
+        raise WrongFrameTypeError
+    pass
+
+
+def setText(text: str, name: str = "name"):
+    pass
+
+
+def setTextAlignment(align: int, name: str = "name"):
+    invalidAlign = False
+    if invalidAlign:
+        raise ValueError
+    pass
+
+
+def setTextDistances(left: float, right: float, top: float, bottom: float, name: str = "name"):
+    if left < 0 or right < 0 or top < 0 or bottom < 0:
+        raise ValueError
+    pass
+
+
+def setTextScalingH(scale: float, name: str = "name"):
+    pass
+
+
+def setTextScalingV(scale: float, name: str = "name"):
+    pass
+
+
+def setTextColor(color: str, name: str = "name"):
+    pass
+
+
+def setTextShade(shade: float, name: str = "name"):
+    pass
+
+
+def setTextStroke(color: str, name: str = "name"):
+    pass
+
+
+def setTextVerticalAlignment(align: float, name: str = "name"):
+    invalidAlign = False
+    if invalidAlign:
+        raise ValueError
+    pass
+
+
+def textOverflows(name: str = "name", nolinks=False):
+    wrongFrameType = False
+    if wrongFrameType:
+        raise WrongFrameTypeError
+    overflows: bool
+    return overflows
+
+
+def unlinkTextFrames(name: str = "name"):
+    rulesViolated = False
+    if rulesViolated:
+        raise ScribusException
+    pass
+
+
+# Using Dialogs
+def fileDialog(caption: str, filter: str = "comment(*.type1 *.type2)", defaultname: str = "defaultname", haspreview: bool = False, issave: bool = False,
+               isdir: bool = False):
+    fileName: str
+    return fileName
+
+
+def fileQuit():
+    pass
+
+
+def getGuiLanguage():
+    language: str
+    return language
+
+
+def messageBox(caption: str, message: str, icon: int = ICON_NONE, button1: int = BUTTON_OK | BUTTON_DEFAULT, button2: int = BUTTON_NONE,
+               button3: int = BUTTON_NONE):
+    buttonClicked: int
+    return buttonClicked
+
+
+def newDocDialog():
+    wasCreated: bool
+    return wasCreated
+
+
+def newStyleDialog():
+    styleName: str
+    return styleName
+
+
+def statusMessage(string: str):
+    pass
+
+
+def progressReset():
+    pass
+
+
+def progressSet(nr: int):
+    pass
+
+
+def progressTotal(max: int):
+    pass
+
+
+def valueDialog(caption: str, message: str, defaultValue: str = ""):
+    value: str
+    return value

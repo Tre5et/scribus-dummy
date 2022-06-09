@@ -21,9 +21,11 @@ To use the scribus API and also get IntelliSense from this dummy do the followin
 - Functions as provided in the scripter documentation
 - Function Arguments as documented (if documented having the correct default value, otherwise having a generic descriptive default value)
 - Return Types as documented (if documented returning the correct value, otherwise returning a generic descriptive value)
-- Throwable Errors as documented (behind descriptive if clauses that are always false)
+- Throwable Errors as documented (behind descriptive if clauses that are correct if documented, otherwise always false)
 
 ### Currently Included
+- Predefined Constants
+- Errors
 - Document Commands
 - Master Page Commands
 - Creating & Destroying Objects
@@ -31,5 +33,3 @@ To use the scribus API and also get IntelliSense from this dummy do the followin
 - Creating & Manipulating Styles
 - Handling Text Frames
 - Using Dialogs
-- Predefined Constants
-- Errors
