@@ -151,7 +151,7 @@ class NoDocOpenError(Error):
     pass
 
 
-class ScribusException(Error):
+class ScribusError(Error):
     pass
 
 
@@ -165,6 +165,8 @@ class NotFoundError(Error):
 
 class WrongFrameTypeError(Error):
     pass
+
+
 # Document Commands
 def closeDoc():
     raise NoDocOpenError
@@ -201,7 +203,7 @@ def masterPageNames():
 def newDocument(size: tuple, margins: tuple, orientation: int, firstPageNumber: int, unit: int, pagesType: int,
                 firstPageOrder: int, numPages: int):
     if firstPageOrder > pagesType:
-        raise ScribusException
+        raise ScribusError
     success: bool
     return success
 
@@ -209,7 +211,7 @@ def newDocument(size: tuple, margins: tuple, orientation: int, firstPageNumber: 
 def openDoc(name: str):
     documentNotOpened = False
     if documentNotOpened:
-        raise ScribusException
+        raise ScribusError
     pass
 
 
@@ -244,7 +246,7 @@ def saveDoc():
 def saveDocAs(name: str):
     saveFailed = False
     if saveFailed:
-        raise ScribusException
+        raise ScribusError
     pass
 
 
@@ -284,6 +286,98 @@ def zoomDocument(zoom: float):
     pass
 
 
+# Page Commands
+def currentPage():
+    number: int
+    return number
+
+def deletePage(nr: int):
+    pageNrOutOfRange = False
+    if pageNrOutOfRange:
+        raise IndexError
+    pass
+
+def getAllObjects(type: int = -1, index: int = 0, layer: str = ""):
+    indexInvalid = False
+    layerInvalid = False
+    if indexInvalid or layerInvalid:
+        raise ValueError
+    objects: tuple
+    return objects
+
+def getHGuides():
+    horizontalGuidePositions: tuple
+    return horizontalGuidePositions
+
+def getMasterPage(nr: int):
+    nrOutOfRange = False
+    if nrOutOfRange:
+        raise IndexError
+    masterPageName: str
+    return masterPageName
+
+def getPageType():
+    type: int
+    return type
+
+def getPageItems():
+    items: tuple
+    return items
+
+def getPageNMargins(nr: int):
+    marigns: tuple
+    return marigns
+
+def getPageSize():
+    dimensions: tuple
+    return dimensions
+
+def getPageNSize(nr: int):
+    size: tuple
+    return size
+
+def getVGuides():
+    verticalGuidePositions: tuple
+    return verticalGuidePositions
+
+def gotoPage(nr: int):
+    nrOutOfRange = False
+    if nrOutOfRange:
+        raise IndexError
+    pass
+
+def importPage(fromDoc: str, pageList: tuple, create: bool = True, importWhere: int = -1, importPageWhere: int = 2):
+    pass
+
+def newPage(where: int, masterpage: str = ""):
+    whereOutOfRange = False
+    if whereOutOfRange:
+        raise IndexError
+    pass
+
+def pageCount():
+    count: int
+    return count
+
+def redrawAll():
+    pass
+
+def savePageAsEPS(name: str):
+    saveFailed = False
+    if saveFailed:
+        raise ScribusError
+    pass
+
+def setHGuides(guides: tuple):
+    pass
+
+def setRedraw(redraw: bool):
+    pass
+
+def setVGuides(guides: tuple):
+    pass
+
+
 # Master Page Commands
 def masterPageNames():
     names: tuple
@@ -308,6 +402,7 @@ def deleteMasterPage(pageName: str):
 
 def editMasterPage(pageName: str):
     pass
+
 
 
 # Creating & Destroying Objects
@@ -594,7 +689,7 @@ def layoutTextChain(name: str = "name"):
 def linkTextFrames(firstFrame: str, secondFrame: str):
     rulesViolated = False
     if rulesViolated:
-        return ScribusException
+        return ScribusError
     pass
 
 
@@ -719,7 +814,7 @@ def textOverflows(name: str = "name", nolinks=False):
 def unlinkTextFrames(name: str = "name"):
     rulesViolated = False
     if rulesViolated:
-        raise ScribusException
+        raise ScribusError
     pass
 
 

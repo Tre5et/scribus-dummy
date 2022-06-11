@@ -27,6 +27,7 @@ To use the scribus API and also get IntelliSense from this dummy do the followin
 - Predefined Constants
 - Errors
 - Document Commands
+- Page Commands
 - Master Page Commands
 - Creating & Destroying Objects
 - Selecting Objects
