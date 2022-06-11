@@ -2,6 +2,7 @@
 
 ### Dummy Python file for scribus' scripter API, as it's not publicly accessible.
 This API has no functionality, it is purely used to provide IntelliSense (autocomplete) for scripter scripts.
+Based of the [scribus scripter documentation](https://impagina.org/scribus-scripter-api/).
 
 ### Usage
 To use the scribus API and also get IntelliSense from this dummy do the following:
@@ -21,14 +22,15 @@ To use the scribus API and also get IntelliSense from this dummy do the followin
 - Functions as provided in the scripter documentation
 - Function Arguments as documented (if documented having the correct default value, otherwise having a generic descriptive default value)
 - Return Types as documented (if documented returning the correct value, otherwise returning a generic descriptive value)
-- Throwable Errors as documented (behind descriptive if clauses that are correct if documented, otherwise always false)
+- Documentation strings from the docs (not done)
 
 ### Currently Included
 - Predefined Constants
 - Errors
 - Document Commands
-- Page Commands
 - Master Page Commands
+- Layers
+- Page Commands
 - Creating & Destroying Objects
 - Selecting Objects
 - Creating & Manipulating Styles
