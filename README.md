@@ -25,14 +25,15 @@ To use the scribus API and also get IntelliSense from this dummy do the followin
 - Documentation strings from the docs (not done)
 
 ### Currently Included
-- Predefined Constants
+- Constants
 - Errors
 - Document Commands
 - Master Page Commands
 - Layers
 - Page Commands
-- Creating & Destroying Objects
-- Selecting Objects
-- Creating & Manipulating Styles
-- Handling Text Frames
-- Using Dialogs
+- Text Styles
+- Other Styles
+- Selection
+- Creating & Destroying Objects (not done)
+- Handling Text Frames (not done)
+- Using Dialogs (not done)

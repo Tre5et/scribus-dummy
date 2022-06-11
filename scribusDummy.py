@@ -129,11 +129,15 @@ FLOP_REALGLYPHHEIGHT = -1
 FLOP_FONTASCENT = -1
 FLOP_LINESPACING = -1
 FLOP_BASELINEGRID = -1
+
+# Line styles (apparently there are more)
 LINE_DASH = -1
 LINE_DASHDOT = -1
 LINE_DASHDOTDOT = -1
 LINE_DOT = -1
 LINE_SOLID = -1
+
+
 JOIN_BEVEL = -1
 JOIN_MITTER = -1
 JOIN_ROUND = -1
@@ -207,26 +211,21 @@ class WrongFrameTypeError(Error):
 def closeDoc() -> None:
     """Closes the current document without prompting to save.
     May throw NoDocOpenError if there is no document to close"""
-    pass
 
 
 def docChanged(bool: bool) -> None:
     """Enable/disable save icon in the Scribus icon bar and the Save menu item. It's useful to call this procedure when you're changing the document, because Scribus won't automatically notice when you change the document using a script."""
-    pass
 
 
 def getDocName() -> str:
     """Returns the name the document was saved under. If the document was not saved before the name is empty."""
-    pass
 
 def getUnit() -> int:
     """Returns the measurement units of the document. The returned value will be one of the UNIT_* constants: UNIT_INCHES, UNIT_MILLIMETERS, UNIT_PICAS, UNIT_POINTS"""
-    pass
 
 
 def haveDoc() -> int:
     """Returns the quantity of open documents: 0 if none are opened."""
-    pass
 
 
 def newDocument(size: tuple, margins: tuple, orientation: int, firstPageNumber: int, unit: int, pagesType: int,
@@ -254,53 +253,44 @@ def newDocument(size: tuple, margins: tuple, orientation: int, firstPageNumber: 
     example: newDocument(PAPER_A4, (10, 10, 20, 20), LANDSCAPE, 7, UNIT_POINTS, PAGE_4, 3, 1)
 
     May raise ScribusError if is firstPageOrder bigger than allowed by pagesType."""
-    pass
 
 
 def openDoc(name: str) -> None:
     """Opens the document "name".
 
     May raise ScribusError if the document could not be opened."""
-    pass
 
 
 def redrawAll() -> None:
     """Redraws all pages."""
-    pass
 
 
 def revertDoc() -> None:
     """Revert the current document to its last saved state."""
-    pass
 
 
 def saveDoc() -> None:
     """Saves the current document with its current name, returns true if successful. If the document has not already been saved, this may bring up an interactive save file dialog.
 
 If the save fails, there is currently no way to tell."""
-    pass
 
 
 def saveDocAs(name: str) -> None:
     """Saves the current document under the new name "name" (which may be a full or relative path).
 
 May raise ScribusError if the save fails."""
-    pass
 
 
 def setBaseLine(grid: float, offset: float) -> None:
     """Sets the base line settings of the document, grid spacing(grid), grid offset(offset). Values are given in the measurement units of the document - see UNIT_ constants."""
-    pass
 
 
 def setBleeds(lr: float, rr: float, tr: float, br: float) -> None:
     """Sets the bleeds of the document. Left(lr), Right(rr), Top(tr) and Bottom(br) bleeds are given in the measurement units of the document - see UNIT_ constants."""
-    pass
 
 
 def setDocType(facingPages: int, firstPageLeft: int) -> None:
     """Sets the document type. To get facing pages set the first parameter to FACINGPAGES, to switch facingPages off use NOFACINGPAGES instead. If you want to be the first page a left side set the second parameter to FIRSTPAGELEFT, for a right page use FIRSTPAGERIGHT."""
-    pass
 
 
 def setInfo(author: str, info: str, description: str) -> bool:
@@ -310,57 +300,47 @@ def setInfo(author: str, info: str, description: str) -> bool:
 
 def setMargins(lr: float, rr: float, tr: float, br: float) -> None:
     """Sets the margins of the document, Left(lr), Right(rr), Top(tr) and Bottom(br) margins are given in the measurement units of the document - see UNIT_ constants."""
-    pass
 
 
 def setRedraw(redraw: bool) -> None:
     """Disables page redraw when bool = False, otherwise redrawing is enabled. This change will persist even after the script exits, so make sure to call setRedraw(True) in a finally: clause at the top level of your script."""
-    pass
 
 
 def setUnit(type: int) -> None:
     """Changes the measurement unit of the document. Possible values for "unit" are defined as constants UNIT_.
 
 May raise ValueError if an invalid unit is passed."""
-    pass
 
 
 # Master Page Commands
 def applyMasterPage(masterPageName: str, pageNr: int) -> None:
     """Apply master page masterPageName on page pageNumber."""
-    pass
 
 
 def closeMasterPage() -> None:
     """Closes the currently active master page, if any, and returns editing to normal. Begin editing with editMasterPage()."""
-    pass
 
 
 def createMasterPage(pageName: str) -> None:
     """Creates a new master page named pageName and opens it for editing."""
-    pass
 
 
 def deleteMasterPage(pageName: str) -> None:
     """Delete the named master page."""
-    pass
 
 
 def editMasterPage(pageName: str) -> None:
     """Enables master page editing and opens the named master page for editing. Finish editing with closeMasterPage()."""
-    pass
 
 
 def getMasterPage(pageNr: int) -> None:
     """Returns the name of master page applied to page "nr".
 
 May raise IndexError if the page number is out of range."""
-    pass
 
 
 def masterPageNames() -> None:
     """Returns a list of the names of all master pages in the document."""
-    pass
 
 
 # Layers
@@ -368,125 +348,104 @@ def createLayer(name: str) -> None:
     """Creates a new layer with the name "name".
 
 May raise ValueError if the layer name isn't acceptable."""
-    pass
 
 
 def deleteLayer(layer: str) -> None:
     """Deletes the layer with the name "layer". Nothing happens if the layer doesn't exists or if it's the only layer in the document.
 
 May raise NotFoundError if the layer can't be found. May raise ValueError if the layer name isn't acceptable."""
-    pass
 
 
 def getActiveLayer() -> str:
     """Returns the name of the current active layer."""
-    pass
 
 
 def getLayerBlendmode(layer: str) -> int:
     """Returns the "layer" layer blendmode,
 
 May raise NotFoundError if the layer can't be found. May raise ValueError if the layer name isn't acceptable."""
-    pass
 
 
 def getLayerTransparency(layer: str) -> float:
     """Returns the "layer" layer transparency,
 
 May raise NotFoundError if the layer can't be found. May raise ValueError if the layer name isn't acceptable."""
-    pass
 
 def getLayers() -> list:
     """Returns a list with the names of all defined layers."""
-    pass
 
 
 def isLayerFlow(layer: str) -> bool:
     """Returns whether text flows around objects on layer "layer", a value of True means that text flows around, a value of False means that the text does not flow around.
 
 May raise NotFoundError if the layer can't be found. May raise ValueError if the layer name isn't acceptable."""
-    pass
 
 def isLayerLocked(layer: str) -> bool:
     """Returns whether the layer "layer" is locked or not, a value of True means that the layer "layer" is editable, a value of False means that the layer "layer" is locked.
 
 May raise NotFoundError if the layer can't be found. May raise ValueError if the layer name isn't acceptable."""
-    pass
 
 
 def isLayerOutlined(layer: str) -> bool:
     """Returns whether the layer "layer" is outlined or not, a value of True means that the layer "layer" is outlined, a value of False means that the layer "layer" is normal.
 
 May raise NotFoundError if the layer can't be found. May raise ValueError if the layer name isn't acceptable."""
-    pass
 
 def isLayerPrintable(layer: str) -> bool:
     """Returns whether the layer "layer" is printable or not, a value of True means that the layer "layer" can be printed, a value of False means that printing the layer "layer" is disabled.
 
 May raise NotFoundError if the layer can't be found. May raise ValueError if the layer name isn't acceptable."""
-    pass
 
 def isLayerVisible(layer: str) -> bool:
     """Returns whether the layer "layer" is visible or not, a value of True means that the layer "layer" is visible, a value of False means that the layer "layer" is invisible.
 
 May raise NotFoundError if the layer can't be found. May raise ValueError if the layer name isn't acceptable."""
-    pass
 
 def lowerActiveLayer() -> None:
     """Lowers the current active layer."""
-    pass
 
 def raiseActiveLayer() -> None:
     """Raises the current active layer."""
-    pass
 
 def sendToLayer(layer: str, name: str = None) -> None:
     """Sends the object "name" to the layer "layer". The layer must exist. If "name" is not given the currently selected item is used.
 
 May raise NotFoundError if the layer can't be found. May raise ValueError if the layer name isn't acceptable."""
-    pass
 
 def setActiveLayer(name: str) -> None:
     """Sets the active layer to the layer named "name".
 
 May raise NotFoundError if the layer can't be found. May raise ValueError if the layer name isn't acceptable."""
-    pass
 
 def setLayerBlendmode(layer: str, blend: int) -> None:
     """Sets the layers "layer" blendmode to blend.
 
 May raise NotFoundError if the layer can't be found. May raise ValueError if the layer name isn't acceptable."""
-    pass
 
 def setLayerFlow(layer: str, flow: bool) -> None:
     """Sets the layers "layer" flowcontrol to flow. If flow is set to true text in layers above this one will flow around objects on this layer.
 
 May raise NotFoundError if the layer can't be found. May raise ValueError if the layer name isn't acceptable"""
-    pass
 
 def setLayerLocked(layer: str, locked: bool) -> None:
     """Sets the layer "layer" to be locked or not. If locked is set to true the layer will be locked.
 
 May raise NotFoundError if the layer can't be found. May raise ValueError if the layer name isn't acceptable."""
-    pass
 
 def setLayerOutlined(layer: str, outline: bool) -> None:
     """Sets the layer "layer" to be locked or not. If outline is set to true the layer will be displayed outlined.
 
 May raise NotFoundError if the layer can't be found. May raise ValueError if the layer name isn't acceptable."""
-    pass
 
 def setLayerPrintable(layer: str, printable: bool) -> None:
     """Sets the layer "layer" to be printable or not. If is the printable set to false the layer won't be printed.
 
 May raise NotFoundError if the layer can't be found. May raise ValueError if the layer name isn't acceptable."""
-    pass
 
 def setLayerTransparency(layer: str, trans: float) -> None:
     """Sets the layers "layer" transparency to trans.
 
 May raise NotFoundError if the layer can't be found. May raise ValueError if the layer name isn't acceptable."""
-    pass
 
 def setLayerVisible(layer: str, visible: bool) -> None:
     """Sets the layer "layer" to be visible or not. If is the visible set to false the layer is invisible.
@@ -497,45 +456,36 @@ May raise NotFoundError if the layer can't be found. May raise ValueError if the
 # Page Commands
 def currentPage() -> int:
     """Returns the number of the current working page. Page numbers are counted from 1 upwards, no matter what the displayed first page number of your document is."""
-    pass
 
 
 def deletePage(nr: int) -> None:
     """Deletes the given page. Does nothing if the document contains only one page. Page numbers are counted from 1 upwards, no matter what the displayed first page number is.
 
 May raise IndexError if the page number is out of range"""
-    pass
 
 
 def getAllObjects(type: int = -1, index: int = 0, layer: str = None) -> list:
     """Returns a list containing the names of all objects of specified type and located on specified page and/or layer. This function accepts several optional keyword arguments: - type (optional) -> None: integer corresponding to item type, by default all items will be returned. - page (optional) -> None: index of page on which returned objects are located, by default the current page. The page index starts at 0 and goes to the total number of pages - 1. - layer (optional) -> None: name of layer on which returned objects are located, by default the function returns items located on all layers. May throw ValueError if page index or layer name is invalid."""
-    pass
 
 
 def getHGuides() -> list:
     """Returns a list containing positions of the horizontal guides. Values are in the document's current units - see UNIT_ constants."""
-    pass
 
 
 def getPageItems() -> list:
     """Returns a list of tuples with items on the current page. The tuple is: (name, objectType, order) E.g. [('Text1', 4, 0), ('Image1', 2, 1)] means that object named 'Text1' is a text frame (type 4) and is the first at the page..."""
-    pass
 
 def getPageMargins() -> tuple:
     """Returns the document page margins as a (top, left, right, bottom) tuple in the document's current units. See UNIT_ constants and getPageSize()."""
-    pass
 
 def getPageNMargins(nr: int) -> tuple:
     """Returns a tuple with a particular page's margins measured in the document's current units. See UNIT_ constants and getPageMargins()"""
-    pass
 
 def getPageSize(nr: int) -> tuple:
     """Returns a tuple with a particular page's size measured in the document's current units. See UNIT_ constants and getPageMargins()"""
-    pass
 
 def getPageSize() -> tuple:
     """Returns a tuple with document page dimensions measured in the document's current units. See UNIT_ constants and getPageMargins()"""
-    pass
 
 
 def getPageType() -> int:
@@ -544,48 +494,259 @@ def getPageType() -> int:
 
 def getVGuides() -> list:
     """See getHGuides."""
-    pass
 
 
 def gotoPage(nr: int) -> None:
     """Moves to the page "nr" (that is, makes the current page "nr"). Note that gotoPage doesn't (currently) change the page the user's view is displaying, it just sets the page that script commands will operates on.
 
 May raise IndexError if the page number is out of range."""
-    pass
 
 
 def importPage(fromDoc: str, pageList: tuple, create: bool = True, importWhere: int = -1, importPageWhere: int = 2) -> None:
     """Imports a set of pages (given as a tuple) from an existing document (the file name must be given). This functions maps the "Page->Import" dropdown menu function. fromDoc: string; the filename of the document to import pages from pageList: tuple with page numbers of pages to import create: number; 0 to replace existing pages, 1 (default) to insert new pages importWhere: number; the page number (of the current document) at which import the pages importWherePage: number; used if create==1; 0 to create pages before selected page; 1 to create pages after selected page; 2 (default) to create pages at the end of the document"""
-    pass
 
 
 def moveItemToPage(page: int, name: str = None) -> None:
     """Move the item to the given page (the first page being 0). If "name" is not given the currently selected item is moved."""
-    pass
 
 
 def newPage(where: int, masterpage: str = None) -> None:
     """Creates a new page. If "where" is -1 the new Page is appended to the document, otherwise the new page is inserted before "where". Page numbers are counted from 1 upwards, no matter what the displayed first page number of your document is. The optional parameter "masterpage" specifies the name of the master page for the new page.
 
 May raise IndexError if the page number is out of range"""
-    pass
 
 
 def pageCount() -> int:
     """Returns the number of pages in the document."""
-    pass
 
 
 def setHGuides(guides: tuple) -> None:
     """Sets horizontal guides. Input parameter must be a list of guide positions measured in the current document units - see UNIT_ constants.
 
 Example: setHGuides(getHGuides() + [200.0, 210.0] # add new guides without any lost setHGuides([90,250]) # replace current guides entirely"""
-    pass
 
 
 def setVGuides(guides: tuple) -> None:
     """See setHGuides."""
-    pass
+
+
+# Text styles
+def createCharStyle(name: str, font: str = "Arial Regular", fontsize: float = 12.0, features: str = None,
+                    fillcolor: str = "None", fillshade: float = 1.0,
+                    strokecolor: str = "Black", strokehade: float = 1.0, baselineoffset: float = -1.0,
+                    shadowxoffset: float = -1.0, shadowyoffset: float = -1.0,
+                    outlinewidth: float = -1.0, underlineoffset: float = -1.0, underlinewidth: float = -1.0,
+                    strikethroughoffset: float = -1.0,
+                    strikethroughwidth: float = -1.0, scaleh: float = 1.0, scalev: float = 1.0, tracking: int = -1,
+                    language: str = "en", fontfeatures: str = None) -> None:
+    """Creates a character style. This function takes the following keyword parameters:
+
+"name" [required] -> name of the char style to create
+
+"font" [optional] -> name of the font to use
+
+fontsize [optional] -> font size to set (double)
+
+"features" [optional] -> nearer typographic details can be defined by a string that might contain the following phrases comma-seperated (without spaces!):
+
+-> inherit
+
+-> bold
+
+-> italic
+
+-> underline
+
+-> underlinewords
+
+-> strike
+
+-> superscript
+
+-> subscript
+
+-> outline
+
+-> shadowed
+
+-> allcaps
+
+-> smallcaps
+
+"fillcolor" [optional], "fillshade" [optional] -> specify fill options
+
+"strokecolor" [optional], "strokeshade" [optional] -> specify stroke options
+
+baselineoffset [optional] -> offset of the baseline
+
+shadowxoffset [optional], shadowyoffset [optional] -> offset of the shadow if used
+
+outlinewidth [optional] -> width of the outline if used
+
+underlineoffset [optional], underlinewidth [optional] -> underline options if used
+
+strikethruoffset [optional], strikethruwidth [optional] -> strikethru options if used
+
+scaleh [optional], scalev [optional] -> scale of the chars
+
+tracking [optional] -> tracking of the text
+
+"language" [optional] -> language code"""
+
+
+def createParagraphStyle(name: str, linespacingmode: int = 0, linespacing: float = 12.0, alignment: int = 0,
+                         leftmargin: float = 0.0, rightmargin: float = 0.0,
+                         gapbefore: float = -1.0, gapafter: float = -1.0, firstindent: float = 0.0,
+                         hasdropcap: bool = False, dropcaplines: int = -1,
+                         dropcapoffset: float = -1.0, charstyle: str = "style", bullet: str = None, tabs: tuple = "") -> None:
+    """Creates a paragraph style. This function takes the following keyword parameters:
+
+"name" [required] -> specifies the name of the paragraphstyle to create
+
+linespacingmode [optional] -> specifies the linespacing mode; possible modes are:
+
+fixed linespacing: 0
+
+automatic linespacing: 1
+
+baseline grid linespacing: 2
+
+linespacing [optional] -> specifies the linespacing if using fixed linespacing
+
+alignment [optional] -> specifies the alignment of the paragraph
+
+-> left: 0
+
+-> center: 1
+
+-> right: 2
+
+-> justify: 3
+
+-> extend: 4
+
+leftmargin [optional], rightmargin [optional] -> specify the margin
+
+gapbefore [optional], gapafter [optional] -> specify the gaps to the heading and following paragraphs
+
+firstindent [optional] -> the indent of the first line
+
+hasdropcap [optional] -> specifies if there are caps (1 = yes, 0 = no)
+
+dropcaplines [optional] -> height (in lines) of the caps if used
+
+dropcapoffset [optional] -> offset of the caps if used
+
+"charstyle" [optional] -> char style to use
+
+"bullet" [optional] -> string to use as bullet
+
+"tabs" [optional] -> a list containg tab definitions
+
+-> a tab is defined as a tuple with the following format (position,type,fillchar)"
+
+-> position [required] -> float value for the position
+
+-> type [optional] -> left: 0 [default], right: 1, period: 2, comma: 3, center: 4
+
+-> fillchar [optional] -> the char to fill the space; default is none"""
+
+
+def getCharStyles() -> list:
+    """Return a list of the names of all character styles in the current document."""
+
+def getCharacterStyle(name: str = None) -> str:
+    """Return name of character style applied to object named "name". If "name" is not given, the currently selected object is used. If current object has a text selection, the name of style applied to start of selection is returned. Otherwise the name of the item default character style is returned."""
+
+def getParagraphStyle(name: str = None) -> str:
+    """Return name of paragraph style applied to object named "name". If "name" is not given, the currently selected object is used. If current object has a text selection, the name of style applied to start of selection is returned. Otherwise the name of the item default style is returned."""
+
+def getParagraphStyles() -> list:
+    """Return a list of the names of all paragraph styles in the current document."""
+
+def loadStylesFromFile(filename: str):
+    """Loads paragraph styles from the Scribus document at "filename" into the current document."""
+
+def setCharacterStyle(style: str, name: str = None):
+    """Apply the named character "style" to the object named "name". If object name is not provided, style is applied on current object selection. If multiple objects are selected or if selected object has no text selection, style is applied on selected objects. Otherwise style is applied to the current text selection."""
+
+def setParagraphStyle(style: str, name: str = None):
+    """Apply the named paragraph "style" to the object named "name". If object name is not provided, style is applied on current object selection. If multiple objects are selected or if selected object has no text selection, style is applied on selected objects. Otherwise style is applied to the current text selection."""
+
+
+# Other Styles
+def createCustomLineStyle(styleName: str, style: dict) -> None:
+    """Creates the custom line style 'styleName'.
+
+styleName -> name of the custom line style to create
+
+This function takes list of dictionary as parameter for "style". Each dictionary represent one subline within style. Dictionary can have those keys:
+
+Color [optional] -> name of the color to use (string)
+
+Dash [optional] -> type of line to use (integer)
+
+LineEnd [optional] -> type of LineEnd to use (integer)
+
+LineJoin [optional] -> type of LineJoin to use (integer)
+
+Shade [optional] -> opacity of line (integer)
+
+Width [optional] -> width of line (double)"""
+
+def getCellStyle(row: int, column: int, name: str = None) -> str:
+    """Returns the named style of the cell at "row", "column" in the table "name". If "name" is not given the currently selected item is used.
+
+May throw ValueError if the cell does not exist."""
+
+def getCellStyles() -> list:
+    """Return a list of the names of all cell styles in the current document."""
+
+def getCustomLineStyle(name: str = None) -> str:
+    """Returns the styleName of custom line style for the object. If object's "name" is not given the currently selected item is used."""
+
+def getLineStyle(name: str = None) -> int:
+    """Returns the line style of the object "name". If "name" is not given the currently selected item is used. Line style constants are: LINE_DASH, LINE_DASHDOT, LINE_DASHDOTDOT, LINE_DOT, LINE_SOLID"""
+
+def getLineStyles() -> list:
+    """Return a list of the names of all line styles in the current document."""
+
+def getTableStyle(name: str = None) -> str:
+    """Returns the named style of the table "name". If "name" is not given the currently selected item is used."""
+
+def getTableStyles() -> list:
+    """Return a list of the names of all table styles in the current document."""
+
+def setCellStyle(row: int, column: int, style: str, name: str = None):
+    """Sets the named style of the cell at "row", "column" in the table "name" to "style". If "name" is not given the currently selected item is used.
+
+May throw ValueError if the cell does not exist."""
+
+def setCustomLineStyle(styleName: str, name: str = None):
+    """Sets the custom line style of the object "name" to "styleName" Argument "styleName" is the name of line style as seen in Style Manager If "name" is not given the currently selected item is used."""
+
+def setLineStyle(style: int, name: str = None):
+    """Sets the line style of the object "name" to the style "style". If "name" is not given the currently selected item is used. Argument for this function is number - value from 1 to 37 There are few predefined constants for "style" - LINE_"""
+
+
+# Selection
+def deselectAll():
+    """Deselects all objects in the whole document."""
+
+def getSelectedObject(nr: int = 0):
+    """Returns the name of the selected object. "nr" if given indicates the number of the selected object, e.g. 0 means the first selected object, 1 means the second selected Object and so on."""
+
+def moveSelectionToBack():
+    """Moves current selection to back."""
+
+def moveSelectionToFront():
+    """Moves current selection to front."""
+
+def selectObject(name: str):
+    """Selects the object with the given "name"."""
+
+def selectionCount() -> int:
+    """Returns the number of selected objects."""
 
 
 # Creating & Destroying Objects
@@ -671,66 +832,6 @@ def deleteObject(name: str) -> None:
 def objectExists(name: str) -> None:
     exists: bool
     return exists
-
-
-# Selecting Objects
-def deselectAll() -> None:
-    pass
-
-
-def getSelectedObject(nr: int = 0) -> None:
-    name: str
-    return name
-
-
-def moveSelectionToBack() -> None:
-    pass
-
-
-def moveSelectionToFront() -> None:
-    pass
-
-
-def selectionCount() -> None:
-    count: int
-    return count
-
-
-def selectObject(name: str) -> None:
-    pass
-
-
-# Setting Object Properties
-
-
-
-# Creating & Manipulating Styles
-def createCharStyle(name: str, font: str = "Arial Regular", fontsize: float = 12.0, features: str = None,
-                    fillcolor: str = "None", fillshade: float = 1.0,
-                    strokecolor: str = "Black", strokehade: float = 1.0, baselineoffset: float = -1.0,
-                    shadowxoffset: float = -1.0, shadowyoffset: float = -1.0,
-                    outlinewidth: float = -1.0, underlineoffset: float = -1.0, underlinewidth: float = -1.0,
-                    strikethroughoffset: float = -1.0,
-                    strikethroughwidth: float = -1.0, scaleh: float = 1.0, scalev: float = 1.0, tracking: int = -1,
-                    language: str = "en", fontfeatures: str = None) -> None:
-    pass
-
-
-def createCustomLineStyle(styleName: str, style: dict) -> None:
-    pass
-
-
-def createParagraphStyle(name: str, linespacingmode: int = 0, linespacing: float = 12.0, alignment: int = 0,
-                         leftmargin: float = 0.0, rightmargin: float = 0.0,
-                         gapbefore: float = -1.0, gapafter: float = -1.0, firstindent: float = 0.0,
-                         hasdropcap: bool = False, dropcaplines: int = -1,
-                         dropcapoffset: float = -1.0, charstyle: str = "style", bullet: str = None, tabs: tuple = "") -> None:
-    pass
-
-
-def getAllStyles() -> None:
-    names: str
-    return names
 
 
 # Handling Text Frames
