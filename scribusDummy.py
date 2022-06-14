@@ -117,18 +117,6 @@ ITEM_SPIRAL = -1
 ITEM_TABLE = -1
 ITEM_NOTEFRAME = -1
 ITEM_MULTIPLE = -1
-ALIGN_LEFT = -1
-ALIGN_CENTERED = -1
-ALIGN_RIGHT = -1
-ALIGN_FORCED = -1
-ALIGN_BLOCK = -1
-ALIGNV_TOP = -1
-ALIGNV_CENTERED = -1
-ALIGNV_BOTTOM = -1
-FLOP_REALGLYPHHEIGHT = -1
-FLOP_FONTASCENT = -1
-FLOP_LINESPACING = -1
-FLOP_BASELINEGRID = -1
 
 # Lines and stroke properties (Line style)
 LINE_DASH = -1
@@ -155,6 +143,35 @@ FILL_DIAGONALG = -1
 FILL_CROSSDIAGONALG = -1
 FILL_RADIALG = -1
 
+# Text frame first line offset mode
+FLOP_REALGLYPHHEIGHT = -1
+FLOP_FONTASCENT = -1
+FLOP_LINESPACING = -1
+FLOP_BASELINEGRID = -1
+
+# Text paragraph alignment
+ALIGN_LEFT = -1
+ALIGN_CENTERED = -1
+ALIGN_RIGHT = -1
+ALIGN_FORCED = -1
+ALIGN_BLOCK = -1
+
+# Tabs modes
+TAB_LEFT = -1
+TAB_RIGHT = -1
+TAB_PERIOD = -1
+TAB_COMMA = -1
+TAB_CENTER = -1
+
+# LTR and RTL directions
+DIRECTION_LTR = -1
+DIRECTION_RTL = -1
+
+# Text frame vertical alignment
+ALIGNV_TOP = -1
+ALIGNV_CENTERED = -1
+ALIGNV_BOTTOM = -1
+
 CSPACE_UNDEFINED = -1
 CSPACE_RGB = -1
 CSPACE_CMYK = -1
@@ -176,11 +193,7 @@ ICON_CRITICAL = -1
 ICON_INFORMATION = -1
 ICON_NONE = -1
 ICON_WARNING = -1
-TAB_LEFT = -1
-TAB_RIGHT = -1
-TAB_PERIOD = -1
-TAB_COMMA = -1
-TAB_CENTER = -1
+
 PRNLANG_POSTSCRIPT1 = -1
 PRNLANG_POSTSCRIPT2 = -1
 PRNLANG_POSTSCRIPT3 = -1
@@ -1016,6 +1029,312 @@ def getTextFlowMode(name: str = None) -> int:
 The function will return one of the following value: - 0 : text flow around frame is disabled - 1 : text flow around frame shape - 2 : text flow around frame bounding box - 3 : text flow around frame contour line - 4 : text flow around image clip path"""
 
 
+# Text frames
+def createPathText(x: float, y: float, textbox: str, beziercurve: str, name: str = None) -> str:
+    """Creates a new pathText by merging the two objects "textbox" and "beziercurve" and returns its name. The coordinates are given in the current measurement unit of the document (see UNIT constants). "name" should be a unique identifier for the object because you need this name for further access to that object. If "name" is not given Scribus will create one for you.
+
+May raise NameExistsError if you explicitly pass a name that's already used. May raise NotFoundError if one or both of the named base object don't exist."""
+
+
+def createText(x: float, y: float, width: float, height: float, name: str = None) -> str:
+    """Creates a new text frame on the actual page and returns its name. The coordinates are given in the actual measurement unit of the document (see UNIT constants). "name" should be a unique identifier for the object because you need this name for further referencing of that object. If "name" is not given Scribus will create one for you.
+
+May raise NameExistsError if you explicitly pass a name that's already used."""
+
+
+def dehyphenateText(name: str = None) -> bool:
+    """Does dehyphenation on text frame "name". If "name" is not given the currently selected item is used.
+
+May raise WrongFrameTypeError if the target frame is not a text frame"""
+
+
+def deleteText(name: str = None):
+    """Deletes any text in the text frame "name". If there is some text selected, only the selected text will be deleted. If "name" is not given the currently selected item is used."""
+
+
+def getAllText(name: str = None) -> str:
+    """Returns the text of the text frame "name" and of all text frames which are linked with this frame. If this textframe has some text selected, the selected text is returned. If "name" is not given the currently selected item is used."""
+
+
+def getCellText(row: int, column: int, name: str = None) -> str:
+    """Returns the text content of the cell at "row", "column" in the table "name". If cell has some text selected, the selected text is returned. If "name" is not given the currently selected item is used.
+
+May throw ValueError if the cell does not exist."""
+
+
+def getColumnGap(name: str = None) -> float:
+    """Returns the column gap size of the text frame "name" expressed in points. If "name" is not given the currently selected item is used."""
+
+
+def getColumns(name: str = None) -> int:
+    """Gets the number of columns of the text frame "name". If "name" is not given the currently selected item is used."""
+
+
+def getFirstLineOffset(name: str = None) -> int:
+    """Gets the offset of the first line of text inside text frame "name". If "name" is not given the currently selected item is used."""
+
+
+def getFirstLinkedFrame(name: str = None) -> int:
+    """Return the first text frame in the chain.
+
+If "name" is not given the currently selected item is used."""
+
+
+def getFont(name: str = None) -> str:
+    """Returns the font name for the text frame "name". If this text frame has some text selected the value assigned to the first character of the selection is returned. If "name" is not given the currently selected item is used."""
+
+
+def getFontFeatures(name: str = None) -> str:
+    """Returns the font features for the text frame "name". If this text frame has some text selected the value assigned to the first character of the selection is returned. If "name" is not given the currently selected item is used."""
+
+
+def getFontSize(name: str = None) -> float:
+    """Returns the font size in points for the text frame "name". If this text frame has some text selected the value assigned to the first character of the selection is returned. If "name" is not given the currently selected item is used."""
+
+
+def getFrameText(name: str = None) -> str:
+    """Returns the text visible in text frame "name". If this text frame has some text selected, the selected text is returned. If "name" is not given the currently selected item is used.
+
+This function returns only the text visible in specified frame. If you need to retrieve the text contained in a text chain, use getAllText() instead.
+
+As this function depends on text layout being up-to-date, you may need to call layoutText() or layoutTextChain() before calling this function in order to get expected result."""
+
+
+def getLastLinkedFrame(name: str = None) -> str:
+    """Return the last text frame in the chain.
+
+If "name" is not given the currently selected item is used."""
+
+
+def getLineSpacing(name: str = None) -> float:
+    """Returns the line spacing ("leading") of the text frame "name" expressed in points. If "name" is not given the currently selected item is used."""
+
+
+def getNextLinkedFrame(name: str = None) -> str:
+    """Return the next text frame in the chain or None if specified frame is the last frame in the chain.
+
+If "name" is not given the currently selected item is used."""
+
+
+def getPrevLinkedFrame(name: str = None) -> str:
+    """Return the previous text frame in the chain or None if specified frame is the first frame in the chain.
+
+If "name" is not given the currently selected item is used."""
+
+
+def getTextColor(name: str = None) -> str:
+    """Returns the name of the text color used for text frame "name". If this text frame has some text selected the value assigned to the first character of the selection is returned. If "name" is not given the currently selected item is used."""
+
+
+def getTextDistances(name: str = None) -> (float, float, float, float):
+    """Returns the text distances of the text frame "name" expressed in points. The distances are returned as a tuple like (left, right, top, bottom). If "name" is not given the currently selected item is used."""
+
+
+def getTextLength(name: str = None) -> int:
+    """Returns the length of the text in the text frame "name". If "name" is not given the currently selected item is used."""
+
+
+def getTextLines(name: str = None) -> int:
+    """Returns the number of lines of the text in the text frame "name". If "name" is not given the currently selected item is used.
+
+As this function depends on text layout being up-to-date, you may need to call layoutText() or layoutTextChain() before calling this function in order to get expected result."""
+
+
+def getTextShade(name: str = None) -> int:
+    """Returns the shade of text color used for text frame "name". If this text frame has some text selected the value assigned to the first character of the selection is returned. If "name" is not given the currently selected item is used."""
+
+
+def getTextVerticalAlignment(name: str = None) -> int:
+    """Gets the vertical alignment of text inside text frame "name". If "name" is not given the currently selected item is used."""
+
+
+def hyphenateText(name: str = None) -> bool:
+    """Does hyphenation on text frame "name". If "name" is not given the currently selected item is used.
+
+May raise WrongFrameTypeError if the target frame is not a text frame"""
+
+
+def insertHTMLText(file: str, name: str = None):
+    """Inserts the text from "file" into the text frame "name". Text must be UTF encoded (see setText() as reference). If "name" is not given the currently selected Item is used."""
+
+
+def insertText(text: str, pos: int, name: str = None):
+    """Inserts the text "text" at the position "pos" into the text frame "name". Text must be UTF encoded (see setText() as reference) The first character has an index of 0. Inserting text at position -1 appends it to the frame. If "name" is not given the currently selected item is used.
+
+For performance reason, this function does not update text layout in any way. As a consequence, you may need to call layoutText() or layoutTextChain() at appropriate times after calling this function and before calling functions such as getFrameText() or getTextLines().
+
+May throw IndexError for an insertion out of bounds."""
+
+
+def isPDFBookmark(name: str = None) -> bool:
+    """Returns true if the text frame "name" is a PDF bookmark. If "name" is not given the currently selected item is used.
+
+May raise WrongFrameTypeError if the target frame is not a text frame"""
+
+
+def layoutText(name: str = None):
+    """Relayout text in the text frame "name". If "name" is not given the currently selected item is used."""
+
+
+def layoutChainText(name: str = None):
+    """Relayout the whole text chain whom the text frame "name" belongs. If "name" is not given the currently selected item is used."""
+
+
+def linkTextFrames(fromname: str, toname: str):
+    """Link two text frames. The frame named "fromname" is linked to the frame named "toname". The target frame must be an empty text frame and must not link to or be linked from any other frames already.
+
+May throw ScribusException if linking rules are violated."""
+
+
+def outlineText(
+        name: str = None):  # this was documented as traceText() but I'm very certain that is a mistake as traceText() is defined twice, one being deprecated and referencing outlineText()
+    """Convert the text frame "name" to outlines. If "name" is not given the currently selected item is used."""
+
+
+def selectFrameText(start: int, count: int, name: str = None):
+    """Selects "count" characters of text in the text frame "name" starting from the character "start". Character counting starts at 0. If "count" is zero, any text selection will be cleared. If "count" is -1, the selection will extend to the end of the frame. If "name" is not given the currently selected item is used.
+
+This function only acts on the text visible in the specified frame. If you need to work on the text contained in a text chain, use selectText() instead. As this function depends on text layout being up-to-date, you may need to call layoutText() or layoutTextChain() before calling this function in order to get expected result.
+
+May throw IndexError if the selection is outside the bounds of the text."""
+
+
+def selectText(start: int, count: int, name: str = None):
+    """Selects "count" characters of text in the story of the text frame "name" starting from the character "start". Character counting starts at 0. If "count" is zero, any text selection will be cleared. If "name" is not given the currently selected item is used.
+
+May throw IndexError if the selection is outside the bounds of the text."""
+
+
+def setCellText(row: int, column: int, text: str, name: str = None):
+    """Sets the text of the cell at "row", "column" in the table "name" to "text". If "name" is not given the currently selected item is used.
+
+May throw ValueError if the cell does not exist."""
+
+
+def setColumnGap(size: float, name: str = None):
+    """Sets the column gap of the text frame "name" to the value "size". If "name" is not given the currently selected item is used.
+
+May throw ValueError if the column gap is out of bounds (must be positive)."""
+
+
+def setColumns(nr: int, name: str = None):
+    """Sets the number of columns of the text frame "name" to the integer "nr". If "name" is not given the currently selected item is used.
+
+May throw ValueError if number of columns is not at least one."""
+
+
+def setFirstLineOffset(offset: int, name: str = None):
+    """Sets the offset of the first line of text inside text frame "name" to the specified offset policy. If "name" is not given the currently selected item is used. "offset" should be one of the FLOP_* constants defined in this module - see dir(scribus).
+
+May throw ValueError for an invalid offset constant."""
+
+
+def setFont(font: str, name: str = None):
+    """Sets the font of the text frame "name" to "font". If there is some text selected only the selected text is changed. If "name" is not given the currently selected item is used.
+
+May throw ValueError if the font cannot be found."""
+
+
+def setFontFeatures(fontfeature: str, name: str = None):
+    """Sets the font features of the text frame "name" to "fontfeature". If there is some text selected only the selected text is changed. If "name" is not given the currently selected item is used.
+
+May throw ValueError if the font cannot be found."""
+
+
+def setFontSize(size: float, name: str = None):
+    """Sets the font size of the text frame "name" to "size". "size" is treated as a value in points. If there is some text selected only the selected text is changed. "size" must be in the range 1 to 512. If "name" is not given the currently selected item is used.
+
+May throw ValueError for a font size that's out of bounds."""
+
+
+def setLineSpacing(size: float, name: str = None):
+    """Sets the line spacing ("leading") of the text frame "name" to "size". "size" is a value in points. If "name" is not given the currently selected item is used.
+
+May throw ValueError if the line spacing is out of bounds."""
+
+
+def setLineSpacingMode(mode: int, name: str = None):
+    """Sets the line spacing mode of the text frame "name" to "mode". If "name" is not given the currently selected item is used. Mode values are the same as in createParagraphStyle.
+
+May throw ValueError if the mode is out of bounds."""
+
+
+def setPDFBookmark(toggle: bool, name: str = None):
+    """Sets whether (toggle = 1) the text frame "name" is a bookmark nor not. If "name" is not given the currently selected item is used.
+
+May raise WrongFrameTypeError if the target frame is not a text frame"""
+
+
+def setText(text: str, name: str = None):
+    """Sets the text of the text frame "name" to the text of the string "text". Text must be UTF8 encoded - use e.g. unicode(text, 'iso-8859-2'). See the FAQ for more details. If "name" is not given the currently selected item is used."""
+
+
+def setTextAlignment(align: int, name: str = None):
+    """Sets the text alignment of the text frame "name" to the specified alignment. If "name" is not given the currently selected item is used. "align" should be one of the ALIGN_ constants defined in this module - see dir(scribus).
+
+May throw ValueError for an invalid alignment constant."""
+
+
+def setTextAnnotation(icon: int, isopen: bool, name: str = None):
+    """Turns a text fame into a text annotation.
+
+Arguments: "icon" must be 0-8. The values correspond to:( 0 "Note", 1 "Comment", 2 "Key", 3 "Help", 4 "NewParagraph", 5 "Paragraph", 6 "Insert",7 "Cross", 8 "Circle")n"isopen" is True or False. "name" uses the currently selected item if not given.
+
+Returns: None
+
+May raise WrongFrameTypeError if the target frame is not a text frame"""
+
+
+def setTextColor(color: str, name: str = None):
+    """Sets the text color of the text frame "name" to the color "color". If there is some text selected only the selected text is changed. If "name" is not given the currently selected item is used."""
+
+
+def setTextDirection(direction: int, name: str = None):
+    """Sets the text direction of the text frame "name" to the specified direction. If "name" is not given the currently selected item is used. "direction" should be one of the DIRECTION_ constants defined in this module - see dir(scribus).
+
+May throw ValueError for an invalid direction constant."""
+
+
+def setTextDistances(left: float, right: float, top: float, bottom: float, name: str = None):
+    """Sets the text distances of the text frame "name" to the values "left" "right", "top" and "bottom". If "name" is not given the currently selected item is used.
+
+May throw ValueError if any of the distances are out of bounds (must be positive)."""
+
+
+def setTextScalingH(scale: float, name: str = None):
+    """Sets the horizontal character scaling of the object "name" to "scale" in percent. If "name" is not given the currently selected item is used."""
+
+
+def setTextScalingV(scale: float, name: str = None):
+    """Sets the vertical character scaling of the object "name" to "scale" in percent. If "name" is not given the currently selected item is used."""
+
+
+def setTextShade(shade: int, name: str = None):
+    """Sets the shading of the text color of the object "name" to "shade". If there is some text selected only the selected text is changed. "shade" must be an integer value in the range from 0 (lightest) to 100 (full color intensity). If "name" is not given the currently selected item is used."""
+
+
+def setTextStroke(color: str, name: str = None):
+    """Set "color" of the text stroke. If "name" is not given the currently selected item is used."""
+
+
+def setTextVerticalAlignment(align: int, name: str = None):
+    """Sets the vertical alignment of text inside text frame "name" to the specified alignment. If "name" is not given the currently selected item is used. "align" should be one of the ALIGNV constants defined in this module - see dir(scribus).
+
+May throw ValueError for an invalid alignment constant."""
+
+
+def textOverflows(name: str = None, nolinks: bool = False) -> bool:
+    """Returns 1 if there are overflowing characters in text frame "name", 0 if not. If is nolinks set to non zero value it takes only one frame - it doesn't use text frame linking. Without this parameter it search all linking chain.
+
+May raise WrongFrameTypeError if the target frame is not an text frame"""
+
+
+def unlinkTextFrames(name: str):
+    """Remove the specified (named) object from the text frame flow/linkage. If the frame was in the middle of a chain, the previous and next frames will be connected, eg 'a->b->c' becomes 'a->c' when you unlinkTextFrames(b)'
+
+May throw ScribusException if linking rules are violated."""
+
+
 # Creating & Destroying Objects
 def createBezierLine(list: tuple, name: str = "name") -> None:
     nameExists = False
@@ -1099,284 +1418,6 @@ def deleteObject(name: str) -> None:
 def objectExists(name: str) -> None:
     exists: bool
     return exists
-
-
-# Handling Text Frames
-def dehyphenateText(name: str = "name") -> None:
-    wrongFrameType = False
-    if wrongFrameType:
-        raise WrongFrameTypeError
-    pass
-
-
-def deleteText(name: str = "name") -> None:
-    pass
-
-
-def getAllText(name: str = "name") -> None:
-    text: str
-    return text
-
-
-def getColumnGap(name: str = "name") -> None:
-    gap: float
-    return gap
-
-
-def getColumns(name: str = "name") -> None:
-    columns: int
-    return columns
-
-
-def getFirstLineOffset(name: str = "name") -> None:
-    firstLineOffset: int
-    return firstLineOffset
-
-
-def getFirstLinkedFrame(name: str = "name") -> None:
-    firstLinkedFrameName: str
-    return firstLinkedFrameName
-
-
-def getFont(name: str = "name") -> None:
-    fontName: str
-    return fontName
-
-
-def getFontSize(name: str = "name") -> None:
-    fontSize: float
-    return fontSize
-
-
-def getFrameText(name: str = "name") -> None:
-    visibleText: str
-    return visibleText
-
-
-def getLastLinkedFrame(name: str = "name") -> None:
-    lastLinkedFrameName: str
-    return lastLinkedFrameName
-
-
-def getLineSpacing(name: str = "name") -> None:
-    lineSpacing: float
-    return lineSpacing
-
-
-def getNextLinkedFrame(name: str = "name") -> None:
-    nextLinkedFrameName: str
-    return nextLinkedFrameName
-
-
-def getPrevLinkedFrame(name: str = "name") -> None:
-    prevLinkedFrameName: str
-    return prevLinkedFrameName
-
-
-def getTextColor(name: str = "name") -> None:
-    wrongFrameType = False
-    if wrongFrameType:
-        raise WrongFrameTypeError
-    colorName: str
-    return colorName
-
-
-def getTextDistances(name: str = "name") -> None:
-    textDistances: tuple
-    return textDistances
-
-
-def getTextLength(name: str = "name") -> None:
-    textLength: int
-    return textLength
-
-
-def getTextLines(name: str = "name") -> None:
-    textLines: int
-    return textLines
-
-
-def getTextShade(name: str = "name") -> None:
-    wrongFrameType = False
-    if wrongFrameType:
-        raise WrongFrameTypeError
-    textShade: int
-    return textShade
-
-
-def getTextVerticalAlignment(name: str = "name") -> None:
-    textVerticalAlignment: int
-    return textVerticalAlignment
-
-
-def hyphenateText(name: str = "name") -> None:
-    wrongFrameType = False
-    if wrongFrameType:
-        raise WrongFrameTypeError
-    success: bool
-    return success
-
-
-def insetHtmlText(file: str, name: str = "name") -> None:
-    wrongFrameType = False
-    if wrongFrameType:
-        raise WrongFrameTypeError
-    pass
-
-
-def insertText(text: str, pos: int, name: str = "name") -> None:
-    wrongFrameType = False
-    if wrongFrameType:
-        raise WrongFrameTypeError
-    pass
-
-
-def isPDFBookmark(name: str = "name") -> None:
-    wrongFrameType = False
-    if wrongFrameType:
-        raise WrongFrameTypeError
-    pdfBookmark: bool
-    return pdfBookmark
-
-
-def layoutText(name: str = "name") -> None:
-    pass
-
-
-def layoutTextChain(name: str = "name") -> None:
-    pass
-
-
-def linkTextFrames(firstFrame: str, secondFrame: str) -> None:
-    rulesViolated = False
-    if rulesViolated:
-        return ScribusError
-    pass
-
-
-def selectFrameText(start: int, count: int, name: str = "name") -> None:
-    outsideRange = False
-    if outsideRange:
-        raise IndexError
-    pass
-
-
-def selectText(start: int, count: int, name: str = "name") -> None:
-    outsideRange = False
-    if outsideRange:
-        raise IndexError
-    pass
-
-
-def setColumns(nr: int, name: str = "name") -> None:
-    if nr < 1:
-        raise ValueError
-    pass
-
-
-def setColumnGap(size: float, name: str = "name") -> None:
-    if size < 0:
-        raise ValueError
-    pass
-
-
-def setFirstLineOffset(offset: int, name: str = "name") -> None:
-    invalidConstant = False
-    if invalidConstant:
-        raise ValueError
-    pass
-
-
-def setFont(font: str, name: str = "name") -> None:
-    fontNotFound = False
-    if fontNotFound:
-        raise ValueError
-    pass
-
-
-def setFontSize(size: float, name: str = "name") -> None:
-    if not 1 <= size <= 512:
-        raise ValueError
-    pass
-
-
-def setLineSpacing(size: float, name: str = "name") -> None:
-    if size < 0:
-        raise ValueError
-    pass
-
-
-def setLineSpacingMode(mode: int, name: str = "name") -> None:
-    invalidMode = False
-    if invalidMode:
-        raise ValueError
-    pass
-
-
-def setPDFBookmark(toggle: bool, name: str = "name") -> None:
-    wrongFrameType = False
-    if wrongFrameType:
-        raise WrongFrameTypeError
-    pass
-
-
-def setText(text: str, name: str = "name") -> None:
-    pass
-
-
-def setTextAlignment(align: int, name: str = "name") -> None:
-    invalidAlign = False
-    if invalidAlign:
-        raise ValueError
-    pass
-
-
-def setTextDistances(left: float, right: float, top: float, bottom: float, name: str = "name") -> None:
-    if left < 0 or right < 0 or top < 0 or bottom < 0:
-        raise ValueError
-    pass
-
-
-def setTextScalingH(scale: float, name: str = "name") -> None:
-    pass
-
-
-def setTextScalingV(scale: float, name: str = "name") -> None:
-    pass
-
-
-def setTextColor(color: str, name: str = "name") -> None:
-    pass
-
-
-def setTextShade(shade: float, name: str = "name") -> None:
-    pass
-
-
-def setTextStroke(color: str, name: str = "name") -> None:
-    pass
-
-
-def setTextVerticalAlignment(align: float, name: str = "name") -> None:
-    invalidAlign = False
-    if invalidAlign:
-        raise ValueError
-    pass
-
-
-def textOverflows(name: str = "name", nolinks=False) -> None:
-    wrongFrameType = False
-    if wrongFrameType:
-        raise WrongFrameTypeError
-    overflows: bool
-    return overflows
-
-
-def unlinkTextFrames(name: str = "name") -> None:
-    rulesViolated = False
-    if rulesViolated:
-        raise ScribusError
-    pass
 
 
 # Using Dialogs
