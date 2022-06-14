@@ -130,32 +130,38 @@ FLOP_FONTASCENT = -1
 FLOP_LINESPACING = -1
 FLOP_BASELINEGRID = -1
 
-# Line styles (apparently there are more)
+# Lines and stroke properties (Line style)
 LINE_DASH = -1
 LINE_DASHDOT = -1
 LINE_DASHDOTDOT = -1
 LINE_DOT = -1
 LINE_SOLID = -1
 
-
+# Lines and stroke properties (Line join)
 JOIN_BEVEL = -1
 JOIN_MITTER = -1
 JOIN_ROUND = -1
+
+# Lines and stroke properties (Line ending)
 CAP_FLAT = -1
 CAP_ROUND = -1
 CAP_SQUARE = -1
-CSPACE_UNDEFINED = -1
-CSPACE_RGB = -1
-CSPACE_CMYK = -1
-CSPACE_GRAY = -1
-CSPACE_DUOTONE = -1
-CSPACE_MONOCHROME = -1
+
+# Fill modes
 FILL_NOG = -1
 FILL_HORIZONTALG = -1
 FILL_VERTICALG = -1
 FILL_DIAGONALG = -1
 FILL_CROSSDIAGONALG = -1
 FILL_RADIALG = -1
+
+CSPACE_UNDEFINED = -1
+CSPACE_RGB = -1
+CSPACE_CMYK = -1
+CSPACE_GRAY = -1
+CSPACE_DUOTONE = -1
+CSPACE_MONOCHROME = -1
+
 BUTTON_ABORT = 262144
 BUTTON_CANCEL = 4194304
 BUTTON_IGNORE = 1048576
@@ -219,6 +225,7 @@ def docChanged(bool: bool) -> None:
 
 def getDocName() -> str:
     """Returns the name the document was saved under. If the document was not saved before the name is empty."""
+
 
 def getUnit() -> int:
     """Returns the measurement units of the document. The returned value will be one of the UNIT_* constants: UNIT_INCHES, UNIT_MILLIMETERS, UNIT_PICAS, UNIT_POINTS"""
@@ -371,6 +378,7 @@ def getLayerTransparency(layer: str) -> float:
 
 May raise NotFoundError if the layer can't be found. May raise ValueError if the layer name isn't acceptable."""
 
+
 def getLayers() -> list:
     """Returns a list with the names of all defined layers."""
 
@@ -379,6 +387,7 @@ def isLayerFlow(layer: str) -> bool:
     """Returns whether text flows around objects on layer "layer", a value of True means that text flows around, a value of False means that the text does not flow around.
 
 May raise NotFoundError if the layer can't be found. May raise ValueError if the layer name isn't acceptable."""
+
 
 def isLayerLocked(layer: str) -> bool:
     """Returns whether the layer "layer" is locked or not, a value of True means that the layer "layer" is editable, a value of False means that the layer "layer" is locked.
@@ -391,61 +400,74 @@ def isLayerOutlined(layer: str) -> bool:
 
 May raise NotFoundError if the layer can't be found. May raise ValueError if the layer name isn't acceptable."""
 
+
 def isLayerPrintable(layer: str) -> bool:
     """Returns whether the layer "layer" is printable or not, a value of True means that the layer "layer" can be printed, a value of False means that printing the layer "layer" is disabled.
 
 May raise NotFoundError if the layer can't be found. May raise ValueError if the layer name isn't acceptable."""
+
 
 def isLayerVisible(layer: str) -> bool:
     """Returns whether the layer "layer" is visible or not, a value of True means that the layer "layer" is visible, a value of False means that the layer "layer" is invisible.
 
 May raise NotFoundError if the layer can't be found. May raise ValueError if the layer name isn't acceptable."""
 
+
 def lowerActiveLayer() -> None:
     """Lowers the current active layer."""
 
+
 def raiseActiveLayer() -> None:
     """Raises the current active layer."""
+
 
 def sendToLayer(layer: str, name: str = None) -> None:
     """Sends the object "name" to the layer "layer". The layer must exist. If "name" is not given the currently selected item is used.
 
 May raise NotFoundError if the layer can't be found. May raise ValueError if the layer name isn't acceptable."""
 
+
 def setActiveLayer(name: str) -> None:
     """Sets the active layer to the layer named "name".
 
 May raise NotFoundError if the layer can't be found. May raise ValueError if the layer name isn't acceptable."""
+
 
 def setLayerBlendmode(layer: str, blend: int) -> None:
     """Sets the layers "layer" blendmode to blend.
 
 May raise NotFoundError if the layer can't be found. May raise ValueError if the layer name isn't acceptable."""
 
+
 def setLayerFlow(layer: str, flow: bool) -> None:
     """Sets the layers "layer" flowcontrol to flow. If flow is set to true text in layers above this one will flow around objects on this layer.
 
 May raise NotFoundError if the layer can't be found. May raise ValueError if the layer name isn't acceptable"""
+
 
 def setLayerLocked(layer: str, locked: bool) -> None:
     """Sets the layer "layer" to be locked or not. If locked is set to true the layer will be locked.
 
 May raise NotFoundError if the layer can't be found. May raise ValueError if the layer name isn't acceptable."""
 
+
 def setLayerOutlined(layer: str, outline: bool) -> None:
     """Sets the layer "layer" to be locked or not. If outline is set to true the layer will be displayed outlined.
 
 May raise NotFoundError if the layer can't be found. May raise ValueError if the layer name isn't acceptable."""
+
 
 def setLayerPrintable(layer: str, printable: bool) -> None:
     """Sets the layer "layer" to be printable or not. If is the printable set to false the layer won't be printed.
 
 May raise NotFoundError if the layer can't be found. May raise ValueError if the layer name isn't acceptable."""
 
+
 def setLayerTransparency(layer: str, trans: float) -> None:
     """Sets the layers "layer" transparency to trans.
 
 May raise NotFoundError if the layer can't be found. May raise ValueError if the layer name isn't acceptable."""
+
 
 def setLayerVisible(layer: str, visible: bool) -> None:
     """Sets the layer "layer" to be visible or not. If is the visible set to false the layer is invisible.
@@ -475,14 +497,18 @@ def getHGuides() -> list:
 def getPageItems() -> list:
     """Returns a list of tuples with items on the current page. The tuple is: (name, objectType, order) E.g. [('Text1', 4, 0), ('Image1', 2, 1)] means that object named 'Text1' is a text frame (type 4) and is the first at the page..."""
 
+
 def getPageMargins() -> tuple:
     """Returns the document page margins as a (top, left, right, bottom) tuple in the document's current units. See UNIT_ constants and getPageSize()."""
+
 
 def getPageNMargins(nr: int) -> tuple:
     """Returns a tuple with a particular page's margins measured in the document's current units. See UNIT_ constants and getPageMargins()"""
 
+
 def getPageSize(nr: int) -> tuple:
     """Returns a tuple with a particular page's size measured in the document's current units. See UNIT_ constants and getPageMargins()"""
+
 
 def getPageSize() -> tuple:
     """Returns a tuple with document page dimensions measured in the document's current units. See UNIT_ constants and getPageMargins()"""
@@ -502,7 +528,8 @@ def gotoPage(nr: int) -> None:
 May raise IndexError if the page number is out of range."""
 
 
-def importPage(fromDoc: str, pageList: tuple, create: bool = True, importWhere: int = -1, importPageWhere: int = 2) -> None:
+def importPage(fromDoc: str, pageList: tuple, create: bool = True, importWhere: int = -1,
+               importPageWhere: int = 2) -> None:
     """Imports a set of pages (given as a tuple) from an existing document (the file name must be given). This functions maps the "Page->Import" dropdown menu function. fromDoc: string; the filename of the document to import pages from pageList: tuple with page numbers of pages to import create: number; 0 to replace existing pages, 1 (default) to insert new pages importWhere: number; the page number (of the current document) at which import the pages importWherePage: number; used if create==1; 0 to create pages before selected page; 1 to create pages after selected page; 2 (default) to create pages at the end of the document"""
 
 
@@ -598,7 +625,8 @@ def createParagraphStyle(name: str, linespacingmode: int = 0, linespacing: float
                          leftmargin: float = 0.0, rightmargin: float = 0.0,
                          gapbefore: float = -1.0, gapafter: float = -1.0, firstindent: float = 0.0,
                          hasdropcap: bool = False, dropcaplines: int = -1,
-                         dropcapoffset: float = -1.0, charstyle: str = "style", bullet: str = None, tabs: tuple = "") -> None:
+                         dropcapoffset: float = -1.0, charstyle: str = "style", bullet: str = None,
+                         tabs: tuple = "") -> None:
     """Creates a paragraph style. This function takes the following keyword parameters:
 
 "name" [required] -> specifies the name of the paragraphstyle to create
@@ -655,20 +683,26 @@ dropcapoffset [optional] -> offset of the caps if used
 def getCharStyles() -> list:
     """Return a list of the names of all character styles in the current document."""
 
+
 def getCharacterStyle(name: str = None) -> str:
     """Return name of character style applied to object named "name". If "name" is not given, the currently selected object is used. If current object has a text selection, the name of style applied to start of selection is returned. Otherwise the name of the item default character style is returned."""
+
 
 def getParagraphStyle(name: str = None) -> str:
     """Return name of paragraph style applied to object named "name". If "name" is not given, the currently selected object is used. If current object has a text selection, the name of style applied to start of selection is returned. Otherwise the name of the item default style is returned."""
 
+
 def getParagraphStyles() -> list:
     """Return a list of the names of all paragraph styles in the current document."""
+
 
 def loadStylesFromFile(filename: str):
     """Loads paragraph styles from the Scribus document at "filename" into the current document."""
 
+
 def setCharacterStyle(style: str, name: str = None):
     """Apply the named character "style" to the object named "name". If object name is not provided, style is applied on current object selection. If multiple objects are selected or if selected object has no text selection, style is applied on selected objects. Otherwise style is applied to the current text selection."""
+
 
 def setParagraphStyle(style: str, name: str = None):
     """Apply the named paragraph "style" to the object named "name". If object name is not provided, style is applied on current object selection. If multiple objects are selected or if selected object has no text selection, style is applied on selected objects. Otherwise style is applied to the current text selection."""
@@ -694,36 +728,46 @@ Shade [optional] -> opacity of line (integer)
 
 Width [optional] -> width of line (double)"""
 
+
 def getCellStyle(row: int, column: int, name: str = None) -> str:
     """Returns the named style of the cell at "row", "column" in the table "name". If "name" is not given the currently selected item is used.
 
 May throw ValueError if the cell does not exist."""
 
+
 def getCellStyles() -> list:
     """Return a list of the names of all cell styles in the current document."""
+
 
 def getCustomLineStyle(name: str = None) -> str:
     """Returns the styleName of custom line style for the object. If object's "name" is not given the currently selected item is used."""
 
+
 def getLineStyle(name: str = None) -> int:
     """Returns the line style of the object "name". If "name" is not given the currently selected item is used. Line style constants are: LINE_DASH, LINE_DASHDOT, LINE_DASHDOTDOT, LINE_DOT, LINE_SOLID"""
+
 
 def getLineStyles() -> list:
     """Return a list of the names of all line styles in the current document."""
 
+
 def getTableStyle(name: str = None) -> str:
     """Returns the named style of the table "name". If "name" is not given the currently selected item is used."""
 
+
 def getTableStyles() -> list:
     """Return a list of the names of all table styles in the current document."""
+
 
 def setCellStyle(row: int, column: int, style: str, name: str = None):
     """Sets the named style of the cell at "row", "column" in the table "name" to "style". If "name" is not given the currently selected item is used.
 
 May throw ValueError if the cell does not exist."""
 
+
 def setCustomLineStyle(styleName: str, name: str = None):
     """Sets the custom line style of the object "name" to "styleName" Argument "styleName" is the name of line style as seen in Style Manager If "name" is not given the currently selected item is used."""
+
 
 def setLineStyle(style: int, name: str = None):
     """Sets the line style of the object "name" to the style "style". If "name" is not given the currently selected item is used. Argument for this function is number - value from 1 to 37 There are few predefined constants for "style" - LINE_"""
@@ -733,20 +777,243 @@ def setLineStyle(style: int, name: str = None):
 def deselectAll():
     """Deselects all objects in the whole document."""
 
+
 def getSelectedObject(nr: int = 0):
     """Returns the name of the selected object. "nr" if given indicates the number of the selected object, e.g. 0 means the first selected object, 1 means the second selected Object and so on."""
+
 
 def moveSelectionToBack():
     """Moves current selection to back."""
 
+
 def moveSelectionToFront():
     """Moves current selection to front."""
+
 
 def selectObject(name: str):
     """Selects the object with the given "name"."""
 
+
 def selectionCount() -> int:
     """Returns the number of selected objects."""
+
+
+# Frame Properties
+def flipObject(H: bool, V: bool, name: str = None):
+    """Toggle the object "name" horizontal and/or vertical flip. If "name" is not given the currently selected item is used. """
+
+
+def getCornerRadius(name: str = None) -> int:
+    """Returns the corner radius of the object "name". The radius is expressed in points. If "name" is not given the currently selected item is used."""
+
+
+def getFillBlendmode(name: str = None) -> int:
+    """Returns the fill blendmode of the object "name". If "name" is not given the currently selected Item is used."""
+
+
+def getFillColor(name: str = None) -> str:
+    """Returns the name of the fill color of the object "name". If "name" is not given the currently selected item is used."""
+
+
+def getFillShade(name: str = None) -> int:
+    """Returns the shading value of the fill color of the object "name". If "name" is not given the currently selected item is used."""
+
+
+def getFillTransparency(name: str = None) -> float:
+    """Returns the fill transparency of the object "name". If "name" is not given the currently selected Item is used."""
+
+
+def getLineBlendmod(name: str = None) -> int:
+    """Returns the line blendmode of the object "name". If "name" is not given the currently selected Item is used."""
+
+
+def getLineCap(name: str = None) -> int:
+    """Returns the line cap style of the object "name". If "name" is not given the currently selected item is used. The cap types are: CAP_FLAT, CAP_ROUND, CAP_SQUARE"""
+
+
+def getLineColor(name: str = None) -> str:
+    """Returns the name of the line color of the object "name". If "name" is not given the currently selected item is used."""
+
+
+def getLineJoin(name: str = None) -> int:
+    """Returns the line join style of the object "name". If "name" is not given the currently selected item is used. The join types are: JOIN_BEVEL, JOIN_MITTER, JOIN_ROUND"""
+
+
+def getLineShade(name: str = None) -> int:
+    """Returns the shading value of the line color of the object "name". If "name" is not given the currently selected item is used."""
+
+
+def getLineTransparency(name: str = None) -> float:
+    """Returns the line transparency of the object "name". If "name" is not given the currently selected Item is used."""
+
+
+def getLineWidth(name: str = None) -> int:  # returns integer but wants to take float in setLineWidth?!
+    """Returns the line width of the object "name". If "name" is not given the currently selected Item is used."""
+
+
+def getObjectAttributes(name: str = None) -> list:
+    """Returns a list containing all attributes of object \"name\""""
+
+
+def getObjectType(name: str = None) -> str:
+    """Get type of object "name" as a string."""
+
+
+def getPosition(name: str = None) -> (float, float):
+    """Returns a (x, y) tuple with the position of the object "name". If "name" is not given the currently selected item is used. The position is expressed in the actual measurement unit of the document - see UNIT_ for reference."""
+
+
+def getRotation(name: str = None) -> int:
+    """Returns the rotation of the object "name". The value is expressed in degrees, and clockwise is positive. If "name" is not given the currently selected item is used."""
+
+
+def getSize(name: str = None) -> (float, float):
+    """Returns a (width, height) tuple with the size of the object "name". If "name" is not given the currently selected item is used. The size is expressed in the current measurement unit of the document - see UNIT_ for reference."""
+
+
+def getTextFlowMode(name: str = None) -> int:
+    """Return the current text flow mode used by item "name" as an integer. If "name" is not given, the currently selected object is used.
+
+The function will return one of the following value: - 0 : text flow around frame is disabled - 1 : text flow around frame shape - 2 : text flow around frame bounding box - 3 : text flow around frame contour line - 4 : text flow around image clip path"""
+
+
+def isLocked(name: str = None) -> bool:
+    """Returns true if is the object "name" locked. If "name" is not given the currently selected item is used."""
+
+
+def lockObject(name: str = None) -> bool:
+    """Locks the object "name" if it's unlocked or unlock it if it's locked. If "name" is not given the currently selected item is used. Returns true if locked."""
+
+
+def moveObject(dx: float, dy: float, name: str = None):
+    """Moves the object "name" by dx and dy relative to its current position. The distances are expressed in the current measurement unit of the document (see UNIT constants). If "name" is not given the currently selected item is used. If the object "name" belongs to a group, the whole group is moved."""
+
+
+def moveObjectAbs(x: float, y: float, name: str = None):
+    """Moves the object "name" to a new location. The coordinates are expressed in the current measurement unit of the document (see UNIT constants). If "name" is not given the currently selected item is used. If the object "name" belongs to a group, the whole group is moved."""
+
+
+def rotateObject(rot: float, name: str = None):
+    """Rotates the object "name" by "rot" degrees relatively. The object is rotated by the vertex that is currently selected as the rotation point - by default, the top left vertex at zero rotation. Positive values mean counter clockwise rotation when the default rotation point is used. If "name" is not given the currently selected item is used."""
+
+
+def rotateObjectAbs(rot: float, name: str = None):
+    """Sets the rotation of the object "name" to "rot". Positive values mean counter clockwise rotation. If "name" is not given the currently selected item is used."""
+
+
+def setCornerRadius(radius: int, name: str = None):
+    """Sets the corner radius of the object "name". The radius is expressed in points. If "name" is not given the currently selected item is used.
+
+May raise ValueError if the corner radius is negative."""
+
+
+def setFillBlendmode(blendmode: int, name: str = None):
+    """Sets the fill blendmode of the object "name" to blendmode If "name" is not given the currently selected item is used."""
+
+
+def setFillColor(color: str, name: str = None):
+    """Sets the fill color of the object "name" to the color "color". "color" is the name of one of the defined colors. If "name" is not given the currently selected item is used."""
+
+
+def setFillShade(shade: int, name: str = None):
+    """Sets the shading of the fill color of the object "name" to "shade". "shade" must be an integer value in the range from 0 (lightest) to 100 (full Color intensity). If "name" is not given the currently selected Item is used.
+
+May raise ValueError if the fill shade is out of bounds."""
+
+
+def setFillTransparency(transparency: float, name: str = None):
+    """Sets the fill transparency of the object "name" to transparency If "name" is not given the currently selected item is used."""
+
+
+def setGradientFill(type: int, color1: str, shade1: int, color2: str, shade2: int, name: str = None):
+    """Sets the gradient fill of the object "name" to type. Color descriptions are the same as for setFillColor() and setFillShade(). See the constants for available types (FILL_)."""
+
+
+def setGradientStop(color: str, shade: int, opacity: float, ramppoint: float, name: str = None):
+    """Set or add a gradient stop to the gradient fill of the object "name" at position ramppoint. Color descriptions are the same as for setFillColor() and setFillShade(). setGradientFill() must have been called previously for the gradient fill to be visible."""
+
+
+def setitemname(newName: str,
+                name: str = None):  # Not sure if this capitalization is correct, that's how it is in the docs
+    """Sets the name of object "name" to newName and returns the name applied. If "name" is not given the currently selected item is used.
+
+May raise NotFoundError if the object doesn't exist."""
+
+
+def setLineBlendmod(blendmode: int, name: str = None):
+    """Sets the line blendmode of the object "name" to blendmode If "name" is not given the currently selected item is used."""
+
+
+def setLineCap(endType: int, name: str = None):
+    """Sets the line cap style of the object "name" to the style "cap". If "name" is not given the currently selected item is used. There are predefined constants for "cap" - CAP_."""
+
+
+def setLineColor(color: str, name: str = None) -> str:
+    """Sets the line color of the object "name" to the color "color". If "name" is not given the currently selected item is used."""
+
+
+def setLineJoin(join: int, name: str = None):
+    """Sets the line join style of the object "name" to the style "join". If "name" is not given the currently selected item is used. There are predefined constants for join - JOIN_."""
+
+
+def setLineShade(shade: int, name: str = None):
+    """Sets the shading of the line color of the object "name" to "shade". "shade" must be an integer value in the range from 0 (lightest) to 100 (full color intensity). If "name" is not given the currently selected item is used.
+
+May raise ValueError if the line shade is out of bounds."""
+
+
+def setLineTransparency(transparency: float, name: str = None):
+    """Sets the line transparency of the object "name" to transparency If "name" is not given the currently selected item is used."""
+
+
+def setLineWidth(width: float, name: str = None):  # takes float but returns integer in getLineWidth?!
+    """Sets line width of the object "name" to "width". "width" must be in the range from 0.0 to 12.0 inclusive, and is measured in points. If "name" is not given the currently selected item is used.
+
+May raise ValueError if the line width is out of bounds."""
+
+
+def setMultiLine(namedStyle: str, name: str = None):
+    """Sets the line style of the object "name" to the named style "namedStyle". If "name" is not given the currently selected item is used.
+
+May raise NotFoundError if the line style doesn't exist."""
+
+
+def setOpjectAttributes(attributes: dict, name: str = None):
+    """Sets attributes of the object "name". If "name" is not given the currently selected item is used.
+
+attributes is a list of dictionary. Each dictionary must have those keys: Name, Type, Value, Parameter, Relationship, RelationshipTo, AutoAddTo All values must be strings.
+
+May raise NotFoundError if the object doesn't exist."""
+
+
+def setTextFlowMode(name: str, state: int):
+    """Enables/disables "Text Flows Around Frame" feature for object "name". Called with parameters string name and optional int "state" (0 <= state <= 3). Setting "state" to 0 will disable text flow. Setting "state" to 1 will make text flow around object frame. Setting "state" to 2 will make text flow around bounding box. Setting "state" to 3 will make text flow around contour line. If "state" is not passed, text flow is toggled."""
+
+
+def sizeObject(width: float, height: float, name: str = None):
+    """Resizes the object "name" to the given width and height. If "name" is not given the currently selected item is used."""
+
+
+def getObjectType(name: str = None) -> str:
+    """Get type of object "name" as a string."""
+
+
+def getPosition(name: str = None) -> (float, float):
+    """Returns a (x, y) tuple with the position of the object "name". If "name" is not given the currently selected item is used. The position is expressed in the actual measurement unit of the document - see UNIT_ for reference."""
+
+
+def getRotation(name: str = None) -> int:
+    """Returns the rotation of the object "name". The value is expressed in degrees, and clockwise is positive. If "name" is not given the currently selected item is used."""
+
+
+def getSize(name: str = None) -> (float, float):
+    """Returns a (width, height) tuple with the size of the object "name". If "name" is not given the currently selected item is used. The size is expressed in the current measurement unit of the document - see UNIT_ for reference."""
+
+
+def getTextFlowMode(name: str = None) -> int:
+    """Return the current text flow mode used by item "name" as an integer. If "name" is not given, the currently selected object is used.
+
+The function will return one of the following value: - 0 : text flow around frame is disabled - 1 : text flow around frame shape - 2 : text flow around frame bounding box - 3 : text flow around frame contour line - 4 : text flow around image clip path"""
 
 
 # Creating & Destroying Objects
