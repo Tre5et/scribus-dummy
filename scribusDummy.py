@@ -1486,6 +1486,142 @@ def createRect(x: float, y: float, width: float, height: float, name: str = None
 
 May raise NameExistsError if you explicitly pass a name that's already used."""
 
+# Tables
+def createTable(x: float, y: float, width: float, height: float, numRows: int, numColumns: int, name: str = None) -> str:
+    """Creates a new table with the given number of rows and columns on the actual page and returns its name. The coordinates are given in the actual measurement unit of the document (see UNIT constants). "name" should be a unique identifier for the object because you need this name for further referencing of that object. If "name" is not given Scribus will create one for you.
+
+May raise NameExistsError if you explicitly pass a name that's already used. May raise ValueError if an insufficient number of rows or columns is passed."""
+
+def getCellColumnSpan(row: int, column: int, name: str = None) -> int:
+    """Returns the column span of the cell at "row", "column" in the table "name" or -1 if the cell does not exist. If the cell is covered by another spanning cell, the column span of the spanning cell is returned. If "name" is not given the currently selected item is used."""
+
+def getCellFillColor(row: int, column: int, name: str = None) -> str:
+    """Returns the fill color of the cell at "row", "column" in the table "name" If "name" is not given the currently selected item is used."""
+
+def getCellRowSpan(row: int, column: int, name: str = None) -> int:
+    """Returns the row span of the cell at "row", "column" in the table "name" or -1 if the cell does not exist. If the cell is covered by another spanning cell, the row span of the spanning cell is returned. If "name" is not given the currently selected item is used."""
+
+def getTableColumnWidth(column: int, name: str = None) -> float:
+    """Returns the column width of "column" in the table "name" expressed in points, or 0.0 if the column does not exist. If "name" is not given the currently selected item is used."""
+
+def getTableColumns(name: str = None) -> int:
+    """Gets the number of columns in the table "name". If "name" is not given the currently selected item is used."""
+
+def getTableFillColor(name: str = None) -> str:
+    """Returns the fill color of the table "name". If "name" is not given the currently selected item is used."""
+
+def getTableRowHeight(row: int, name: str = None) -> float:
+    """Returns the row height of "row" in the table "name" expressed in points, or 0.0 if the row does not exist. If "name" is not given the currently selected item is used."""
+
+def getTableRows(name: str = None) -> int:
+    """Gets the number of rows in the table "name". If "name" is not given the currently selected item is used."""
+
+def insertTableColumns(index: int, numColumns: int, name: str = None):
+    """Inserts "numColumns" columns before the column at "index" in the table "name". If "name" is not given the currently selected item is used.
+
+May throw ValueError if number of columns is not at least one or index is out of bounds."""
+
+def insertTableRows(index: int, numRows: int, name: str = None):
+    """Inserts "numRows" rows before the row at "index" in the table "name". If "name" is not given the currently selected item is used.
+
+May throw ValueError if number of rows is not at least one or index is out of bounds."""
+
+def mergeTableCells(row: int, column: int, numRows: int, numColumns: int, name: str = None):
+    """Merges the cell at the specified "row" and "column" with the adjacent cells into one cell.
+
+May throw ValueError if number if numRows or numColumns is less than 1 or the specified area is out of bounds."""
+
+def removeTableColumns(index: int, numColumns: int, name: str = None):
+    """Removes "numColumns" columns from the table "name" starting with the column at "index". If "name" is not given the currently selected item is used.
+
+May throw ValueError if number of columns is not at least one or the range to be deleted is out of bounds."""
+
+def removeTableRows(index: int, numRows: int, name: str = None):
+    """Removes "numRows" rows from the table "name" starting with the row at "index". If "name" is not given the currently selected item is used.
+
+May throw ValueError if number of rows is not at least one or the range to be deleted is out of bounds."""
+
+def resizeTableColumn(column: int, width: float, name: str = None):
+    """Resizes "column" to "width" in the table "name". If "name" is not given the currently selected item is used.
+
+May throw ValueError if the width is less than 0 or the column does not exist."""
+
+def resizeTableRow(row: int, width: float, name: str = None):
+    """Resizes "row" to "height" in the table "name". If "name" is not given the currently selected item is used.
+
+May throw ValueError if the height is less than 0 or the row does not exist."""
+
+def setCellBottomBorder(row: int, column: int, borderLines: (float, int, str), name: str = None):
+    """Sets the bottom border of the cell at "row", "column" in the table "name". The border is specified as a list of "(width, style, color)" tuples. "style" is one of the LINE_* constants. If "name" is not given the currently selected item is used.
+
+May throw ValueError the cell does not exist or if "borderLines" is of the wrong format."""
+
+def setCellBottomPadding(row: int, column: int, padding: float, name: str = None):
+    """Sets the bottom padding of the cell at "row", "column" in the table "name" to "padding". If "name" is not given the currently selected item is used.
+
+May throw ValueError the cell does not exist or if "padding" is less than 0."""
+
+def setCellFillColor(row: int, column: int, color: str, name: str = None):
+    """Sets the fill color of the cell at "row", "column" in the table "name" to "color". If "name" is not given the currently selected item is used.
+
+May throw ValueError the cell does not exist."""
+
+def setCellLeftBorder(row: int, column: int, borderLines: (float, int, str), name: str = None):
+    """Sets the left border of the cell at "row", "column" in the table "name". The border is specified as a list of "(width, style, color)" tuples. "style" is one of the LINE_* constants. If "name" is not given the currently selected item is used.
+
+May throw ValueError the cell does not exist or if "borderLines" is of the wrong format."""
+
+def setCellLeftPadding(row: int, column: int, padding: float, name: str = None):
+    """Sets the left padding of the cell at "row", "column" in the table "name" to "padding". If "name" is not given the currently selected item is used.
+
+May throw ValueError the cell does not exist or if "padding" less than 0."""
+
+def setCellRightBorder(row: int, column: int, borderLines: (float, int, str), name: str = None):
+    """Sets the right border of the cell at "row", "column" in the table "name". The border is specified as a list of "(width, style, color)" tuples. "style" is one of the LINE_* constants. If "name" is not given the currently selected item is used.
+
+May throw ValueError the cell does not exist or if "borderLines" is of the wrong format."""
+
+def setCellRightPadding(row: int, column: int, padding: float, name: str = None):
+    """Sets the right padding of the cell at "row", "column" in the table "name" to "padding". If "name" is not given the currently selected item is used.
+
+May throw ValueError the cell does not exist or if "padding" less than 0."""
+
+def setCellTopBorder(row: int, column: int, borderLines: (float, int, str), name: str = None):
+    """Sets the top border of the cell at "row", "column" in the table "name". The border is specified as a list of "(width, style, color)" tuples. "style" is one of the LINE_* constants. If "name" is not given the currently selected item is used.
+
+May throw ValueError the cell does not exist or if "borderLines" is of the wrong format."""
+
+
+def setCellTopPadding(row: int, column: int, padding: float, name: str = None):
+    """Sets the top padding of the cell at "row", "column" in the table "name" to "padding". If "name" is not given the currently selected item is used.
+
+May throw ValueError the cell does not exist or if "padding" is less than 0."""
+
+def setTableBottomBorder(borderLines: (float, int, str), name: str = None):
+    """Sets the bottom border of the table "name". The border is specified as a list of "(width, style, color)" tuples. "style" is one of the LINE_* constants. If "name" is not given the currently selected item is used.
+
+May throw ValueError if "borderLines" is of the wrong format."""
+
+def setTableFillColor(color: str, name: str = None):
+    """Sets the fill color of the table "name" to "color". If "name" is not given the currently selected item is used.
+
+May throw ValueError the table does not exist."""
+
+def setTableLeftBorder(borderLines: (float, int, str), name: str = None):
+    """Sets the left border of the table "name". The border is specified as a list of "(width, style, color)" tuples. "style" is one of the LINE_* constants. If "name" is not given the currently selected item is used.
+
+May throw ValueError if "borderLines" is of the wrong format."""
+
+def setTableRightBorder(borderLines: (float, int, str), name: str = None):
+    """Sets the right border of the table "name". The border is specified as a list of "(width, style, color)" tuples. "style" is one of the LINE_* constants. If "name" is not given the currently selected item is used.
+
+May throw ValueError if "borderLines" is of the wrong format."""
+
+def setTableTopBorder(borderLines: (float, int, str), name: str = None):
+    """Sets the top border of the table "name". The border is specified as a list of "(width, style, color)" tuples. "style" is one of the LINE_* constants. If "name" is not given the currently selected item is used.
+
+May throw ValueError if "borderLines" is of the wrong format."""
+
 
 # Creating & Destroying Objects
 def createBezierLine(list: tuple, name: str = "name") -> None:
