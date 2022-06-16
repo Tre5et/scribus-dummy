@@ -1467,6 +1467,26 @@ def createPolyLine(list: list, name: str = None) -> str:
 May raise NameExistsError if you explicitly pass a name that's already used. May raise ValueError if an insufficient number of points is passed or if the number of values passed don't group into points without leftovers."""
 
 
+# Shapes
+def combinePolygons():
+    """Combine two or more selected Polygons"""
+
+def createEllipse(x: float, y: float, width: float, height: float, name: str = None) -> str:
+    """Creates a new ellipse on the current page and returns its name. The coordinates are given in the current measurement units of the document (see UNIT constants). "name" should be a unique identifier for the object because you need this name for further referencing of that object. If "name" is not given Scribus will create one for you.
+
+May raise NameExistsError if you explicitly pass a name that's already used."""
+
+def createPolygon(list: list, name: str = None) -> str:
+    """Creates a new polygon and returns its name. The points for the polygon are stored in the list "list" in the following order: [x1, y1, x2, y2...xn. yn]. At least three points are required. There is no need to repeat the first point to close the polygon. The polygon is automatically closed by connecting the first and the last point. The coordinates are given in the current measurement units of the document (see UNIT constants). "name" should be a unique identifier for the object because you need this name for further access to that object. If "name" is not given Scribus will create one for you.
+
+May raise NameExistsError if you explicitly pass a name that's already used. May raise ValueError if an insufficient number of points is passed or if the number of values passed don't group into points without leftovers."""
+
+def createRect(x: float, y: float, width: float, height: float, name: str = None) -> str:
+    """Creates a new rectangle on the current page and returns its name. The coordinates are given in the current measurement units of the document (see UNIT constants). "name" should be a unique identifier for the object because you need this name to reference that object in future. If "name" is not given Scribus will create one for you.
+
+May raise NameExistsError if you explicitly pass a name that's already used."""
+
+
 # Creating & Destroying Objects
 def createBezierLine(list: tuple, name: str = "name") -> None:
     nameExists = False
