@@ -24,7 +24,7 @@ To use the scribus API and also get IntelliSense from this dummy do the followin
 - Return Types as documented (if documented returning the correct value, otherwise returning a generic descriptive value)
 - Documentation strings from the docs
 
-### Currently Included (everything)
+### Currently Included (everything as documented on 16.06.2022)
 - Constants
 - Errors
 - Document Commands
@@ -50,3 +50,5 @@ To use the scribus API and also get IntelliSense from this dummy do the followin
 - Export to Bitmap
 - View
 - Dialogs
+
+### Future updates are not guaranteed
