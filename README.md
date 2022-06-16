@@ -47,5 +47,6 @@ To use the scribus API and also get IntelliSense from this dummy do the followin
 - PDF Forms
 - PDF Export
 - Printing
+- Export to Bitmap
 - Creating & Destroying Objects (not done)
 - Using Dialogs (not done)

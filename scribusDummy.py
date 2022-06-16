@@ -1813,6 +1813,17 @@ def savePDFOptions(fileName: str):
     """Save PDF options to fileName."""
 
 class PDFfile:
+    """Exporting PDF
+
+Class PDFfile() provides the PDF exporting
+for Python scripting as you know it from Save as PDF
+menu.
+Example:
+pdf = PDFfile()
+pdf.thumbnails = 1 # generate thumbnails too
+pdf.file = 'mypdf.pdf'
+pdf.save()"""
+
     def save(self):
         """Save selected pages to pdf file."""
 
@@ -2096,6 +2107,14 @@ Value must be one of integers: 0, 90, 180 or 270"""
 
 # Printing
 class Printer:
+    """Printing
+
+Class Printer() provides printing for Python scripting.
+
+Example:
+p = Printer()
+p.print()"""
+
     def printNow(self) -> bool:
         """Prints selected pages."""
 
@@ -2156,6 +2175,55 @@ False"""
     """Use ICC Profile
 True
 False -- Default"""
+
+
+# Export to bitmap
+def savePageAsEPS(name: str):
+    """Saves the current page as an EPS to the file "name".
+
+May raise ScribusError if the save failed."""
+
+class ImageExport:
+    """Image export
+
+Class ImageExport() provides the bitmap graphics exporting
+for Python scripting as you know it from Export/Save as Image
+menu. See related class PDFfile() and procedure savePageAsEPS().
+Example:
+i = ImageExport()
+i.type = 'PNG' # select one from i.allTypes list
+i.scale = 200 # I want to have 200%
+i.name = '/home/subik/test.png'
+i.save()
+
+two last lines should be replaced with:
+i.saveAs('/home/subik/test.png')"""
+    def save(self) -> bool:
+        """Saves image under previously set 'name'."""
+
+    def saveAs(self) -> bool:
+        """Saves image as 'filename'."""
+
+    allTypes: list
+    """Available image types. Read only list of strings."""
+
+    dpi: int
+    """This value will be used for export as DPI. Read/write integer."""
+
+    name: str
+    """Filename of the image. With or without path. Read/write string."""
+
+    quality: int
+    """Quality/compression: minimum 1 (poor), maximum 100 (qaulity). Read/write integer."""
+
+    scale: int
+    """This is the scaling of the image. 100 = 100% etc. Read/write iteger."""
+
+    transparentBkgnd: bool
+    """Enable or disable transparent background."""
+
+    type: str
+    """Bitmap type. See allTypes list for more info. Read/write string."""
 
 
 # Creating & Destroying Objects
