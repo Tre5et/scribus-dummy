@@ -185,6 +185,13 @@ ITEMTYPE_SYMBOL = -1
 ITEMTYPE_TABLE = -1
 ITEMTYPE_TEXTFRAME = -1
 
+# Printer language
+PRNLANG_POSTSCRIPT1 = -1
+PRNLANG_POSTSCRIPT2 = -1
+PRNLANG_POSTSCRIPT3 = -1
+PRNLANG_WINDOWSGDI = -1
+PRNLANG_PDF = -1
+
 BUTTON_ABORT = 262144
 BUTTON_CANCEL = 4194304
 BUTTON_IGNORE = 1048576
@@ -199,12 +206,6 @@ ICON_CRITICAL = -1
 ICON_INFORMATION = -1
 ICON_NONE = -1
 ICON_WARNING = -1
-
-PRNLANG_POSTSCRIPT1 = -1
-PRNLANG_POSTSCRIPT2 = -1
-PRNLANG_POSTSCRIPT3 = -1
-PRNLANG_WINDOWSGDI = -1
-PRNLANG_PDF = -1
 
 
 # Errors
@@ -2091,6 +2092,70 @@ Value must be one of integers: 0, 90, 180 or 270"""
 13 = PDF 1.3 (Acrobat 4)
 14 = PDF 1.4 (Acrobat 5)
 15 = PDF 1.5 (Acrobat 6)"""
+
+
+# Printing
+class Printer:
+    def printNow(self) -> bool:
+        """Prints selected pages."""
+
+    allPrinters: list
+    """List of installed printers -- read only"""
+
+    cmd: str
+    """Alternative Printer Command"""
+
+    color: bool
+    """Print in color.
+True - color -- Default
+False - greyscale"""
+
+    copies: int
+    """Number of copies"""
+
+    file: str
+    """Name of file to print into"""
+
+    mph: bool
+    """Mirror Pages Horizontal
+True
+False -- Default"""
+
+    mpv: bool
+    """Mirror Pages Vertical
+True
+False -- Default"""
+
+    pages: list
+    """List of pages to be printed"""
+
+    printer: str = "File"
+    """Name of printer to use.
+Default is 'File' for printing into file"""
+
+    prnLanguage: int = PRNLANG_POSTSCRIPT3
+    """Print Language
+One of PRNLANG_* constants -- Default is PRNLANG_POSTSCRIPT3."""
+
+    separation: str
+    """Print separationl
+'No' -- Default
+'All'
+'Cyan'
+'Magenta'
+'Yellow'
+'Black'
+Beware of misspelling because check is not performed"""
+
+    ucr: bool
+    """Apply Under Color Removal
+True -- Default
+False"""
+
+    useICC: bool
+    """Use ICC Profile
+True
+False -- Default"""
 
 
 # Creating & Destroying Objects
