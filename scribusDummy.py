@@ -192,6 +192,7 @@ PRNLANG_POSTSCRIPT3 = -1
 PRNLANG_WINDOWSGDI = -1
 PRNLANG_PDF = -1
 
+# Dialog buttons
 BUTTON_ABORT = 262144
 BUTTON_CANCEL = 4194304
 BUTTON_IGNORE = 1048576
@@ -202,6 +203,8 @@ BUTTON_RETRY = 524288
 BUTTON_YES = 16384
 BUTTON_DEFAULT = -1
 BUTTON_ESCAPE = -1
+
+# Dialog icons
 ICON_CRITICAL = -1
 ICON_INFORMATION = -1
 ICON_NONE = -1
@@ -2234,6 +2237,66 @@ def zoomDocument(double: float):
     """Zoom the document in main GUI window. Actions have whole number values like 20.0, 100.0, etc. Zoom to Fit uses -100 as a marker."""
 
 
+# Dialogs
+def fileDialog(caption: str, filter: str = "comment(*.type1 *.type2)", defaultname: str = "defaultname",
+               haspreview: bool = False, issave: bool = False,
+               isdir: bool = False) -> str:
+    """Shows a File Open dialog box with the caption "caption". Files are filtered with the filter string "filter". A default filename or file path can also supplied, leave this string empty when you don't want to use it. A value of True for haspreview enables a small preview widget in the FileSelect box. When the issave parameter is set to True the dialog acts like a "Save As" dialog otherwise it acts like a "File Open Dialog". When the isdir parameter is True the dialog shows and returns only directories. The default for all of the optional parameters is False.
+
+The filter, if specified, takes the form 'comment (.type .type2 ...)'. For example 'Images (.png .xpm *.jpg)'.
+
+Refer to the Qt-Documentation for QFileDialog for details on filters.
+
+Example: fileDialog('Open input', 'CSV files (*.csv)') Example: fileDialog('Save report', defaultname='report.txt', issave=True)"""
+
+
+def fileQuit() -> None:
+    """Quit Scribus."""
+
+
+def messageBox(caption: str, message: str, icon: int = ICON_NONE, button1: int = BUTTON_OK | BUTTON_DEFAULT,
+               button2: int = BUTTON_NONE, button3: int = BUTTON_NONE) -> None:
+    """Displays a message box with the title "caption", the message "message", and an icon "icon" and up to 3 buttons. By default no icon is used and a single button, OK, is displayed. Only the caption and message arguments are required, though setting an icon and appropriate button(s) is strongly recommended. The message text may contain simple HTML-like markup.
+
+Returns the BUTTON_* constant value corresponding to the clicked button. For example, if OK button is clicked, BUTTON_OK will be returned regardless of whether it is assigned to button1, button2, or button3.
+
+For the icon and the button parameters there are predefined constants available with the same names as in the Qt Documentation. These are the BUTTON_ and ICON_ constants defined in the module. There are also two extra constants that can be binary-ORed with button constants: BUTTON_DEFAULT Pressing enter presses this button. BUTTON_ESCAPE Pressing escape presses this button.
+
+Usage examples: result = messageBox('Script failed', 'This script only works when you have a text frame selected.', ICON_ERROR) result = messageBox('Monkeys!', 'Something went ook! Was it a monkey?', ICON_WARNING, BUTTON_YES|BUTTON_DEFAULT, BUTTON_NO, BUTTON_IGNORE|BUTTON_ESCAPE)
+
+Defined button and icon constants: BUTTON_NONE, BUTTON_ABORT, BUTTON_CANCEL, BUTTON_IGNORE, BUTTON_NO, BUTTON_NOALL, BUTTON_OK, BUTTON_RETRY, BUTTON_YES, BUTTON_YESALL, ICON_NONE, ICON_INFORMATION, ICON_WARNING, ICON_CRITICAL."""
+
+
+def messagebarText(string: str):
+    """Writes the "string" into the Scribus message bar (status line). The text must be UTF8 encoded or 'unicode' string(recommended)."""
+
+
+def newDocDialog() -> bool:
+    """Displays the "New Document" dialog box. Creates a new document if the user accepts the settings. Does not create a document if the user presses cancel. Returns true if a new document was created."""
+
+
+def newStyleDialog() -> str:
+    """Shows 'Create new paragraph style' dialog. Function returns real style name or None when user cancels the dialog."""
+
+
+def progressReset() -> None:
+    """Cleans up the Scribus progress bar previous settings. It is called before the new progress bar use. See progressSet."""
+
+
+def progressSet(nr: int) -> None:
+    """Set the progress bar position to "nr", a value relative to the previously set progressTotal. The progress bar uses the concept of steps; you give it the total number of steps and the number of steps completed so far and it will display the percentage of steps that have been completed. You can specify the total number of steps with progressTotal(). The current number of steps is set with progressSet(). The progress bar can be rewound to the beginning with progressReset(). [based on info taken from Trolltech's Qt docs]"""
+
+
+def progressTotal(max: int) -> None:
+    """Sets the progress bar's maximum steps value to the specified number. See progressSet"""
+
+
+def valueDialog(caption: str, message: str, defaultValue: str = None) -> str:
+    """Shows the common 'Ask for string' dialog and returns its value as a string Parameters: window title, text in the window and optional 'default' value.
+
+Example: valueDialog('title', 'text in the window', 'optional')"""
+
+
 # Creating & Destroying Objects
 def createBezierLine(list: tuple, name: str = "name") -> None:
     nameExists = False
@@ -2317,58 +2380,3 @@ def deleteObject(name: str) -> None:
 def objectExists(name: str) -> None:
     exists: bool
     return exists
-
-
-# Using Dialogs
-def fileDialog(caption: str, filter: str = "comment(*.type1 *.type2)", defaultname: str = "defaultname",
-               haspreview: bool = False, issave: bool = False,
-               isdir: bool = False) -> None:
-    fileName: str
-    return fileName
-
-
-def fileQuit() -> None:
-    pass
-
-
-def getGuiLanguage() -> None:
-    language: str
-    return language
-
-
-def messageBox(caption: str, message: str, icon: int = ICON_NONE, button1: int = BUTTON_OK | BUTTON_DEFAULT,
-               button2: int = BUTTON_NONE,
-               button3: int = BUTTON_NONE) -> None:
-    buttonClicked: int
-    return buttonClicked
-
-
-def newDocDialog() -> None:
-    wasCreated: bool
-    return wasCreated
-
-
-def newStyleDialog() -> None:
-    styleName: str
-    return styleName
-
-
-def statusMessage(string: str) -> None:
-    pass
-
-
-def progressReset() -> None:
-    pass
-
-
-def progressSet(nr: int) -> None:
-    pass
-
-
-def progressTotal(max: int) -> None:
-    pass
-
-
-def valueDialog(caption: str, message: str, defaultValue: str = None) -> None:
-    value: str
-    return value

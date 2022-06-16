@@ -49,5 +49,5 @@ To use the scribus API and also get IntelliSense from this dummy do the followin
 - Printing
 - Export to Bitmap
 - View
+- Dialogs
 - Creating & Destroying Objects (not done)
-- Using Dialogs (not done)
