@@ -2226,6 +2226,14 @@ i.saveAs('/home/subik/test.png')"""
     """Bitmap type. See allTypes list for more info. Read/write string."""
 
 
+# View
+def scrollDocument(x: float, y: float):
+    """Scroll the document in main GUI window by x and y."""
+
+def zoomDocument(double: float):
+    """Zoom the document in main GUI window. Actions have whole number values like 20.0, 100.0, etc. Zoom to Fit uses -100 as a marker."""
+
+
 # Creating & Destroying Objects
 def createBezierLine(list: tuple, name: str = "name") -> None:
     nameExists = False
