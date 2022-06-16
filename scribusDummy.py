@@ -172,6 +172,7 @@ ALIGNV_TOP = -1
 ALIGNV_CENTERED = -1
 ALIGNV_BOTTOM = -1
 
+# Image's color space
 CSPACE_UNDEFINED = -1
 CSPACE_RGB = -1
 CSPACE_CMYK = -1
@@ -1333,6 +1334,65 @@ def unlinkTextFrames(name: str):
     """Remove the specified (named) object from the text frame flow/linkage. If the frame was in the middle of a chain, the previous and next frames will be connected, eg 'a->b->c' becomes 'a->c' when you unlinkTextFrames(b)'
 
 May throw ScribusException if linking rules are violated."""
+
+
+# Image frames
+def createImage(x: float, y: float, width: float, height: float, name: str = None) -> str:
+    """Creates a new picture frame on the current page and returns its name. The coordinates are given in the current measurement units of the document. "name" should be a unique identifier for the object because you need this name for further access to that object. If "name" is not given Scribus will create one for you.
+
+May raise NameExistsError if you explicitly pass a name that's already used."""
+
+def getImageColorSpace(name: str = None) -> int:
+    """Returns the color space for the image loaded in image frame "name" as  one of following integer constants: CSPACE_RGB (0), CSPACE_CMYK (1),  CSPACE_GRAY (2), CSPACE_DUOTONE (3) or CSPACE_MONOCHROME (4). Returns CSPACE_UNDEFINED (-1) if no image is loaded in the frame. If "name" is not given the currently selected item is used."""
+
+def getImageFile(name: str = None) -> str:
+    """Returns the filename for the image in the image frame. If "name" is not given the currently selected item is used."""
+
+def getImageOffset(name: str = None) -> (float, float):
+    """Returns a (x, y) tuple containing the offset values in point unit of the image frame "name". If "name" is not given the currently selected item is used."""
+
+def getImageScale(name: str = None) -> (float, float):
+    """Returns a (x, y) tuple containing the scaling values of the image frame "name". If "name" is not given the currently selected item is used."""
+
+def loadImage(filename: str, name: str = None):
+    """Loads the picture "picture" into the image frame "name". If "name" is not given the currently selected item is used.
+
+May raise WrongFrameTypeError if the target frame is not an image frame"""
+
+def scaleImage(x: float, y: float, name: str = None):
+    """Sets the internal scaling factors of the picture in the image frame "name". If "name" is not given the currently selected item is used. A number of 1 means 100 %. Internal scaling factors are different from the values shown on properties palette. Note : deprecated, use setImageScale() instead.
+
+May raise WrongFrameTypeError if the target frame is not an image frame"""
+
+def setImageBrightness(n: float, name: str = None):
+    """Set image brightness effect of the picture in the image frame "name". If "name" is not given the currently selected item is used. A number of 1 means 100 %. Brightness factor is equal to the value shown on properties palette.
+
+May raise WrongFrameTypeError if the target frame is not an image frame"""
+
+def setImageGrayscale(name: str = None):
+    """Set image grayscale effect of the picture in the image frame "name". If "name" is not given the currently selected item is used.
+
+May raise WrongFrameTypeError if the target frame is not an image frame"""
+
+def setImageOffset(x: float, y: float, name: str = None):
+    """Sets the position of the picture in the image frame "name". If "name" is not given the currently selected item is used. The specified offset values are equal to the values shown on properties palette when point unit is used.
+
+May raise WrongFrameTypeError if the target frame is not an image frame"""
+
+def setImageScale(x: float, y: float, name: str = None):
+    """Sets the scaling factors of the picture in the image frame "name". If "name" is not given the currently selected item is used. A number of 1 means 100 %. Scaling factors are equal to the values shown on properties palette.
+
+May raise WrongFrameTypeError if the target frame is not an image frame"""
+
+def setScaleFrameToImage(name: str = None):
+    """Set frame size on the selected or specified image frame to image size.
+
+May raise WrongFrameTypeError."""
+
+def setScaleImageToFrame(name: str = None):
+    """Sets the scale to frame on the selected or specified image frame to 'scaletoframe'. If 'proportional' is specified, set fixed aspect ratio scaling to 'proportional'. Both 'scaletoframe' and 'proportional' are boolean.
+
+May raise WrongFrameTypeError."""
 
 
 # Creating & Destroying Objects

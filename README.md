@@ -36,5 +36,6 @@ To use the scribus API and also get IntelliSense from this dummy do the followin
 - Selection
 - Frame Properties
 - Text Frames
+- Image Frames
 - Creating & Destroying Objects (not done)
 - Using Dialogs (not done)
