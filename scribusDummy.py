@@ -1623,6 +1623,33 @@ def setTableTopBorder(borderLines: (float, int, str), name: str = None):
 May throw ValueError if "borderLines" is of the wrong format."""
 
 
+# Vector images
+def placeEPS(filename: str, x: float, y: float):
+    """Places the EPS "filename" onto the current page, x and y specify the coordinate of the topleft corner of the EPS placed on the page
+
+If loading was successful, the selection contains the imported EPS"""
+
+def placeODG(filename: str, x: float, y: float):
+    """Places the ODG "filename" onto the current page, x and y specify the coordinate of the topleft corner of the ODG placed on the page
+
+If loading was successful, the selection contains the imported ODG"""
+
+def placeSVG(filename: str, x: float, y: float):
+    """Places the SVG "filename" onto the current page, x and y specify the coordinate of the topleft corner of the SVG placed on the page
+
+If loading was successful, the selection contains the imported SVG"""
+
+def placeSXD(filename: str, x: float, y: float):
+    """Places the SXD "filename" onto the current page, x and y specify the coordinate of the topleft corner of the SXD placed on the page
+
+If loading was successful, the selection contains the imported SXD"""
+
+def placeVectorFile(filename: str, x: float, y: float):
+    """Places the vector graphic "filename" onto the current page, x and y specify the coordinate of the topleft corner of the graphic placed on the page
+
+If loading was successful, the selection contains the imported graphic"""
+
+
 # Creating & Destroying Objects
 def createBezierLine(list: tuple, name: str = "name") -> None:
     nameExists = False

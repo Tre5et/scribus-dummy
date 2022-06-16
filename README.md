@@ -41,5 +41,6 @@ To use the scribus API and also get IntelliSense from this dummy do the followin
 - Lines
 - Shapes
 - Tables
+- Vector Images
 - Creating & Destroying Objects (not done)
 - Using Dialogs (not done)
