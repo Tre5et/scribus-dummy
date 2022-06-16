@@ -1,3 +1,5 @@
+from typing import Union
+
 # Constants
 # Measurement units
 UNIT_C = -1
@@ -101,23 +103,6 @@ SATURATION = -1
 COLOR = -1
 LUMINOSITY = -1
 
-ITEM_IMAGEFRAME = -1
-ITEM_TEXTFRAME = -1
-ITEM_LINE = -1
-ITEM_POLYGON = -1
-ITEM_POLYLINE = -1
-ITEM_PATHTEXT = -1
-ITEM_LATEXFRAME = -1
-ITEM_OSGFRAME = -1
-ITEM_SYMBOL = -1
-ITEM_GROUP = -1
-ITEM_REGULARPOLYGON = -1
-ITEM_ARC = -1
-ITEM_SPIRAL = -1
-ITEM_TABLE = -1
-ITEM_NOTEFRAME = -1
-ITEM_MULTIPLE = -1
-
 # Lines and stroke properties (Line style)
 LINE_DASH = -1
 LINE_DASHDOT = -1
@@ -179,6 +164,26 @@ CSPACE_CMYK = -1
 CSPACE_GRAY = -1
 CSPACE_DUOTONE = -1
 CSPACE_MONOCHROME = -1
+
+# Item types
+ITEMTYPE_ARC = -1
+ITEMTYPE_GROUP = -1
+ITEMTYPE_IMAGEFRAME = -1
+ITEMTYPE_ITEMTYPE1 = -1
+ITEMTYPE_ITEMTYPE3 = -1
+ITEMTYPE_LATEXFRAME = -1
+ITEMTYPE_LINE = -1
+ITEMTYPE_MULTIPLE = -1
+ITEMTYPE_NOTEFRAME = -1
+ITEMTYPE_OSGFRAME = -1
+ITEMTYPE_PATHTEXT = -1
+ITEMTYPE_POLYGON = -1
+ITEMTYPE_POLYLINE = -1
+ITEMTYPE_REGULARPOLYGON = -1
+ITEMTYPE_SPIRAL = -1
+ITEMTYPE_SYMBOL = -1
+ITEMTYPE_TABLE = -1
+ITEMTYPE_TEXTFRAME = -1
 
 BUTTON_ABORT = 262144
 BUTTON_CANCEL = 4194304
@@ -1393,6 +1398,56 @@ def setScaleImageToFrame(name: str = None):
     """Sets the scale to frame on the selected or specified image frame to 'scaletoframe'. If 'proportional' is specified, set fixed aspect ratio scaling to 'proportional'. Both 'scaletoframe' and 'proportional' are boolean.
 
 May raise WrongFrameTypeError."""
+
+
+# Item
+def copyObjects(names: Union[str, tuple] = None):
+    """Copies the specified objects or the current object selection if no item names are given. The names of objects to copy can be provided as a string for copying a single object or as a list of strings to copy several objects at once."""
+
+def deleteObject(name: str = None):
+    """Deletes the item with the name "name". If "name" is not given the currently selected item is deleted."""
+
+def duplicateObjects(names: Union[str, tuple] = None) -> list:
+    """Creates a duplicate of the specified objects or of the current selection if no names are given. The names of objects to duplicate can be provided as a string to duplicate a single object or as a list of strings to duplicate several objects at once. Returns a list of the names of the newly created objects."""
+
+def getProperty(object: str, property: str) -> str:  # apparently you can also use PyCObject as 'object' and get a PyCObject back but no clue how that works
+    """Return the value of the property 'property' of the passed 'object'.
+
+The 'object' argument may be a string, in which case the named PageItem is searched for. It may also be a PyCObject, which may point to any C++ QObject instance.
+
+The 'property' argument must be a string, and is the name of the property to look up on 'object'.
+
+The return value varies depending on the type of the property."""
+
+def getPropertyCType(object: str, property: str, includesuper: bool = True) -> str:  # no clue if it actually returns str
+    """Returns the name of the C type of 'property' of 'object'. See getProperty() for details of arguments.
+
+If 'includesuper' is true, search inherited properties too."""
+
+def getPropertyNames(object: str, includesuper: bool = True) -> list:
+    """Return a list of property names supported by 'object'. If 'includesuper' is true, return properties supported by parent classes as well."""
+
+def groupObjects(list: list) -> str:
+    """Groups the objects named in "list" together. "list" must contain the names of the objects to be grouped. If "list" is not given the currently selected items are used. Returns the group name for further referencing."""
+
+def objectExists(name: str = None) -> bool:
+    """Test if an object with specified name really exists in the document. The optional parameter is the object name. When no object name is given, returns True if there is something selected."""
+
+def pasteObjects() -> list:
+    """Pastes the content of clipboard to canvas. This will be used only or most sensibly following copyObjects(...), since otherwise there will likely be nothing in the clipboard to paste. Returns the names of the newly created object in a list."""
+
+def scaleGroup(factor, name: str = None):
+    """Scales the group the object "name" belongs to. Values greater than 1 enlarge the group, values smaller than 1 make the group smaller e.g a value of 0.5 scales the group to 50 % of its original size, a value of 1.5 scales the group to 150 % of its original size. The value for "factor" must be greater than 0. If "name" is not given the currently selected item is used.
+
+May raise ValueError if an invalid scale factor is passed."""
+
+def setProperty(object: str, property: str, value):
+    """Set 'property' of 'object' to 'value'. If 'value' cannot be converted to a type compatible with the type of 'property', an exception is raised. An exception may also be raised if the underlying setter fails.
+
+See getProperty() for more information."""
+
+def unGroupObjects(name: str = None):
+    """Destructs the group the object "name" belongs to.If "name" is not given the currently selected item is used."""
 
 
 # Creating & Destroying Objects
