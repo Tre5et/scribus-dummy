@@ -1760,6 +1760,50 @@ def renderFont(name: str, filename: str, sample: str, size: (int, int), format: 
 May raise NotFoundError if the specified font can't be found. May raise ValueError if an empty sample or filename is passed."""
 
 
+# PDF forms
+def createPdfAnnotation(which: int, x: float, y: float, w: float, h: float, name: str = None) -> str:
+    """Arguments: "which" is one of the following: (0 PDFBUTTON, 1 PDFRADIOBUTTON, 2 PDFTEXTFIELD, 3 PDFCHECKBOX, 4 PDFCOMBOBOX, 5 PDFLISTBOX, 6 PDFTEXTANNOTATION, 7 PDFLINKANNOTATION, 8 PDF3DANNOTATION) "x" and "y" are the coordinates where it will be placed. "w" is its width. "h" is its height. On systems without OSG installed a runtime error will be raised. "name" should be a unique identifier for the object because you need this name for further referencing of that object. If "name" is not given Scribus will create one for you.
+
+Returns: The name of the newly created annotation.
+
+May raise NameExistsError if you explicitly pass a name that's already used."""
+
+def getJSActionScript(which: int, name: str = None) -> str:
+    """Gets the JavaScript action for a particular event "which" is one of the following: (0 Mouse Up, 1 Mouse Down, 2 Mouse Enter, 3 Mouse Exit, 4 Focus In, 5 Focus Out, 6 Selection Change, 7 Field Format, 8 Field Validate, 9 Field Calculate) "name" uses the currently selected item if not given. Page item must be an annotation or an error will be raised. Returns: Returns a string if object's action type is Javascript, NONE otherwise."""
+
+def isAnnotated(name: str = None, deannotate: bool = False) -> (str, dict):
+    """Queries the item to see if it has a Pdf annotation.
+
+Arguments: "name" uses the currently selected item if not given.
+
+Keyword Arguments: "deannotate" if set to True will turn off the annotation flag
+
+Returns: A tuple with a string at 0 that indicates what type of pdf annotation it is. A dictionary is in index 1 that contains data the function was able to gather. If the item is not a pdf annotation returns None. Passing the keyword parameter deannotate=True returns None.
+
+May raise WrongFrameTypeError if the target frame is not a text frame"""
+
+def setFileAnnotation(path: str, page: int, x: float, y: float, name: str = None, absolute: bool = True):
+    """Turns a text frame into a absolute or relative link annotation. Arguments: "path" is the absolute or relative path to the file. "page" is the page that it links to. "x" and "y" are the x and y coordinates of the page. "name" uses the currently selected item if not given.
+
+Keyword arguments: "absolute" if set to False will make this a relative path. True is its default.
+
+Returns: None
+
+May raise WrongFrameTypeError if the target frame is not a text frame"""
+
+def setJSActionScript(which: int, script: str, name: str = None):
+    """Sets the JavaScript action for a particular event. Also sets the annotation's action to JavaScript. "which" is one of the following: (0 Mouse Up, 1 Mouse Down, 2 Mouse Enter, 3 Mouse Exit, 4 Focus In, 5 Focus Out, 6 Selection Change, 7 Field Format, 8 Field Validate, 9 Field Calculate) "script" is the JavaScript set to the action. "name" uses the currently selected item if not given. Page item must be an annotation or an error will be raised. Returns: None"""
+
+def setURIAnnotation(uri: str, name: str = None):
+    """Turns a text fame into a uri link that gotos the uri specified.
+
+Arguments: "uri" is the uri that the link will be set to. "name" uses the currently selected item if not given.
+
+Returns: None
+
+May raise WrongFrameTypeError if the target frame is not a text frame"""
+
+
 # Creating & Destroying Objects
 def createBezierLine(list: tuple, name: str = "name") -> None:
     nameExists = False

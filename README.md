@@ -44,5 +44,6 @@ To use the scribus API and also get IntelliSense from this dummy do the followin
 - Vector Images
 - Colors
 - Fonts
+- PDF Forms
 - Creating & Destroying Objects (not done)
 - Using Dialogs (not done)
