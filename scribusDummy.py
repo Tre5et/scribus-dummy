@@ -1747,6 +1747,19 @@ def setSpotColor(name: str, spot: bool):
 May raise NotFoundError if a named color wasn't found. May raise ValueError if an invalid color name is specified."""
 
 
+# Fonts
+def getFontNames() -> list:
+    """Returns a list with the names of all available fonts."""
+
+def getXFontNames() -> list:
+    """Returns a larger font info. It's a list of the tuples with: [ (Scribus name, Family, Real name, subset (1|0), embed PS (1|0), font file), (...), ... ]"""
+
+def renderFont(name: str, filename: str, sample: str, size: (int, int), format: str = "PPM") -> bool:  # not entirely sure about size, i assume its (xPixels, yPixels) when in doubt, ignore format
+    """Creates an image preview of font "name" with given text "sample" and size. If "filename" is not "", image is saved into "filename". Otherwise image data is returned as a string. The optional "format" argument specifies the image format to generate, and supports any format allowed by QPixmap.save(). Common formats are PPM, JPEG, PNG and XPM.
+
+May raise NotFoundError if the specified font can't be found. May raise ValueError if an empty sample or filename is passed."""
+
+
 # Creating & Destroying Objects
 def createBezierLine(list: tuple, name: str = "name") -> None:
     nameExists = False
