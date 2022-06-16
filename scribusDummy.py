@@ -1450,6 +1450,23 @@ def unGroupObjects(name: str = None):
     """Destructs the group the object "name" belongs to.If "name" is not given the currently selected item is used."""
 
 
+# Lines
+def createBezierLine(list: list, name: str = None) -> str:
+    """Creates a new bezier curve and returns its name. The points for the bezier curve are stored in the list "list" in the following order: [x1, y1, kx1, ky1, x2, y2, kx2, ky2...xn. yn, kxn. kyn] In the points list, x and y mean the x and y coordinates of the point and kx and ky meaning the control point for the curve. The coordinates are given in the current measurement units of the document (see UNIT constants). "name" should be a unique identifier for the object because you need this name for further access to that object. If "name" is not given Scribus will create one for you.
+
+May raise NameExistsError if you explicitly pass a name that's already used. May raise ValueError if an insufficient number of points is passed or if the number of values passed don't group into points without leftovers."""
+
+def createLine(x1: float, y1: float, x2: float, y2: float, name: str = None) -> str:
+    """Creates a new line from the point(x1, y1) to the point(x2, y2) and returns its name. The coordinates are given in the current measurement unit of the document (see UNIT constants). "name" should be a unique identifier for the object because you need this name for further access to that object. If "name" is not given Scribus will create one for you.
+
+May raise NameExistsError if you explicitly pass a name that's already used."""
+
+def createPolyLine(list: list, name: str = None) -> str:
+    """Creates a new polyline and returns its name. The points for the polyline are stored in the list "list" in the following order: [x1, y1, x2, y2...xn. yn]. The coordinates are given in the current measurement units of the document (see UNIT constants). "name" should be a unique identifier for the object because you need this name for further access to that object. If "name" is not given Scribus will create one for you.
+
+May raise NameExistsError if you explicitly pass a name that's already used. May raise ValueError if an insufficient number of points is passed or if the number of values passed don't group into points without leftovers."""
+
+
 # Creating & Destroying Objects
 def createBezierLine(list: tuple, name: str = "name") -> None:
     nameExists = False
