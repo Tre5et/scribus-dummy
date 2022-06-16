@@ -1650,6 +1650,103 @@ def placeVectorFile(filename: str, x: float, y: float):
 If loading was successful, the selection contains the imported graphic"""
 
 
+#Colors
+def changeColorCMYK(name: str, c: int, m: int, y: int, k: int):
+    """Changes the color "name" to the specified CMYK value. The color value is defined via four components c = Cyan, m = Magenta, y = Yellow and k = Black. Color components should be in the range from 0 to 255.
+
+May raise NotFoundError if the named color wasn't found. May raise ValueError if an invalid color name is specified."""
+
+def changeColorCMYKFloat(name: str, c: float, m: float, y: float, k: float):
+    """Changes the color "name" to the specified CMYK value. The color value is defined via four components c = Cyan, m = Magenta, y = Yellow and k = Black. Color components are floating point values between 0 and 100.
+
+May raise NotFoundError if the named color wasn't found. May raise ValueError if an invalid color name is specified."""
+
+def changeColorLab(name: str, L: float, a: float, b: float):  # this is documented the same as changeColorRGB but this is pretty certainly a mistake
+    """Changes the color "name" to the specified CIELab values. The color value is defined via three components: L = luminosity, a = green/red, b = blue/yellow. Color components are floating point values with L between 0 and 100, a and b between -128 and 128.
+
+May raise NotFoundError if the named color wasn't found. May raise ValueError if an invalid color name is specified."""
+
+def changeColorRGB(name: str, r: int, g: int, b: int):
+    """Changes the color "name" to the specified RGB value. The color value is defined via three components r = red, g = green, b = blue. Color components should be in the range from 0 to 255.
+
+May raise NotFoundError if the named color wasn't found. May raise ValueError if an invalid color name is specified."""
+
+def changeColorRGBFloat(name: str, r: float, g: float, b: float):
+    """Changes the color "name" to the specified RGB value. The color value is defined via three components r = red, g = green, b = blue. Color components are floating point values between 0 and 255.
+
+May raise NotFoundError if the named color wasn't found. May raise ValueError if an invalid color name is specified."""
+
+def defineColorCMYK(name: str, c: int, m: int, y: int, k: int):
+    """Defines a new color "name". The color Value is defined via four components: c = Cyan, m = Magenta, y = Yellow and k = Black. Color components should be in the range from 0 to 255.
+
+May raise ValueError if an invalid color name is specified."""
+
+def defineColorCMYKFloat(name: str, c: float, m: float, y: float, k: float):
+    """Defines a new color "name". The color Value is defined via four components: c = Cyan, m = Magenta, y = Yellow and k = Black. Color components are floating point values between 0 and 100.
+
+May raise ValueError if an invalid color name is specified."""
+
+def defineColorLab(name: str, L: float, a: float, b: float):  # this is documented the same as changeColorRGB but this is pretty certainly a mistake
+    """Defines a new color "name" using CIELab values. The color value is defined via three components: L = luminosity, a = green/red, b = blue/yellow. Color components are floating point values with L between 0 and 100, a and b between -128 and 128.
+
+May raise ValueError if an invalid color name is specified."""
+
+def defineColorRGB(name: str, r: int, g: int, b: int):
+    """Defines a new color "name". The color Value is defined via three components: r = red, g = green, b = blue. Color components should be in the range from 0 to 255.
+
+May raise ValueError if an invalid color name is specified."""
+
+def defineColorRGBFloat(name: str, r: float, g: float, b: float):
+    """Defines a new color "name". The color Value is defined via three components: r = red, g = green, b = blue. Color components are floating point values between 0 and 255.
+
+May raise ValueError if an invalid color name is specified."""
+
+def deleteColor(name: str, replace: str = "None"):
+    """Deletes the color "name". Every occurrence of that color is replaced by the color "replace". If not specified, "replace" defaults to the color "None" - transparent.
+
+deleteColor works on the default document colors if there is no document open. In that case, "replace", if specified, has no effect.
+
+May raise NotFoundError if a named color wasn't found. May raise ValueError if an invalid color name is specified."""
+
+def getColor(name: str) -> (int, int, int, int):
+    """Returns a tuple (C, M, Y, K) containing the four color components of the color "name" from the current document. If no document is open, returns the value of the named color from the default document colors.
+
+May raise NotFoundError if the named color wasn't found. May raise ValueError if an invalid color name is specified."""
+
+def getColorAsRGB(name: str) -> (int, int, int):
+    """Returns a tuple (R,G,B) containing the three color components of the color "name" from the current document, converted to the RGB color space. If no document is open, returns the value of the named color from the default document colors.
+
+May raise NotFoundError if the named color wasn't found. May raise ValueError if an invalid color name is specified."""
+
+def getColorAsRGBFloat(name: str) -> (float, float, float):
+    """Returns a tuple (R,G,B) containing the three color components of the color "name" from the current document, converted to the RGB color space. Color components are floating point values between 0 and 255. If no document is open, returns the value of the named color from the default document colors.
+
+May raise NotFoundError if the named color wasn't found. May raise ValueError if an invalid color name is specified."""
+
+def getColorFloat(name: str) -> (float, float, float, float):
+    """Returns a tuple (C, M, Y, K) containing the four color components of the color "name" from the current document. Color components are floating point values between 0 and 100. If no document is open, returns the value of the named color from the default document colors.
+
+May raise NotFoundError if the named color wasn't found. May raise ValueError if an invalid color name is specified."""
+
+def getColorNames() -> list:
+    """Returns a list containing the names of all defined colors in the document. If no document is open, returns a list of the default document colors."""
+
+def isSpotColor(name: str) -> bool:
+    """Returns True if the color "name" is a spot color. See also setSpotColor()
+
+May raise NotFoundError if a named color wasn't found. May raise ValueError if an invalid color name is specified."""
+
+def replaceColor(name: str, replace: str):
+    """Every occurrence of the color "name" is replaced by the color "replace".
+
+May raise NotFoundError if a named color wasn't found. May raise ValueError if an invalid color name is specified."""
+
+def setSpotColor(name: str, spot: bool):
+    """Set the color "name" as a spot color if spot parameter is True. See also isSpotColor()
+
+May raise NotFoundError if a named color wasn't found. May raise ValueError if an invalid color name is specified."""
+
+
 # Creating & Destroying Objects
 def createBezierLine(list: tuple, name: str = "name") -> None:
     nameExists = False
