@@ -1,4 +1,4 @@
-from typing import Union
+from typing import Union, Annotated
 
 # Constants
 # Measurement units
@@ -1802,6 +1802,295 @@ Arguments: "uri" is the uri that the link will be set to. "name" uses the curren
 Returns: None
 
 May raise WrongFrameTypeError if the target frame is not a text frame"""
+
+
+# PDF export
+def readPDFOptions(fileName: str):
+    """Read PDF options from fileName."""
+
+def savePDFOptions(fileName: str):
+    """Save PDF options to fileName."""
+
+class PDFfile:
+    def save(self):
+        """Save selected pages to pdf file."""
+
+    allowAnnots: bool
+    """Allow Adding Annotations and Fields. Bool value"""
+
+    allowChange: bool
+    """Allow Adding Annotations and Fields. Bool value"""
+
+    allowCopy: bool
+    """Allow Copying Text and Graphics. Bool value"""
+
+    allowPrinting: bool
+    """Allow Printing the Document. Bool value"""
+
+    article: bool
+    """Save Linked Text Frames as PDF Articles
+Bool value"""
+
+    binding: int
+    """Choose binding.
+0 - Left binding
+1 - Right binding"""
+
+    bleedMarks: bool
+    """Create marks delimiting the bleed area."""
+
+    bleedb: float
+    """Bleed Bottom
+Distance for bleed from the bottom of the physical page"""
+
+    bleedl: float
+    """Bleed Left
+Distance for bleed from the left of the physical page"""
+
+    bleedr: float
+    """Bleed Right
+Distance for bleed from the right of the physical page"""
+
+    bleedt: float
+    """Bleed Top
+Distance for bleed from the top of the physical page"""
+
+    bookmarks: bool
+    """Embed the bookmarks you created in your document.
+These are useful for navigating long PDF documents.
+Bool value"""
+
+    colorMarks: bool
+    """Add color calibration bars."""
+
+    compress: bool
+    """Compression switch. Bool value."""
+
+    compressmtd: int
+    """Compression method.
+0 - Automatic
+1 - JPEG
+2 - zip
+3 - None."""
+
+    cropMarks: bool
+    """Create crop marks in the PDF indicating where the paper should be cut or trimmed after printing."""
+
+    displayBookmarks: bool
+    """Display the bookmarks upon opening"""
+
+    displayFullscreen: bool
+    """Display the document in full screen mode upon opening."""
+
+    displayLayers: bool
+    """Display the layer list upon opening. Useful only for PDF 1.5+."""
+
+    displayThumbs: bool
+    """Display the page thumbnails upon opening"""
+
+    doClip: bool
+    """Do not show objects outside the margins in the exported file"""
+
+    docInfoMarks: bool
+    """Add document information which includes the document title and page numbers."""
+
+    domulti: bool
+    """Produce a PDF File for every Page. Bool value"""
+
+    downsample: int
+    """Downsample image resolusion to this value. Values from 35 to 4000
+Set 0 for not to downsample"""
+
+    effval: [int, int, int, int, int, int]
+    """List of effection values for each saved page.
+It is list of list of six integers. Those int has followin meaning:
+- Length of time the page is shown before the presentation
+starts on the selected page. (1-3600)
+- Length of time the effect runs. (1 - 3600)
+A shorter time will speed up the effect,
+a longer one will slow it down
+- Type of the display effect
+0 - No Effect
+1 - Blinds
+2 - Box
+3 - Dissolve
+4 - Glitter
+5 - Split
+6 - Wipe
+- Direction of the effect of moving lines
+for the split and blind effects.
+0 - Horizontal
+1 - Vertical
+- Starting position for the box and split effects.
+0 - Inside
+1 - Outside
+- Direction of the glitter or wipe effects.
+0 - Left to Right
+1 - Top to Bottom
+2 - Bottom to Top
+3 - Right to Left
+4 - Top-left to Bottom-Right"""
+
+    embedPDF: bool
+    """Export EPS and PDFs in image frames as embedded PDFs. This does not yet take care of colorspaces, so you should know what you are doing before setting this to 'true'."""
+
+    encrypt: bool
+    """Use Encription. Bool value"""
+
+    file: str
+    """Name of file to save into"""
+
+    fitWindow: bool
+    """Fit the document page or pages to the available space in the viewer window."""
+
+    fontEmbedding: int
+    """Font embedding mode.
+Value must be one of integers: 0 (Embed), 1 (Outline), 2 (No embedding)."""
+
+    fonts: list
+    """List of fonts to embed."""
+
+    hideMenuBar: bool
+    """Hide the viewer menu bar, the PDF will display in a plain window."""
+
+    hideToolBar: bool
+    """Hide the viewer toolbar. The toolbar has usually selection and other editing capabilities."""
+
+    imagepr: any
+    """Color profile for images"""
+
+    info: str
+    """Mandatory string for PDF/X or the PDF will fail
+PDF/X conformance. We recommend you use the title of the document."""
+
+    intenti: int
+    """Rendering intent for images
+0 - Perceptual
+1 - Relative Colorimetric
+2 - Saturation
+3 - Absolute Colorimetric"""
+
+    intents: int
+    """Rendering intent for solid colors
+0 - Perceptual
+1 - Relative Colorimetric
+2 - Saturation
+3 - Absolute Colorimetric"""
+
+    isGrayscale: bool
+    """Export PDF in grayscale"""
+
+    lpival: list
+    """Rendering Settings for individual colors.
+
+This is list of values for each color
+Color values have structure [siii] which stand for:
+s - Color name ('Black', 'Cyan', 'Magenta', 'Yellow')
+i - Frequency (10 to 1000)
+i - Angle (-180 to 180)
+i - Spot Function
+0 - Simple Dot
+1 - Line
+2 - Round
+3 - Ellipse
+Be careful when supplying these values as they
+are not checked for validity."""
+
+    markLength: float
+    """Indicate the length of crop and bleed marks."""
+
+    markOffset: float
+    """Indicate the distance offset between mark and page area."""
+
+    mirrorH: bool
+    """Mirror Page(s) horizontally"""
+
+    mirrorV: bool
+    """Mirror Page(s) vetically"""
+
+    noembicc: bool
+    """Don't use embedded ICC profiles. Bool value"""
+
+    openAction: str
+    """Javascript to be executed when PDF document is opened."""
+
+    outdst: int
+    """Output destination.
+0 - screen
+1 - printer"""
+
+    owner: str
+    """Owner's password"""
+
+    pageLayout: int
+    """Document layout in PDF viewer:
+0 - Show the document in single page mode
+1 - Show the document in single page mode with the pages displayed continuously end to end like a scroll
+2 - Show the document with facing pages, starting with the first page displayed on the left
+3 - Show the document with facing pages, starting with the first page displayed on the right"""
+
+    pages: list
+    """List of pages to print"""
+
+    presentation: bool
+    """Enable Presentation Effects.Bool value"""
+
+    printprofc: any
+    """Output profile for printing. If possible, get some guidance from your printer on profile selection."""
+
+    profilei: bool
+    """Embed a color profile for images. Bool value."""
+
+    profiles: bool
+    """Embed a color profile for solid colors. Bool value."""
+
+    quality: int
+    """Image quality
+0 - Maximum
+1 - High
+2 - Medium
+3 - Low
+4 - Minimum"""
+
+    registrationMarks: bool
+    """Add registration marks to each separation."""
+
+    resolution: int
+    """Resolution of output file. Values from 35 to 4000."""
+
+    rotatedDeg: int
+    """Automatically rotate the exported pages
+Value must be one of integers: 0, 90, 180 or 270"""
+
+    solidpr: any
+    """Color profile for solid colors"""
+
+    subsetList: list
+    """List of fonts to subsetted."""
+
+    thumbnails: bool
+    """Generate thumbnails. Bool value."""
+
+    useDocBleeds: bool
+    """Use the existing bleed settings from the document preferences. Bool value"""
+
+    useLayers: bool
+    """Layers in your document are exported to the PDF. Only available if PDF 1.5 is chosen."""
+
+    uselpi: bool
+    """Use Custom Rendering Settings. Bool value"""
+
+    usespot: bool
+    """Use Spot Colors. Bool value"""
+
+    version: int
+    """Choose PDF version to use:
+10 = PDF/X4
+11 = PDF/X1a
+12 = PDF/X-3
+13 = PDF 1.3 (Acrobat 4)
+14 = PDF 1.4 (Acrobat 5)
+15 = PDF 1.5 (Acrobat 6)"""
 
 
 # Creating & Destroying Objects
