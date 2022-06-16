@@ -22,9 +22,9 @@ To use the scribus API and also get IntelliSense from this dummy do the followin
 - Functions as provided in the scripter documentation
 - Function Arguments as documented (if documented having the correct default value, otherwise having a generic descriptive default value)
 - Return Types as documented (if documented returning the correct value, otherwise returning a generic descriptive value)
-- Documentation strings from the docs (not done)
+- Documentation strings from the docs
 
-### Currently Included
+### Currently Included (everything)
 - Constants
 - Errors
 - Document Commands
@@ -50,4 +50,3 @@ To use the scribus API and also get IntelliSense from this dummy do the followin
 - Export to Bitmap
 - View
 - Dialogs
-- Creating & Destroying Objects (not done)

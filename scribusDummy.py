@@ -649,7 +649,7 @@ def createParagraphStyle(name: str, linespacingmode: int = 0, linespacing: float
                          gapbefore: float = -1.0, gapafter: float = -1.0, firstindent: float = 0.0,
                          hasdropcap: bool = False, dropcaplines: int = -1,
                          dropcapoffset: float = -1.0, charstyle: str = "style", bullet: str = None,
-                         tabs: tuple = "") -> None:
+                         tabs: tuple = None) -> None:
     """Creates a paragraph style. This function takes the following keyword parameters:
 
 "name" [required] -> specifies the name of the paragraphstyle to create
@@ -719,11 +719,11 @@ def getParagraphStyles() -> list:
     """Return a list of the names of all paragraph styles in the current document."""
 
 
-def loadStylesFromFile(filename: str):
+def loadStylesFromFile(filename: str) -> None:
     """Loads paragraph styles from the Scribus document at "filename" into the current document."""
 
 
-def setCharacterStyle(style: str, name: str = None):
+def setCharacterStyle(style: str, name: str = None) -> None:
     """Apply the named character "style" to the object named "name". If object name is not provided, style is applied on current object selection. If multiple objects are selected or if selected object has no text selection, style is applied on selected objects. Otherwise style is applied to the current text selection."""
 
 
@@ -782,38 +782,38 @@ def getTableStyles() -> list:
     """Return a list of the names of all table styles in the current document."""
 
 
-def setCellStyle(row: int, column: int, style: str, name: str = None):
+def setCellStyle(row: int, column: int, style: str, name: str = None) -> None:
     """Sets the named style of the cell at "row", "column" in the table "name" to "style". If "name" is not given the currently selected item is used.
 
 May throw ValueError if the cell does not exist."""
 
 
-def setCustomLineStyle(styleName: str, name: str = None):
+def setCustomLineStyle(styleName: str, name: str = None) -> None:
     """Sets the custom line style of the object "name" to "styleName" Argument "styleName" is the name of line style as seen in Style Manager If "name" is not given the currently selected item is used."""
 
 
-def setLineStyle(style: int, name: str = None):
+def setLineStyle(style: int, name: str = None) -> None:
     """Sets the line style of the object "name" to the style "style". If "name" is not given the currently selected item is used. Argument for this function is number - value from 1 to 37 There are few predefined constants for "style" - LINE_"""
 
 
 # Selection
-def deselectAll():
+def deselectAll() -> None:
     """Deselects all objects in the whole document."""
 
 
-def getSelectedObject(nr: int = 0):
+def getSelectedObject(nr: int = 0) -> None:
     """Returns the name of the selected object. "nr" if given indicates the number of the selected object, e.g. 0 means the first selected object, 1 means the second selected Object and so on."""
 
 
-def moveSelectionToBack():
+def moveSelectionToBack() -> None:
     """Moves current selection to back."""
 
 
-def moveSelectionToFront():
+def moveSelectionToFront() -> None:
     """Moves current selection to front."""
 
 
-def selectObject(name: str):
+def selectObject(name: str) -> None:
     """Selects the object with the given "name"."""
 
 
@@ -822,7 +822,7 @@ def selectionCount() -> int:
 
 
 # Frame Properties
-def flipObject(H: bool, V: bool, name: str = None):
+def flipObject(H: bool, V: bool, name: str = None) -> None:
     """Toggle the object "name" horizontal and/or vertical flip. If "name" is not given the currently selected item is used. """
 
 
@@ -908,66 +908,66 @@ def lockObject(name: str = None) -> bool:
     """Locks the object "name" if it's unlocked or unlock it if it's locked. If "name" is not given the currently selected item is used. Returns true if locked."""
 
 
-def moveObject(dx: float, dy: float, name: str = None):
+def moveObject(dx: float, dy: float, name: str = None) -> None:
     """Moves the object "name" by dx and dy relative to its current position. The distances are expressed in the current measurement unit of the document (see UNIT constants). If "name" is not given the currently selected item is used. If the object "name" belongs to a group, the whole group is moved."""
 
 
-def moveObjectAbs(x: float, y: float, name: str = None):
+def moveObjectAbs(x: float, y: float, name: str = None) -> None:
     """Moves the object "name" to a new location. The coordinates are expressed in the current measurement unit of the document (see UNIT constants). If "name" is not given the currently selected item is used. If the object "name" belongs to a group, the whole group is moved."""
 
 
-def rotateObject(rot: float, name: str = None):
+def rotateObject(rot: float, name: str = None) -> None:
     """Rotates the object "name" by "rot" degrees relatively. The object is rotated by the vertex that is currently selected as the rotation point - by default, the top left vertex at zero rotation. Positive values mean counter clockwise rotation when the default rotation point is used. If "name" is not given the currently selected item is used."""
 
 
-def rotateObjectAbs(rot: float, name: str = None):
+def rotateObjectAbs(rot: float, name: str = None) -> None:
     """Sets the rotation of the object "name" to "rot". Positive values mean counter clockwise rotation. If "name" is not given the currently selected item is used."""
 
 
-def setCornerRadius(radius: int, name: str = None):
+def setCornerRadius(radius: int, name: str = None) -> None:
     """Sets the corner radius of the object "name". The radius is expressed in points. If "name" is not given the currently selected item is used.
 
 May raise ValueError if the corner radius is negative."""
 
 
-def setFillBlendmode(blendmode: int, name: str = None):
+def setFillBlendmode(blendmode: int, name: str = None) -> None:
     """Sets the fill blendmode of the object "name" to blendmode If "name" is not given the currently selected item is used."""
 
 
-def setFillColor(color: str, name: str = None):
+def setFillColor(color: str, name: str = None) -> None:
     """Sets the fill color of the object "name" to the color "color". "color" is the name of one of the defined colors. If "name" is not given the currently selected item is used."""
 
 
-def setFillShade(shade: int, name: str = None):
+def setFillShade(shade: int, name: str = None) -> None:
     """Sets the shading of the fill color of the object "name" to "shade". "shade" must be an integer value in the range from 0 (lightest) to 100 (full Color intensity). If "name" is not given the currently selected Item is used.
 
 May raise ValueError if the fill shade is out of bounds."""
 
 
-def setFillTransparency(transparency: float, name: str = None):
+def setFillTransparency(transparency: float, name: str = None) -> None:
     """Sets the fill transparency of the object "name" to transparency If "name" is not given the currently selected item is used."""
 
 
-def setGradientFill(type: int, color1: str, shade1: int, color2: str, shade2: int, name: str = None):
+def setGradientFill(type: int, color1: str, shade1: int, color2: str, shade2: int, name: str = None) -> None:
     """Sets the gradient fill of the object "name" to type. Color descriptions are the same as for setFillColor() and setFillShade(). See the constants for available types (FILL_)."""
 
 
-def setGradientStop(color: str, shade: int, opacity: float, ramppoint: float, name: str = None):
+def setGradientStop(color: str, shade: int, opacity: float, ramppoint: float, name: str = None) -> None:
     """Set or add a gradient stop to the gradient fill of the object "name" at position ramppoint. Color descriptions are the same as for setFillColor() and setFillShade(). setGradientFill() must have been called previously for the gradient fill to be visible."""
 
 
 def setitemname(newName: str,
-                name: str = None):  # Not sure if this capitalization is correct, that's how it is in the docs
+                name: str = None) -> None:  # Not sure if this capitalization is correct, that's how it is in the docs
     """Sets the name of object "name" to newName and returns the name applied. If "name" is not given the currently selected item is used.
 
 May raise NotFoundError if the object doesn't exist."""
 
 
-def setLineBlendmod(blendmode: int, name: str = None):
+def setLineBlendmod(blendmode: int, name: str = None) -> None:
     """Sets the line blendmode of the object "name" to blendmode If "name" is not given the currently selected item is used."""
 
 
-def setLineCap(endType: int, name: str = None):
+def setLineCap(endType: int, name: str = None) -> None:
     """Sets the line cap style of the object "name" to the style "cap". If "name" is not given the currently selected item is used. There are predefined constants for "cap" - CAP_."""
 
 
@@ -975,33 +975,33 @@ def setLineColor(color: str, name: str = None) -> str:
     """Sets the line color of the object "name" to the color "color". If "name" is not given the currently selected item is used."""
 
 
-def setLineJoin(join: int, name: str = None):
+def setLineJoin(join: int, name: str = None) -> None:
     """Sets the line join style of the object "name" to the style "join". If "name" is not given the currently selected item is used. There are predefined constants for join - JOIN_."""
 
 
-def setLineShade(shade: int, name: str = None):
+def setLineShade(shade: int, name: str = None) -> None:
     """Sets the shading of the line color of the object "name" to "shade". "shade" must be an integer value in the range from 0 (lightest) to 100 (full color intensity). If "name" is not given the currently selected item is used.
 
 May raise ValueError if the line shade is out of bounds."""
 
 
-def setLineTransparency(transparency: float, name: str = None):
+def setLineTransparency(transparency: float, name: str = None) -> None:
     """Sets the line transparency of the object "name" to transparency If "name" is not given the currently selected item is used."""
 
 
-def setLineWidth(width: float, name: str = None):  # takes float but returns integer in getLineWidth?!
+def setLineWidth(width: float, name: str = None) -> None:  # takes float but returns integer in getLineWidth?!
     """Sets line width of the object "name" to "width". "width" must be in the range from 0.0 to 12.0 inclusive, and is measured in points. If "name" is not given the currently selected item is used.
 
 May raise ValueError if the line width is out of bounds."""
 
 
-def setMultiLine(namedStyle: str, name: str = None):
+def setMultiLine(namedStyle: str, name: str = None) -> None:
     """Sets the line style of the object "name" to the named style "namedStyle". If "name" is not given the currently selected item is used.
 
 May raise NotFoundError if the line style doesn't exist."""
 
 
-def setOpjectAttributes(attributes: dict, name: str = None):
+def setOpjectAttributes(attributes: dict, name: str = None) -> None:
     """Sets attributes of the object "name". If "name" is not given the currently selected item is used.
 
 attributes is a list of dictionary. Each dictionary must have those keys: Name, Type, Value, Parameter, Relationship, RelationshipTo, AutoAddTo All values must be strings.
@@ -1009,11 +1009,11 @@ attributes is a list of dictionary. Each dictionary must have those keys: Name, 
 May raise NotFoundError if the object doesn't exist."""
 
 
-def setTextFlowMode(name: str, state: int):
+def setTextFlowMode(name: str, state: int) -> None:
     """Enables/disables "Text Flows Around Frame" feature for object "name". Called with parameters string name and optional int "state" (0 <= state <= 3). Setting "state" to 0 will disable text flow. Setting "state" to 1 will make text flow around object frame. Setting "state" to 2 will make text flow around bounding box. Setting "state" to 3 will make text flow around contour line. If "state" is not passed, text flow is toggled."""
 
 
-def sizeObject(width: float, height: float, name: str = None):
+def sizeObject(width: float, height: float, name: str = None) -> None:
     """Resizes the object "name" to the given width and height. If "name" is not given the currently selected item is used."""
 
 
@@ -1058,7 +1058,7 @@ def dehyphenateText(name: str = None) -> bool:
 May raise WrongFrameTypeError if the target frame is not a text frame"""
 
 
-def deleteText(name: str = None):
+def deleteText(name: str = None) -> None:
     """Deletes any text in the text frame "name". If there is some text selected, only the selected text will be deleted. If "name" is not given the currently selected item is used."""
 
 
@@ -1164,11 +1164,11 @@ def hyphenateText(name: str = None) -> bool:
 May raise WrongFrameTypeError if the target frame is not a text frame"""
 
 
-def insertHTMLText(file: str, name: str = None):
+def insertHTMLText(file: str, name: str = None) -> None:
     """Inserts the text from "file" into the text frame "name". Text must be UTF encoded (see setText() as reference). If "name" is not given the currently selected Item is used."""
 
 
-def insertText(text: str, pos: int, name: str = None):
+def insertText(text: str, pos: int, name: str = None) -> None:
     """Inserts the text "text" at the position "pos" into the text frame "name". Text must be UTF encoded (see setText() as reference) The first character has an index of 0. Inserting text at position -1 appends it to the frame. If "name" is not given the currently selected item is used.
 
 For performance reason, this function does not update text layout in any way. As a consequence, you may need to call layoutText() or layoutTextChain() at appropriate times after calling this function and before calling functions such as getFrameText() or getTextLines().
@@ -1182,26 +1182,26 @@ def isPDFBookmark(name: str = None) -> bool:
 May raise WrongFrameTypeError if the target frame is not a text frame"""
 
 
-def layoutText(name: str = None):
+def layoutText(name: str = None) -> None:
     """Relayout text in the text frame "name". If "name" is not given the currently selected item is used."""
 
 
-def layoutChainText(name: str = None):
+def layoutChainText(name: str = None) -> None:
     """Relayout the whole text chain whom the text frame "name" belongs. If "name" is not given the currently selected item is used."""
 
 
-def linkTextFrames(fromname: str, toname: str):
+def linkTextFrames(fromname: str, toname: str) -> None:
     """Link two text frames. The frame named "fromname" is linked to the frame named "toname". The target frame must be an empty text frame and must not link to or be linked from any other frames already.
 
 May throw ScribusException if linking rules are violated."""
 
 
 def outlineText(
-        name: str = None):  # this was documented as traceText() but I'm very certain that is a mistake as traceText() is defined twice, one being deprecated and referencing outlineText()
+        name: str = None) -> None:  # this was documented as traceText() but I'm very certain that is a mistake as traceText() is defined twice, one being deprecated and referencing outlineText()
     """Convert the text frame "name" to outlines. If "name" is not given the currently selected item is used."""
 
 
-def selectFrameText(start: int, count: int, name: str = None):
+def selectFrameText(start: int, count: int, name: str = None) -> None:
     """Selects "count" characters of text in the text frame "name" starting from the character "start". Character counting starts at 0. If "count" is zero, any text selection will be cleared. If "count" is -1, the selection will extend to the end of the frame. If "name" is not given the currently selected item is used.
 
 This function only acts on the text visible in the specified frame. If you need to work on the text contained in a text chain, use selectText() instead. As this function depends on text layout being up-to-date, you may need to call layoutText() or layoutTextChain() before calling this function in order to get expected result.
@@ -1209,83 +1209,83 @@ This function only acts on the text visible in the specified frame. If you need 
 May throw IndexError if the selection is outside the bounds of the text."""
 
 
-def selectText(start: int, count: int, name: str = None):
+def selectText(start: int, count: int, name: str = None) -> None:
     """Selects "count" characters of text in the story of the text frame "name" starting from the character "start". Character counting starts at 0. If "count" is zero, any text selection will be cleared. If "name" is not given the currently selected item is used.
 
 May throw IndexError if the selection is outside the bounds of the text."""
 
 
-def setCellText(row: int, column: int, text: str, name: str = None):
+def setCellText(row: int, column: int, text: str, name: str = None) -> None:
     """Sets the text of the cell at "row", "column" in the table "name" to "text". If "name" is not given the currently selected item is used.
 
 May throw ValueError if the cell does not exist."""
 
 
-def setColumnGap(size: float, name: str = None):
+def setColumnGap(size: float, name: str = None) -> None:
     """Sets the column gap of the text frame "name" to the value "size". If "name" is not given the currently selected item is used.
 
 May throw ValueError if the column gap is out of bounds (must be positive)."""
 
 
-def setColumns(nr: int, name: str = None):
+def setColumns(nr: int, name: str = None) -> None:
     """Sets the number of columns of the text frame "name" to the integer "nr". If "name" is not given the currently selected item is used.
 
 May throw ValueError if number of columns is not at least one."""
 
 
-def setFirstLineOffset(offset: int, name: str = None):
+def setFirstLineOffset(offset: int, name: str = None) -> None:
     """Sets the offset of the first line of text inside text frame "name" to the specified offset policy. If "name" is not given the currently selected item is used. "offset" should be one of the FLOP_* constants defined in this module - see dir(scribus).
 
 May throw ValueError for an invalid offset constant."""
 
 
-def setFont(font: str, name: str = None):
+def setFont(font: str, name: str = None) -> None:
     """Sets the font of the text frame "name" to "font". If there is some text selected only the selected text is changed. If "name" is not given the currently selected item is used.
 
 May throw ValueError if the font cannot be found."""
 
 
-def setFontFeatures(fontfeature: str, name: str = None):
+def setFontFeatures(fontfeature: str, name: str = None) -> None:
     """Sets the font features of the text frame "name" to "fontfeature". If there is some text selected only the selected text is changed. If "name" is not given the currently selected item is used.
 
 May throw ValueError if the font cannot be found."""
 
 
-def setFontSize(size: float, name: str = None):
+def setFontSize(size: float, name: str = None) -> None:
     """Sets the font size of the text frame "name" to "size". "size" is treated as a value in points. If there is some text selected only the selected text is changed. "size" must be in the range 1 to 512. If "name" is not given the currently selected item is used.
 
 May throw ValueError for a font size that's out of bounds."""
 
 
-def setLineSpacing(size: float, name: str = None):
+def setLineSpacing(size: float, name: str = None) -> None:
     """Sets the line spacing ("leading") of the text frame "name" to "size". "size" is a value in points. If "name" is not given the currently selected item is used.
 
 May throw ValueError if the line spacing is out of bounds."""
 
 
-def setLineSpacingMode(mode: int, name: str = None):
+def setLineSpacingMode(mode: int, name: str = None) -> None:
     """Sets the line spacing mode of the text frame "name" to "mode". If "name" is not given the currently selected item is used. Mode values are the same as in createParagraphStyle.
 
 May throw ValueError if the mode is out of bounds."""
 
 
-def setPDFBookmark(toggle: bool, name: str = None):
+def setPDFBookmark(toggle: bool, name: str = None) -> None:
     """Sets whether (toggle = 1) the text frame "name" is a bookmark nor not. If "name" is not given the currently selected item is used.
 
 May raise WrongFrameTypeError if the target frame is not a text frame"""
 
 
-def setText(text: str, name: str = None):
+def setText(text: str, name: str = None) -> None:
     """Sets the text of the text frame "name" to the text of the string "text". Text must be UTF8 encoded - use e.g. unicode(text, 'iso-8859-2'). See the FAQ for more details. If "name" is not given the currently selected item is used."""
 
 
-def setTextAlignment(align: int, name: str = None):
+def setTextAlignment(align: int, name: str = None) -> None:
     """Sets the text alignment of the text frame "name" to the specified alignment. If "name" is not given the currently selected item is used. "align" should be one of the ALIGN_ constants defined in this module - see dir(scribus).
 
 May throw ValueError for an invalid alignment constant."""
 
 
-def setTextAnnotation(icon: int, isopen: bool, name: str = None):
+def setTextAnnotation(icon: int, isopen: bool, name: str = None) -> None:
     """Turns a text fame into a text annotation.
 
 Arguments: "icon" must be 0-8. The values correspond to:( 0 "Note", 1 "Comment", 2 "Key", 3 "Help", 4 "NewParagraph", 5 "Paragraph", 6 "Insert",7 "Cross", 8 "Circle")n"isopen" is True or False. "name" uses the currently selected item if not given.
@@ -1295,39 +1295,39 @@ Returns: None
 May raise WrongFrameTypeError if the target frame is not a text frame"""
 
 
-def setTextColor(color: str, name: str = None):
+def setTextColor(color: str, name: str = None) -> None:
     """Sets the text color of the text frame "name" to the color "color". If there is some text selected only the selected text is changed. If "name" is not given the currently selected item is used."""
 
 
-def setTextDirection(direction: int, name: str = None):
+def setTextDirection(direction: int, name: str = None) -> None:
     """Sets the text direction of the text frame "name" to the specified direction. If "name" is not given the currently selected item is used. "direction" should be one of the DIRECTION_ constants defined in this module - see dir(scribus).
 
 May throw ValueError for an invalid direction constant."""
 
 
-def setTextDistances(left: float, right: float, top: float, bottom: float, name: str = None):
+def setTextDistances(left: float, right: float, top: float, bottom: float, name: str = None) -> None:
     """Sets the text distances of the text frame "name" to the values "left" "right", "top" and "bottom". If "name" is not given the currently selected item is used.
 
 May throw ValueError if any of the distances are out of bounds (must be positive)."""
 
 
-def setTextScalingH(scale: float, name: str = None):
+def setTextScalingH(scale: float, name: str = None) -> None:
     """Sets the horizontal character scaling of the object "name" to "scale" in percent. If "name" is not given the currently selected item is used."""
 
 
-def setTextScalingV(scale: float, name: str = None):
+def setTextScalingV(scale: float, name: str = None) -> None:
     """Sets the vertical character scaling of the object "name" to "scale" in percent. If "name" is not given the currently selected item is used."""
 
 
-def setTextShade(shade: int, name: str = None):
+def setTextShade(shade: int, name: str = None) -> None:
     """Sets the shading of the text color of the object "name" to "shade". If there is some text selected only the selected text is changed. "shade" must be an integer value in the range from 0 (lightest) to 100 (full color intensity). If "name" is not given the currently selected item is used."""
 
 
-def setTextStroke(color: str, name: str = None):
+def setTextStroke(color: str, name: str = None) -> None:
     """Set "color" of the text stroke. If "name" is not given the currently selected item is used."""
 
 
-def setTextVerticalAlignment(align: int, name: str = None):
+def setTextVerticalAlignment(align: int, name: str = None) -> None:
     """Sets the vertical alignment of text inside text frame "name" to the specified alignment. If "name" is not given the currently selected item is used. "align" should be one of the ALIGNV constants defined in this module - see dir(scribus).
 
 May throw ValueError for an invalid alignment constant."""
@@ -1339,7 +1339,7 @@ def textOverflows(name: str = None, nolinks: bool = False) -> bool:
 May raise WrongFrameTypeError if the target frame is not an text frame"""
 
 
-def unlinkTextFrames(name: str):
+def unlinkTextFrames(name: str) -> None:
     """Remove the specified (named) object from the text frame flow/linkage. If the frame was in the middle of a chain, the previous and next frames will be connected, eg 'a->b->c' becomes 'a->c' when you unlinkTextFrames(b)'
 
 May throw ScribusException if linking rules are violated."""
@@ -1351,70 +1351,86 @@ def createImage(x: float, y: float, width: float, height: float, name: str = Non
 
 May raise NameExistsError if you explicitly pass a name that's already used."""
 
+
 def getImageColorSpace(name: str = None) -> int:
     """Returns the color space for the image loaded in image frame "name" as  one of following integer constants: CSPACE_RGB (0), CSPACE_CMYK (1),  CSPACE_GRAY (2), CSPACE_DUOTONE (3) or CSPACE_MONOCHROME (4). Returns CSPACE_UNDEFINED (-1) if no image is loaded in the frame. If "name" is not given the currently selected item is used."""
+
 
 def getImageFile(name: str = None) -> str:
     """Returns the filename for the image in the image frame. If "name" is not given the currently selected item is used."""
 
+
 def getImageOffset(name: str = None) -> (float, float):
     """Returns a (x, y) tuple containing the offset values in point unit of the image frame "name". If "name" is not given the currently selected item is used."""
+
 
 def getImageScale(name: str = None) -> (float, float):
     """Returns a (x, y) tuple containing the scaling values of the image frame "name". If "name" is not given the currently selected item is used."""
 
-def loadImage(filename: str, name: str = None):
+
+def loadImage(filename: str, name: str = None) -> None:
     """Loads the picture "picture" into the image frame "name". If "name" is not given the currently selected item is used.
 
 May raise WrongFrameTypeError if the target frame is not an image frame"""
 
-def scaleImage(x: float, y: float, name: str = None):
+
+def scaleImage(x: float, y: float, name: str = None) -> None:
     """Sets the internal scaling factors of the picture in the image frame "name". If "name" is not given the currently selected item is used. A number of 1 means 100 %. Internal scaling factors are different from the values shown on properties palette. Note : deprecated, use setImageScale() instead.
 
 May raise WrongFrameTypeError if the target frame is not an image frame"""
 
-def setImageBrightness(n: float, name: str = None):
+
+def setImageBrightness(n: float, name: str = None) -> None:
     """Set image brightness effect of the picture in the image frame "name". If "name" is not given the currently selected item is used. A number of 1 means 100 %. Brightness factor is equal to the value shown on properties palette.
 
 May raise WrongFrameTypeError if the target frame is not an image frame"""
 
-def setImageGrayscale(name: str = None):
+
+def setImageGrayscale(name: str = None) -> None:
     """Set image grayscale effect of the picture in the image frame "name". If "name" is not given the currently selected item is used.
 
 May raise WrongFrameTypeError if the target frame is not an image frame"""
 
-def setImageOffset(x: float, y: float, name: str = None):
+
+def setImageOffset(x: float, y: float, name: str = None) -> None:
     """Sets the position of the picture in the image frame "name". If "name" is not given the currently selected item is used. The specified offset values are equal to the values shown on properties palette when point unit is used.
 
 May raise WrongFrameTypeError if the target frame is not an image frame"""
 
-def setImageScale(x: float, y: float, name: str = None):
+
+def setImageScale(x: float, y: float, name: str = None) -> None:
     """Sets the scaling factors of the picture in the image frame "name". If "name" is not given the currently selected item is used. A number of 1 means 100 %. Scaling factors are equal to the values shown on properties palette.
 
 May raise WrongFrameTypeError if the target frame is not an image frame"""
 
-def setScaleFrameToImage(name: str = None):
+
+def setScaleFrameToImage(name: str = None) -> None:
     """Set frame size on the selected or specified image frame to image size.
 
 May raise WrongFrameTypeError."""
 
-def setScaleImageToFrame(name: str = None):
+
+def setScaleImageToFrame(name: str = None) -> None:
     """Sets the scale to frame on the selected or specified image frame to 'scaletoframe'. If 'proportional' is specified, set fixed aspect ratio scaling to 'proportional'. Both 'scaletoframe' and 'proportional' are boolean.
 
 May raise WrongFrameTypeError."""
 
 
 # Item
-def copyObjects(names: Union[str, tuple] = None):
+def copyObjects(names: Union[str, tuple] = None) -> None:
     """Copies the specified objects or the current object selection if no item names are given. The names of objects to copy can be provided as a string for copying a single object or as a list of strings to copy several objects at once."""
 
-def deleteObject(name: str = None):
+
+def deleteObject(name: str = None) -> None:
     """Deletes the item with the name "name". If "name" is not given the currently selected item is deleted."""
+
 
 def duplicateObjects(names: Union[str, tuple] = None) -> list:
     """Creates a duplicate of the specified objects or of the current selection if no names are given. The names of objects to duplicate can be provided as a string to duplicate a single object or as a list of strings to duplicate several objects at once. Returns a list of the names of the newly created objects."""
 
-def getProperty(object: str, property: str) -> str:  # apparently you can also use PyCObject as 'object' and get a PyCObject back but no clue how that works
+
+def getProperty(object: str,
+                property: str) -> str:  # apparently you can also use PyCObject as 'object' and get a PyCObject back but no clue how that works
     """Return the value of the property 'property' of the passed 'object'.
 
 The 'object' argument may be a string, in which case the named PageItem is searched for. It may also be a PyCObject, which may point to any C++ QObject instance.
@@ -1423,34 +1439,43 @@ The 'property' argument must be a string, and is the name of the property to loo
 
 The return value varies depending on the type of the property."""
 
-def getPropertyCType(object: str, property: str, includesuper: bool = True) -> str:  # no clue if it actually returns str
+
+def getPropertyCType(object: str, property: str,
+                     includesuper: bool = True) -> str:  # no clue if it actually returns str
     """Returns the name of the C type of 'property' of 'object'. See getProperty() for details of arguments.
 
 If 'includesuper' is true, search inherited properties too."""
 
+
 def getPropertyNames(object: str, includesuper: bool = True) -> list:
     """Return a list of property names supported by 'object'. If 'includesuper' is true, return properties supported by parent classes as well."""
+
 
 def groupObjects(list: list) -> str:
     """Groups the objects named in "list" together. "list" must contain the names of the objects to be grouped. If "list" is not given the currently selected items are used. Returns the group name for further referencing."""
 
+
 def objectExists(name: str = None) -> bool:
     """Test if an object with specified name really exists in the document. The optional parameter is the object name. When no object name is given, returns True if there is something selected."""
+
 
 def pasteObjects() -> list:
     """Pastes the content of clipboard to canvas. This will be used only or most sensibly following copyObjects(...), since otherwise there will likely be nothing in the clipboard to paste. Returns the names of the newly created object in a list."""
 
-def scaleGroup(factor, name: str = None):
+
+def scaleGroup(factor, name: str = None) -> None:
     """Scales the group the object "name" belongs to. Values greater than 1 enlarge the group, values smaller than 1 make the group smaller e.g a value of 0.5 scales the group to 50 % of its original size, a value of 1.5 scales the group to 150 % of its original size. The value for "factor" must be greater than 0. If "name" is not given the currently selected item is used.
 
 May raise ValueError if an invalid scale factor is passed."""
 
-def setProperty(object: str, property: str, value):
+
+def setProperty(object: str, property: str, value) -> None:
     """Set 'property' of 'object' to 'value'. If 'value' cannot be converted to a type compatible with the type of 'property', an exception is raised. An exception may also be raised if the underlying setter fails.
 
 See getProperty() for more information."""
 
-def unGroupObjects(name: str = None):
+
+def unGroupObjects(name: str = None) -> None:
     """Destructs the group the object "name" belongs to.If "name" is not given the currently selected item is used."""
 
 
@@ -1460,10 +1485,12 @@ def createBezierLine(list: list, name: str = None) -> str:
 
 May raise NameExistsError if you explicitly pass a name that's already used. May raise ValueError if an insufficient number of points is passed or if the number of values passed don't group into points without leftovers."""
 
+
 def createLine(x1: float, y1: float, x2: float, y2: float, name: str = None) -> str:
     """Creates a new line from the point(x1, y1) to the point(x2, y2) and returns its name. The coordinates are given in the current measurement unit of the document (see UNIT constants). "name" should be a unique identifier for the object because you need this name for further access to that object. If "name" is not given Scribus will create one for you.
 
 May raise NameExistsError if you explicitly pass a name that's already used."""
+
 
 def createPolyLine(list: list, name: str = None) -> str:
     """Creates a new polyline and returns its name. The points for the polyline are stored in the list "list" in the following order: [x1, y1, x2, y2...xn. yn]. The coordinates are given in the current measurement units of the document (see UNIT constants). "name" should be a unique identifier for the object because you need this name for further access to that object. If "name" is not given Scribus will create one for you.
@@ -1472,280 +1499,337 @@ May raise NameExistsError if you explicitly pass a name that's already used. May
 
 
 # Shapes
-def combinePolygons():
+def combinePolygons() -> None:
     """Combine two or more selected Polygons"""
+
 
 def createEllipse(x: float, y: float, width: float, height: float, name: str = None) -> str:
     """Creates a new ellipse on the current page and returns its name. The coordinates are given in the current measurement units of the document (see UNIT constants). "name" should be a unique identifier for the object because you need this name for further referencing of that object. If "name" is not given Scribus will create one for you.
 
 May raise NameExistsError if you explicitly pass a name that's already used."""
 
+
 def createPolygon(list: list, name: str = None) -> str:
     """Creates a new polygon and returns its name. The points for the polygon are stored in the list "list" in the following order: [x1, y1, x2, y2...xn. yn]. At least three points are required. There is no need to repeat the first point to close the polygon. The polygon is automatically closed by connecting the first and the last point. The coordinates are given in the current measurement units of the document (see UNIT constants). "name" should be a unique identifier for the object because you need this name for further access to that object. If "name" is not given Scribus will create one for you.
 
 May raise NameExistsError if you explicitly pass a name that's already used. May raise ValueError if an insufficient number of points is passed or if the number of values passed don't group into points without leftovers."""
+
 
 def createRect(x: float, y: float, width: float, height: float, name: str = None) -> str:
     """Creates a new rectangle on the current page and returns its name. The coordinates are given in the current measurement units of the document (see UNIT constants). "name" should be a unique identifier for the object because you need this name to reference that object in future. If "name" is not given Scribus will create one for you.
 
 May raise NameExistsError if you explicitly pass a name that's already used."""
 
+
 # Tables
-def createTable(x: float, y: float, width: float, height: float, numRows: int, numColumns: int, name: str = None) -> str:
+def createTable(x: float, y: float, width: float, height: float, numRows: int, numColumns: int,
+                name: str = None) -> str:
     """Creates a new table with the given number of rows and columns on the actual page and returns its name. The coordinates are given in the actual measurement unit of the document (see UNIT constants). "name" should be a unique identifier for the object because you need this name for further referencing of that object. If "name" is not given Scribus will create one for you.
 
 May raise NameExistsError if you explicitly pass a name that's already used. May raise ValueError if an insufficient number of rows or columns is passed."""
 
+
 def getCellColumnSpan(row: int, column: int, name: str = None) -> int:
     """Returns the column span of the cell at "row", "column" in the table "name" or -1 if the cell does not exist. If the cell is covered by another spanning cell, the column span of the spanning cell is returned. If "name" is not given the currently selected item is used."""
+
 
 def getCellFillColor(row: int, column: int, name: str = None) -> str:
     """Returns the fill color of the cell at "row", "column" in the table "name" If "name" is not given the currently selected item is used."""
 
+
 def getCellRowSpan(row: int, column: int, name: str = None) -> int:
     """Returns the row span of the cell at "row", "column" in the table "name" or -1 if the cell does not exist. If the cell is covered by another spanning cell, the row span of the spanning cell is returned. If "name" is not given the currently selected item is used."""
+
 
 def getTableColumnWidth(column: int, name: str = None) -> float:
     """Returns the column width of "column" in the table "name" expressed in points, or 0.0 if the column does not exist. If "name" is not given the currently selected item is used."""
 
+
 def getTableColumns(name: str = None) -> int:
     """Gets the number of columns in the table "name". If "name" is not given the currently selected item is used."""
+
 
 def getTableFillColor(name: str = None) -> str:
     """Returns the fill color of the table "name". If "name" is not given the currently selected item is used."""
 
+
 def getTableRowHeight(row: int, name: str = None) -> float:
     """Returns the row height of "row" in the table "name" expressed in points, or 0.0 if the row does not exist. If "name" is not given the currently selected item is used."""
+
 
 def getTableRows(name: str = None) -> int:
     """Gets the number of rows in the table "name". If "name" is not given the currently selected item is used."""
 
-def insertTableColumns(index: int, numColumns: int, name: str = None):
+
+def insertTableColumns(index: int, numColumns: int, name: str = None) -> None:
     """Inserts "numColumns" columns before the column at "index" in the table "name". If "name" is not given the currently selected item is used.
 
 May throw ValueError if number of columns is not at least one or index is out of bounds."""
 
-def insertTableRows(index: int, numRows: int, name: str = None):
+
+def insertTableRows(index: int, numRows: int, name: str = None) -> None:
     """Inserts "numRows" rows before the row at "index" in the table "name". If "name" is not given the currently selected item is used.
 
 May throw ValueError if number of rows is not at least one or index is out of bounds."""
 
-def mergeTableCells(row: int, column: int, numRows: int, numColumns: int, name: str = None):
+
+def mergeTableCells(row: int, column: int, numRows: int, numColumns: int, name: str = None) -> None:
     """Merges the cell at the specified "row" and "column" with the adjacent cells into one cell.
 
 May throw ValueError if number if numRows or numColumns is less than 1 or the specified area is out of bounds."""
 
-def removeTableColumns(index: int, numColumns: int, name: str = None):
+
+def removeTableColumns(index: int, numColumns: int, name: str = None) -> None:
     """Removes "numColumns" columns from the table "name" starting with the column at "index". If "name" is not given the currently selected item is used.
 
 May throw ValueError if number of columns is not at least one or the range to be deleted is out of bounds."""
 
-def removeTableRows(index: int, numRows: int, name: str = None):
+
+def removeTableRows(index: int, numRows: int, name: str = None) -> None:
     """Removes "numRows" rows from the table "name" starting with the row at "index". If "name" is not given the currently selected item is used.
 
 May throw ValueError if number of rows is not at least one or the range to be deleted is out of bounds."""
 
-def resizeTableColumn(column: int, width: float, name: str = None):
+
+def resizeTableColumn(column: int, width: float, name: str = None) -> None:
     """Resizes "column" to "width" in the table "name". If "name" is not given the currently selected item is used.
 
 May throw ValueError if the width is less than 0 or the column does not exist."""
 
-def resizeTableRow(row: int, width: float, name: str = None):
+
+def resizeTableRow(row: int, width: float, name: str = None) -> None:
     """Resizes "row" to "height" in the table "name". If "name" is not given the currently selected item is used.
 
 May throw ValueError if the height is less than 0 or the row does not exist."""
 
-def setCellBottomBorder(row: int, column: int, borderLines: (float, int, str), name: str = None):
+
+def setCellBottomBorder(row: int, column: int, borderLines: (float, int, str), name: str = None) -> None:
     """Sets the bottom border of the cell at "row", "column" in the table "name". The border is specified as a list of "(width, style, color)" tuples. "style" is one of the LINE_* constants. If "name" is not given the currently selected item is used.
 
 May throw ValueError the cell does not exist or if "borderLines" is of the wrong format."""
 
-def setCellBottomPadding(row: int, column: int, padding: float, name: str = None):
+
+def setCellBottomPadding(row: int, column: int, padding: float, name: str = None) -> None:
     """Sets the bottom padding of the cell at "row", "column" in the table "name" to "padding". If "name" is not given the currently selected item is used.
 
 May throw ValueError the cell does not exist or if "padding" is less than 0."""
 
-def setCellFillColor(row: int, column: int, color: str, name: str = None):
+
+def setCellFillColor(row: int, column: int, color: str, name: str = None) -> None:
     """Sets the fill color of the cell at "row", "column" in the table "name" to "color". If "name" is not given the currently selected item is used.
 
 May throw ValueError the cell does not exist."""
 
-def setCellLeftBorder(row: int, column: int, borderLines: (float, int, str), name: str = None):
+
+def setCellLeftBorder(row: int, column: int, borderLines: (float, int, str), name: str = None) -> None:
     """Sets the left border of the cell at "row", "column" in the table "name". The border is specified as a list of "(width, style, color)" tuples. "style" is one of the LINE_* constants. If "name" is not given the currently selected item is used.
 
 May throw ValueError the cell does not exist or if "borderLines" is of the wrong format."""
 
-def setCellLeftPadding(row: int, column: int, padding: float, name: str = None):
+
+def setCellLeftPadding(row: int, column: int, padding: float, name: str = None) -> None:
     """Sets the left padding of the cell at "row", "column" in the table "name" to "padding". If "name" is not given the currently selected item is used.
 
 May throw ValueError the cell does not exist or if "padding" less than 0."""
 
-def setCellRightBorder(row: int, column: int, borderLines: (float, int, str), name: str = None):
+
+def setCellRightBorder(row: int, column: int, borderLines: (float, int, str), name: str = None) -> None:
     """Sets the right border of the cell at "row", "column" in the table "name". The border is specified as a list of "(width, style, color)" tuples. "style" is one of the LINE_* constants. If "name" is not given the currently selected item is used.
 
 May throw ValueError the cell does not exist or if "borderLines" is of the wrong format."""
 
-def setCellRightPadding(row: int, column: int, padding: float, name: str = None):
+
+def setCellRightPadding(row: int, column: int, padding: float, name: str = None) -> None:
     """Sets the right padding of the cell at "row", "column" in the table "name" to "padding". If "name" is not given the currently selected item is used.
 
 May throw ValueError the cell does not exist or if "padding" less than 0."""
 
-def setCellTopBorder(row: int, column: int, borderLines: (float, int, str), name: str = None):
+
+def setCellTopBorder(row: int, column: int, borderLines: (float, int, str), name: str = None) -> None:
     """Sets the top border of the cell at "row", "column" in the table "name". The border is specified as a list of "(width, style, color)" tuples. "style" is one of the LINE_* constants. If "name" is not given the currently selected item is used.
 
 May throw ValueError the cell does not exist or if "borderLines" is of the wrong format."""
 
 
-def setCellTopPadding(row: int, column: int, padding: float, name: str = None):
+def setCellTopPadding(row: int, column: int, padding: float, name: str = None) -> None:
     """Sets the top padding of the cell at "row", "column" in the table "name" to "padding". If "name" is not given the currently selected item is used.
 
 May throw ValueError the cell does not exist or if "padding" is less than 0."""
 
-def setTableBottomBorder(borderLines: (float, int, str), name: str = None):
+
+def setTableBottomBorder(borderLines: (float, int, str), name: str = None) -> None:
     """Sets the bottom border of the table "name". The border is specified as a list of "(width, style, color)" tuples. "style" is one of the LINE_* constants. If "name" is not given the currently selected item is used.
 
 May throw ValueError if "borderLines" is of the wrong format."""
 
-def setTableFillColor(color: str, name: str = None):
+
+def setTableFillColor(color: str, name: str = None) -> None:
     """Sets the fill color of the table "name" to "color". If "name" is not given the currently selected item is used.
 
 May throw ValueError the table does not exist."""
 
-def setTableLeftBorder(borderLines: (float, int, str), name: str = None):
+
+def setTableLeftBorder(borderLines: (float, int, str), name: str = None) -> None:
     """Sets the left border of the table "name". The border is specified as a list of "(width, style, color)" tuples. "style" is one of the LINE_* constants. If "name" is not given the currently selected item is used.
 
 May throw ValueError if "borderLines" is of the wrong format."""
 
-def setTableRightBorder(borderLines: (float, int, str), name: str = None):
+
+def setTableRightBorder(borderLines: (float, int, str), name: str = None) -> None:
     """Sets the right border of the table "name". The border is specified as a list of "(width, style, color)" tuples. "style" is one of the LINE_* constants. If "name" is not given the currently selected item is used.
 
 May throw ValueError if "borderLines" is of the wrong format."""
 
-def setTableTopBorder(borderLines: (float, int, str), name: str = None):
+
+def setTableTopBorder(borderLines: (float, int, str), name: str = None) -> None:
     """Sets the top border of the table "name". The border is specified as a list of "(width, style, color)" tuples. "style" is one of the LINE_* constants. If "name" is not given the currently selected item is used.
 
 May throw ValueError if "borderLines" is of the wrong format."""
 
 
 # Vector images
-def placeEPS(filename: str, x: float, y: float):
+def placeEPS(filename: str, x: float, y: float) -> None:
     """Places the EPS "filename" onto the current page, x and y specify the coordinate of the topleft corner of the EPS placed on the page
 
 If loading was successful, the selection contains the imported EPS"""
 
-def placeODG(filename: str, x: float, y: float):
+
+def placeODG(filename: str, x: float, y: float) -> None:
     """Places the ODG "filename" onto the current page, x and y specify the coordinate of the topleft corner of the ODG placed on the page
 
 If loading was successful, the selection contains the imported ODG"""
 
-def placeSVG(filename: str, x: float, y: float):
+
+def placeSVG(filename: str, x: float, y: float) -> None:
     """Places the SVG "filename" onto the current page, x and y specify the coordinate of the topleft corner of the SVG placed on the page
 
 If loading was successful, the selection contains the imported SVG"""
 
-def placeSXD(filename: str, x: float, y: float):
+
+def placeSXD(filename: str, x: float, y: float) -> None:
     """Places the SXD "filename" onto the current page, x and y specify the coordinate of the topleft corner of the SXD placed on the page
 
 If loading was successful, the selection contains the imported SXD"""
 
-def placeVectorFile(filename: str, x: float, y: float):
+
+def placeVectorFile(filename: str, x: float, y: float) -> None:
     """Places the vector graphic "filename" onto the current page, x and y specify the coordinate of the topleft corner of the graphic placed on the page
 
 If loading was successful, the selection contains the imported graphic"""
 
 
-#Colors
-def changeColorCMYK(name: str, c: int, m: int, y: int, k: int):
+# Colors
+def changeColorCMYK(name: str, c: int, m: int, y: int, k: int) -> None:
     """Changes the color "name" to the specified CMYK value. The color value is defined via four components c = Cyan, m = Magenta, y = Yellow and k = Black. Color components should be in the range from 0 to 255.
 
 May raise NotFoundError if the named color wasn't found. May raise ValueError if an invalid color name is specified."""
 
-def changeColorCMYKFloat(name: str, c: float, m: float, y: float, k: float):
+
+def changeColorCMYKFloat(name: str, c: float, m: float, y: float, k: float) -> None:
     """Changes the color "name" to the specified CMYK value. The color value is defined via four components c = Cyan, m = Magenta, y = Yellow and k = Black. Color components are floating point values between 0 and 100.
 
 May raise NotFoundError if the named color wasn't found. May raise ValueError if an invalid color name is specified."""
 
-def changeColorLab(name: str, L: float, a: float, b: float):  # this is documented the same as changeColorRGB but this is pretty certainly a mistake
+
+def changeColorLab(name: str, L: float, a: float,
+                   b: float) -> None:  # this is documented the same as changeColorRGB but this is pretty certainly a mistake
     """Changes the color "name" to the specified CIELab values. The color value is defined via three components: L = luminosity, a = green/red, b = blue/yellow. Color components are floating point values with L between 0 and 100, a and b between -128 and 128.
 
 May raise NotFoundError if the named color wasn't found. May raise ValueError if an invalid color name is specified."""
 
-def changeColorRGB(name: str, r: int, g: int, b: int):
+
+def changeColorRGB(name: str, r: int, g: int, b: int) -> None:
     """Changes the color "name" to the specified RGB value. The color value is defined via three components r = red, g = green, b = blue. Color components should be in the range from 0 to 255.
 
 May raise NotFoundError if the named color wasn't found. May raise ValueError if an invalid color name is specified."""
 
-def changeColorRGBFloat(name: str, r: float, g: float, b: float):
+
+def changeColorRGBFloat(name: str, r: float, g: float, b: float) -> None:
     """Changes the color "name" to the specified RGB value. The color value is defined via three components r = red, g = green, b = blue. Color components are floating point values between 0 and 255.
 
 May raise NotFoundError if the named color wasn't found. May raise ValueError if an invalid color name is specified."""
 
-def defineColorCMYK(name: str, c: int, m: int, y: int, k: int):
+
+def defineColorCMYK(name: str, c: int, m: int, y: int, k: int) -> None:
     """Defines a new color "name". The color Value is defined via four components: c = Cyan, m = Magenta, y = Yellow and k = Black. Color components should be in the range from 0 to 255.
 
 May raise ValueError if an invalid color name is specified."""
 
-def defineColorCMYKFloat(name: str, c: float, m: float, y: float, k: float):
+
+def defineColorCMYKFloat(name: str, c: float, m: float, y: float, k: float) -> None:
     """Defines a new color "name". The color Value is defined via four components: c = Cyan, m = Magenta, y = Yellow and k = Black. Color components are floating point values between 0 and 100.
 
 May raise ValueError if an invalid color name is specified."""
 
-def defineColorLab(name: str, L: float, a: float, b: float):  # this is documented the same as changeColorRGB but this is pretty certainly a mistake
+
+def defineColorLab(name: str, L: float, a: float,
+                   b: float) -> None:  # this is documented the same as changeColorRGB but this is pretty certainly a mistake
     """Defines a new color "name" using CIELab values. The color value is defined via three components: L = luminosity, a = green/red, b = blue/yellow. Color components are floating point values with L between 0 and 100, a and b between -128 and 128.
 
 May raise ValueError if an invalid color name is specified."""
 
-def defineColorRGB(name: str, r: int, g: int, b: int):
+
+def defineColorRGB(name: str, r: int, g: int, b: int) -> None:
     """Defines a new color "name". The color Value is defined via three components: r = red, g = green, b = blue. Color components should be in the range from 0 to 255.
 
 May raise ValueError if an invalid color name is specified."""
 
-def defineColorRGBFloat(name: str, r: float, g: float, b: float):
+
+def defineColorRGBFloat(name: str, r: float, g: float, b: float) -> None:
     """Defines a new color "name". The color Value is defined via three components: r = red, g = green, b = blue. Color components are floating point values between 0 and 255.
 
 May raise ValueError if an invalid color name is specified."""
 
-def deleteColor(name: str, replace: str = "None"):
+
+def deleteColor(name: str, replace: str = "None") -> None:
     """Deletes the color "name". Every occurrence of that color is replaced by the color "replace". If not specified, "replace" defaults to the color "None" - transparent.
 
 deleteColor works on the default document colors if there is no document open. In that case, "replace", if specified, has no effect.
 
 May raise NotFoundError if a named color wasn't found. May raise ValueError if an invalid color name is specified."""
 
+
 def getColor(name: str) -> (int, int, int, int):
     """Returns a tuple (C, M, Y, K) containing the four color components of the color "name" from the current document. If no document is open, returns the value of the named color from the default document colors.
 
 May raise NotFoundError if the named color wasn't found. May raise ValueError if an invalid color name is specified."""
+
 
 def getColorAsRGB(name: str) -> (int, int, int):
     """Returns a tuple (R,G,B) containing the three color components of the color "name" from the current document, converted to the RGB color space. If no document is open, returns the value of the named color from the default document colors.
 
 May raise NotFoundError if the named color wasn't found. May raise ValueError if an invalid color name is specified."""
 
+
 def getColorAsRGBFloat(name: str) -> (float, float, float):
     """Returns a tuple (R,G,B) containing the three color components of the color "name" from the current document, converted to the RGB color space. Color components are floating point values between 0 and 255. If no document is open, returns the value of the named color from the default document colors.
 
 May raise NotFoundError if the named color wasn't found. May raise ValueError if an invalid color name is specified."""
+
 
 def getColorFloat(name: str) -> (float, float, float, float):
     """Returns a tuple (C, M, Y, K) containing the four color components of the color "name" from the current document. Color components are floating point values between 0 and 100. If no document is open, returns the value of the named color from the default document colors.
 
 May raise NotFoundError if the named color wasn't found. May raise ValueError if an invalid color name is specified."""
 
+
 def getColorNames() -> list:
     """Returns a list containing the names of all defined colors in the document. If no document is open, returns a list of the default document colors."""
+
 
 def isSpotColor(name: str) -> bool:
     """Returns True if the color "name" is a spot color. See also setSpotColor()
 
 May raise NotFoundError if a named color wasn't found. May raise ValueError if an invalid color name is specified."""
 
-def replaceColor(name: str, replace: str):
+
+def replaceColor(name: str, replace: str) -> None:
     """Every occurrence of the color "name" is replaced by the color "replace".
 
 May raise NotFoundError if a named color wasn't found. May raise ValueError if an invalid color name is specified."""
 
-def setSpotColor(name: str, spot: bool):
+
+def setSpotColor(name: str, spot: bool) -> None:
     """Set the color "name" as a spot color if spot parameter is True. See also isSpotColor()
 
 May raise NotFoundError if a named color wasn't found. May raise ValueError if an invalid color name is specified."""
@@ -1755,10 +1839,13 @@ May raise NotFoundError if a named color wasn't found. May raise ValueError if a
 def getFontNames() -> list:
     """Returns a list with the names of all available fonts."""
 
+
 def getXFontNames() -> list:
     """Returns a larger font info. It's a list of the tuples with: [ (Scribus name, Family, Real name, subset (1|0), embed PS (1|0), font file), (...), ... ]"""
 
-def renderFont(name: str, filename: str, sample: str, size: (int, int), format: str = "PPM") -> bool:  # not entirely sure about size, i assume its (xPixels, yPixels) when in doubt, ignore format
+
+def renderFont(name: str, filename: str, sample: str, size: (int, int),
+               format: str = "PPM") -> bool:  # not entirely sure about size, i assume its (xPixels, yPixels) when in doubt, ignore format
     """Creates an image preview of font "name" with given text "sample" and size. If "filename" is not "", image is saved into "filename". Otherwise image data is returned as a string. The optional "format" argument specifies the image format to generate, and supports any format allowed by QPixmap.save(). Common formats are PPM, JPEG, PNG and XPM.
 
 May raise NotFoundError if the specified font can't be found. May raise ValueError if an empty sample or filename is passed."""
@@ -1772,8 +1859,10 @@ Returns: The name of the newly created annotation.
 
 May raise NameExistsError if you explicitly pass a name that's already used."""
 
+
 def getJSActionScript(which: int, name: str = None) -> str:
     """Gets the JavaScript action for a particular event "which" is one of the following: (0 Mouse Up, 1 Mouse Down, 2 Mouse Enter, 3 Mouse Exit, 4 Focus In, 5 Focus Out, 6 Selection Change, 7 Field Format, 8 Field Validate, 9 Field Calculate) "name" uses the currently selected item if not given. Page item must be an annotation or an error will be raised. Returns: Returns a string if object's action type is Javascript, NONE otherwise."""
+
 
 def isAnnotated(name: str = None, deannotate: bool = False) -> (str, dict):
     """Queries the item to see if it has a Pdf annotation.
@@ -1786,7 +1875,8 @@ Returns: A tuple with a string at 0 that indicates what type of pdf annotation i
 
 May raise WrongFrameTypeError if the target frame is not a text frame"""
 
-def setFileAnnotation(path: str, page: int, x: float, y: float, name: str = None, absolute: bool = True):
+
+def setFileAnnotation(path: str, page: int, x: float, y: float, name: str = None, absolute: bool = True) -> None:
     """Turns a text frame into a absolute or relative link annotation. Arguments: "path" is the absolute or relative path to the file. "page" is the page that it links to. "x" and "y" are the x and y coordinates of the page. "name" uses the currently selected item if not given.
 
 Keyword arguments: "absolute" if set to False will make this a relative path. True is its default.
@@ -1795,10 +1885,12 @@ Returns: None
 
 May raise WrongFrameTypeError if the target frame is not a text frame"""
 
-def setJSActionScript(which: int, script: str, name: str = None):
+
+def setJSActionScript(which: int, script: str, name: str = None) -> None:
     """Sets the JavaScript action for a particular event. Also sets the annotation's action to JavaScript. "which" is one of the following: (0 Mouse Up, 1 Mouse Down, 2 Mouse Enter, 3 Mouse Exit, 4 Focus In, 5 Focus Out, 6 Selection Change, 7 Field Format, 8 Field Validate, 9 Field Calculate) "script" is the JavaScript set to the action. "name" uses the currently selected item if not given. Page item must be an annotation or an error will be raised. Returns: None"""
 
-def setURIAnnotation(uri: str, name: str = None):
+
+def setURIAnnotation(uri: str, name: str = None) -> None:
     """Turns a text fame into a uri link that gotos the uri specified.
 
 Arguments: "uri" is the uri that the link will be set to. "name" uses the currently selected item if not given.
@@ -1809,11 +1901,13 @@ May raise WrongFrameTypeError if the target frame is not a text frame"""
 
 
 # PDF export
-def readPDFOptions(fileName: str):
+def readPDFOptions(fileName: str) -> None:
     """Read PDF options from fileName."""
 
-def savePDFOptions(fileName: str):
+
+def savePDFOptions(fileName: str) -> None:
     """Save PDF options to fileName."""
+
 
 class PDFfile:
     """Exporting PDF
@@ -1827,7 +1921,7 @@ pdf.thumbnails = 1 # generate thumbnails too
 pdf.file = 'mypdf.pdf'
 pdf.save()"""
 
-    def save(self):
+    def save(self) -> None:
         """Save selected pages to pdf file."""
 
     allowAnnots: bool
@@ -2181,10 +2275,11 @@ False -- Default"""
 
 
 # Export to bitmap
-def savePageAsEPS(name: str):
+def savePageAsEPS(name: str) -> None:
     """Saves the current page as an EPS to the file "name".
 
 May raise ScribusError if the save failed."""
+
 
 class ImageExport:
     """Image export
@@ -2201,6 +2296,7 @@ i.save()
 
 two last lines should be replaced with:
 i.saveAs('/home/subik/test.png')"""
+
     def save(self) -> bool:
         """Saves image under previously set 'name'."""
 
@@ -2230,10 +2326,11 @@ i.saveAs('/home/subik/test.png')"""
 
 
 # View
-def scrollDocument(x: float, y: float):
+def scrollDocument(x: float, y: float) -> None:
     """Scroll the document in main GUI window by x and y."""
 
-def zoomDocument(double: float):
+
+def zoomDocument(double: float) -> None:
     """Zoom the document in main GUI window. Actions have whole number values like 20.0, 100.0, etc. Zoom to Fit uses -100 as a marker."""
 
 
@@ -2267,7 +2364,7 @@ Usage examples: result = messageBox('Script failed', 'This script only works whe
 Defined button and icon constants: BUTTON_NONE, BUTTON_ABORT, BUTTON_CANCEL, BUTTON_IGNORE, BUTTON_NO, BUTTON_NOALL, BUTTON_OK, BUTTON_RETRY, BUTTON_YES, BUTTON_YESALL, ICON_NONE, ICON_INFORMATION, ICON_WARNING, ICON_CRITICAL."""
 
 
-def messagebarText(string: str):
+def messagebarText(string: str) -> None:
     """Writes the "string" into the Scribus message bar (status line). The text must be UTF8 encoded or 'unicode' string(recommended)."""
 
 
@@ -2295,88 +2392,3 @@ def valueDialog(caption: str, message: str, defaultValue: str = None) -> str:
     """Shows the common 'Ask for string' dialog and returns its value as a string Parameters: window title, text in the window and optional 'default' value.
 
 Example: valueDialog('title', 'text in the window', 'optional')"""
-
-
-# Creating & Destroying Objects
-def createBezierLine(list: tuple, name: str = "name") -> None:
-    nameExists = False
-    if nameExists:
-        raise NameExistsError
-    wrongValues = False
-    if wrongValues:
-        raise ValueError
-    return name
-
-
-def createEllipse(x: float, y: float, width: float, height: float, name: str = "name") -> None:
-    nameExists = False
-    if nameExists:
-        raise NameExistsError
-    return name
-
-
-def createImage(x: float, y: float, width: float, height: float, name: str = "name") -> None:
-    nameExists = False
-    if nameExists:
-        raise NameExistsError
-    return name
-
-
-def createLine(x1: float, y1: float, x2: float, y2: float, name: str = "name") -> None:
-    nameExists = False
-    if nameExists:
-        raise NameExistsError
-    return name
-
-
-def createPathText(x: float, y: float, textbox: str, beziercurve: str, name: str = "name") -> None:
-    nameExists = False
-    if nameExists:
-        raise NameExistsError
-    objExists = False
-    if objExists:
-        raise NotFoundError
-    return name
-
-
-def createPolyLine(list: tuple, name: str = "name") -> None:
-    nameExists = False
-    if nameExists:
-        raise NameExistsError
-    wrongValues = False
-    if wrongValues:
-        raise ValueError
-    return name
-
-
-def createPolygon(list: tuple, name: str = "name") -> None:
-    nameExists = False
-    if nameExists:
-        raise NameExistsError
-    wrongValues = False
-    if wrongValues:
-        raise ValueError
-    return name
-
-
-def createRect(x: float, y: float, width: float, height: float, name: str = "name") -> None:
-    nameExists = False
-    if nameExists:
-        raise NameExistsError
-    return name
-
-
-def createText(x: float, y: float, width: float, height: float, name: str = "name") -> None:
-    nameExists = False
-    if nameExists:
-        raise NameExistsError
-    return name
-
-
-def deleteObject(name: str) -> None:
-    pass
-
-
-def objectExists(name: str) -> None:
-    exists: bool
-    return exists
